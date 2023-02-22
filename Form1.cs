@@ -16,7 +16,6 @@ namespace musical
     {
         public Midi midi = new Midi();
         public int panel_number = 0;
-        public int control_number;
         public Form1()
         {
             InitializeComponent();
@@ -26,8 +25,6 @@ namespace musical
         {
             Panel1 panel1 = new Panel1();
             this.Controls.Add(panel1.panel_0);
-            control_number++;
-            panel1.control_index = control_number;
             panel_number++;
             panel1.panel_0.Location = new Point(panel_0.Location.X, panel_0.Location.Y+panel_0.Height*panel_number);
         }
@@ -61,9 +58,13 @@ namespace musical
         {
             MessageBox.Show("此声部无法删除");
         }
-        
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }//预定，关闭窗口时停止所有音乐
     }
-    public partial class Panel1
+    public partial class Panel1:Control
     {
         public int tempo_minute;
         public int index;
@@ -122,6 +123,7 @@ namespace musical
             panel_0.Name = "panel_0";
             panel_0.Size = new System.Drawing.Size(746, 305);
             panel_0.TabIndex = 1;
+            control_index = Program.form.Controls.IndexOf(panel_0);
             // 
             // panel_diaoshi_0
             // 
@@ -201,6 +203,7 @@ namespace musical
             panel_start_0.TabStop = false;
             panel_start_0.Text = "开始播放";
             panel_start_0.UseVisualStyleBackColor = true;
+            panel_start_0.Click += new EventHandler(panel_start_Click);
             // 
             // panel_reset_0
             // 
@@ -297,17 +300,34 @@ namespace musical
         }
         private void panel_delete_Click(object sender, EventArgs e)
         {
-            Program.form.Controls[control_index].Dispose();
-            Program.form.control_number--;
             Program.form.panel_number--;
+            control_index = Program.form.Controls.IndexOf(panel_0);
+            Program.form.Controls.Remove(this.panel_0);
+            for(int i = control_index; i < Program.form.Controls.Count; i++)
+            {
+                Program.form.Controls[i].Location = new Point(Program.form.Controls[i].Location.X, Program.form.Controls[i].Location.Y- Program.form.Controls[i].Height);
+            }
+            this.Dispose();
         }
         private void panel_start_Click(object sender, EventArgs e)
         {
             Thread thread = new Thread(new ThreadStart(Musicplay));
+            thread.Start();
         }
         private void Musicplay()
         {
-            Program.form.midi.Music_Play(tempo_minute, index, note_base, instrument, sheet);
-        }
+            //Program.form.midi.Music_Play(tempo_minute, index, note_base, instrument, sheet);
+            /*if (Program.form.panel_number != 10)
+            {
+                //Program.form.midi.Music_Play(Program.form.midi, 100, 60, Program.form.panel_number, 4, 11, Program.form.midi.p);
+            }*/
+            Program.form.midi.Music_speed(60);
+            Program.form.midi.Music_index = Program.form.Controls.IndexOf(panel_0);
+            Program.form.midi.Music_note_base = 4;
+            if(Program.form.Controls.IndexOf(panel_0)<2)Program.form.midi.Music_instrument =11;
+            Program.form.midi.Music_instrument =4;
+            Program.form.midi.Music_power = 100;
+            Program.form.midi.Music_play(Program.form.midi.p);
+        }//通道和乐器有问题，考虑分别存储；
     }
 }

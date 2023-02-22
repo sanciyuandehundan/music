@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime;
 
 namespace musical
 {
@@ -20,7 +21,6 @@ namespace musical
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             form = new Form1();
-            form.control_number = form.Controls.Count-1;
             Application.Run(form);
         }
     }

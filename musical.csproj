@@ -36,11 +36,12 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="sanciyuandehundan_API">
-      <HintPath>..\sanciyuandehundan_API\bin\Debug\net6.0-windows\sanciyuandehundan_API.dll</HintPath>
+    <Reference Include="sanciyuandehundan_API_NFK4.8">
+      <HintPath>..\..\sanciyuandehundan_API_NFK4.8\bin\Debug\sanciyuandehundan_API_NFK4.8.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
