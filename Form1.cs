@@ -9,11 +9,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using sanciyuandehundan_API;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace musical
 {
     public partial class Form1 : Form
     {
+
         public Midi midi = new Midi();
         public int panel_number = 0;
         public Form1()
@@ -26,6 +29,7 @@ namespace musical
             Panel1 panel1 = new Panel1();
             this.Controls.Add(panel1.panel_0);
             panel_number++;
+            //Debug.Print(Program.form.Controls.IndexOf(panel1.panel_0).ToString());
             panel1.panel_0.Location = new Point(panel_0.Location.X, panel_0.Location.Y+panel_0.Height*panel_number);
         }
 
@@ -64,14 +68,20 @@ namespace musical
             
         }//预定，关闭窗口时停止所有音乐
     }
+
     public partial class Panel1:Control
     {
+        [DllImport("winmm.dll")]
+        public extern static int midiOutShortMsg(int lphMidiOut, int dwMsg);
+
+
         public int tempo_minute;
         public int index;
         public int note_base;
         public int instrument;
         public float[,] sheet;
 
+        Thread music_play_thread;
         public int control_index;
         public Panel panel_0 = new System.Windows.Forms.Panel();
         DomainUpDown panel_diaoshi_0 = new System.Windows.Forms.DomainUpDown();
@@ -311,8 +321,8 @@ namespace musical
         }
         private void panel_start_Click(object sender, EventArgs e)
         {
-            Thread thread = new Thread(new ThreadStart(Musicplay));
-            thread.Start();
+            music_play_thread = new Thread(new ThreadStart(Musicplay));
+            music_play_thread.Start();
         }
         private void Musicplay()
         {
@@ -321,13 +331,12 @@ namespace musical
             {
                 //Program.form.midi.Music_Play(Program.form.midi, 100, 60, Program.form.panel_number, 4, 11, Program.form.midi.p);
             }*/
-            Program.form.midi.Music_speed(60);
-            Program.form.midi.Music_index = Program.form.Controls.IndexOf(panel_0);
+            Program.form.midi.Music_speed(40);
+            Program.form.midi.Music_index =int.Parse( panel_speed_0.Text);
             Program.form.midi.Music_note_base = 4;
-            if(Program.form.Controls.IndexOf(panel_0)<2)Program.form.midi.Music_instrument =11;
-            Program.form.midi.Music_instrument =4;
+            midiOutShortMsg(Program.form.midi.midiOut, int.Parse(panel_basenote_0.Text) << 8 | int.Parse(panel_speed_0.Text));
             Program.form.midi.Music_power = 100;
             Program.form.midi.Music_play(Program.form.midi.p);
-        }//通道和乐器有问题，考虑分别存储；
+        }//通道和乐器有问题，考虑分别存储；midioutlongmsg
     }
 }

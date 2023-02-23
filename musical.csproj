@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="sanciyuandehundan_API_NFK4.8">
-      <HintPath>..\..\sanciyuandehundan_API_NFK4.8\bin\Debug\sanciyuandehundan_API_NFK4.8.dll</HintPath>
+      <HintPath>..\sanciyuandehundan_API_NFK4.8\bin\Debug\sanciyuandehundan_API_NFK4.8.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
