@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using sanciyuandehundan_API;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-
 namespace musical
 {
     public partial class Form1 : Form
@@ -331,12 +330,16 @@ namespace musical
             {
                 //Program.form.midi.Music_Play(Program.form.midi, 100, 60, Program.form.panel_number, 4, 11, Program.form.midi.p);
             }*/
-            Program.form.midi.Music_speed(40);
+            /*Program.form.midi.Music_speed(40);
             Program.form.midi.Music_index =int.Parse( panel_speed_0.Text);
             Program.form.midi.Music_note_base = 4;
-            midiOutShortMsg(Program.form.midi.midiOut, int.Parse(panel_basenote_0.Text) << 8 | int.Parse(panel_speed_0.Text));
+            Program.form.midi.Music_instrument = int.Parse(panel_basenote_0.Text);
             Program.form.midi.Music_power = 100;
-            Program.form.midi.Music_play(Program.form.midi.p);
+            Program.form.midi.Music_play(Program.form.midi.p, int.Parse(panel_speed_0.Text));*/
+            Program.form.midi.Music_Play(Program.form.midi, 100, 40, int.Parse(panel_speed_0.Text), 4, int.Parse(panel_basenote_0.Text), Program.form.midi.p);
+            //Console.WriteLine(panel_speed_0.Text + ":" + System.DateTime.Now.ToString());
+            //Debug..Print(panel_speed_0.Text+":"+ System.DateTime.Now.ToString());
+            
         }//通道和乐器有问题，考虑分别存储；midioutlongmsg
     }
 }
