@@ -44,24 +44,19 @@ namespace musical
             Program.form.panel_0.Enabled = false;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void panel_delete_last(object sender, EventArgs e)
         {
             if(panel_number != 0)
             {
                 panel_number-=1;
                 Thread.Sleep(100);
                 Controls[Controls.Count - 1].Dispose();
-                //Controls.RemoveAt(Controls.Count - 1);
             }
         }
     }
 
     public partial class Panel1:Control
     {
-        [DllImport("winmm.dll")]
-        public extern static int midiOutShortMsg(int lphMidiOut, int dwMsg);
-
-
         public int tempo_minute;
         public int index;
         public int note_base;
@@ -323,12 +318,19 @@ namespace musical
         }
         public void panel_start_Click(object sender, EventArgs e)
         {
-            music_play_thread = new Thread(new ThreadStart(Musicplay));
             music_play_thread.Start();
         }
+
+        /// <summary>
+        /// 用于执行绪，播放音乐
+        /// </summary>
         public void Musicplay()
         {
             Program.form.midi.Music_Play(Program.form.midi, 100, 40, int.Parse(panel_speed_0.Text), 4, int.Parse(panel_basenote_0.Text), Program.form.midi.p); 
-        }//midioutlongmsg
+        }
+        public void panel_save_music()
+        {
+            music_play_thread = new Thread(new ThreadStart(Musicplay));
+        }
     }
 }

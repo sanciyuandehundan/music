@@ -308,7 +308,7 @@
             this.button5.TabIndex = 6;
             this.button5.Text = "删除最底声部";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.panel_delete_last);
             // 
             // Form1
             // 
@@ -316,13 +316,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(942, 567);
+            this.ClientSize = new System.Drawing.Size(942, 588);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel_0);
+            this.MaximumSize = new System.Drawing.Size(960, 3000);
             this.MinimumSize = new System.Drawing.Size(960, 382);
             this.Name = "Form1";
             this.Text = "World.Voice.execute();";
