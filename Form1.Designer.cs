@@ -263,7 +263,7 @@
             this.ClientSize = new System.Drawing.Size(942, 567);
             this.Controls.Add(this.panel_0);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "World.Voice.execute();";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.panel_0.ResumeLayout(false);
             this.panel_0.PerformLayout();
