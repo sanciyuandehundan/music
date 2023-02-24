@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using sanciyuandehundan_API;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.IO;
+
 namespace musical
 {
     public partial class Form1 : Form
@@ -53,6 +55,7 @@ namespace musical
                 Controls[Controls.Count - 1].Dispose();
             }
         }
+
     }
 
     public partial class Panel1:Control
@@ -61,7 +64,7 @@ namespace musical
         public int index;
         public int note_base;
         public int instrument;
-        public float[,] sheet;
+        public int[,] sheet;
 
         Thread music_play_thread;
         public int control_index;
@@ -102,6 +105,7 @@ namespace musical
             panel_save_0.TabIndex = 21;
             panel_save_0.Text = "储存设置";
             panel_save_0.UseVisualStyleBackColor = true;
+            panel_save_0.Click += new EventHandler(panel_save_music);
             // 
             // panel_0
             // 
@@ -304,7 +308,14 @@ namespace musical
             panel_choice_0.TabStop = false;
             panel_choice_0.Text = "选择谱子";
             panel_choice_0.UseVisualStyleBackColor = true;
+            panel_choice_0.Click += new EventHandler(panel_load);
         }
+
+        private void Panel_save_0_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void panel_delete_Click(object sender, EventArgs e)
         {
             Program.form.panel_number--;
@@ -318,7 +329,16 @@ namespace musical
         }
         public void panel_start_Click(object sender, EventArgs e)
         {
-            music_play_thread.Start();
+            try
+            {
+                if (!music_play_thread.IsAlive)
+                    music_play_thread.Start();
+            }
+            catch
+            {
+                MessageBox.Show("未储存乐谱设置");
+            }
+
         }
 
         /// <summary>
@@ -326,11 +346,19 @@ namespace musical
         /// </summary>
         public void Musicplay()
         {
-            Program.form.midi.Music_Play(Program.form.midi, 100, 40, int.Parse(panel_speed_0.Text), 4, int.Parse(panel_basenote_0.Text), Program.form.midi.p); 
+            Program.form.midi.Music_Play(Program.form.midi, 100, 40, int.Parse(panel_speed_0.Text), 4, int.Parse(panel_basenote_0.Text), sheet); 
         }
-        public void panel_save_music()
+        public void panel_save_music(object sender, EventArgs e)
         {
             music_play_thread = new Thread(new ThreadStart(Musicplay));
+        }
+        public void panel_load(object sender, EventArgs e)
+        {
+            if(Program.form.openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Program.form.midi.Music_parse(File.ReadAllText(Program.form.openFileDialog1.FileName));
+                //Console.WriteLine(Program.form.openFileDialog1.FileName);
+            }
         }
     }
 }
