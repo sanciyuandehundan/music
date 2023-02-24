@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel_0 = new System.Windows.Forms.Panel();
+            this.panel_save_0 = new System.Windows.Forms.Button();
             this.panel_diaoshi_0 = new System.Windows.Forms.DomainUpDown();
             this.panel_instrument_0 = new System.Windows.Forms.DomainUpDown();
             this.panel_time_right_0 = new System.Windows.Forms.Label();
@@ -47,6 +48,11 @@
             this.panel_power_0 = new System.Windows.Forms.TrackBar();
             this.panel_notecollectionname_0 = new System.Windows.Forms.Label();
             this.panel_choice_0 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel_0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panel_power_0)).BeginInit();
             this.SuspendLayout();
@@ -55,6 +61,7 @@
             // 
             this.panel_0.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel_0.Controls.Add(this.panel_save_0);
             this.panel_0.Controls.Add(this.panel_diaoshi_0);
             this.panel_0.Controls.Add(this.panel_instrument_0);
             this.panel_0.Controls.Add(this.panel_time_right_0);
@@ -77,6 +84,15 @@
             this.panel_0.Name = "panel_0";
             this.panel_0.Size = new System.Drawing.Size(746, 305);
             this.panel_0.TabIndex = 1;
+            // 
+            // panel_save_0
+            // 
+            this.panel_save_0.Location = new System.Drawing.Point(41, 217);
+            this.panel_save_0.Name = "panel_save_0";
+            this.panel_save_0.Size = new System.Drawing.Size(75, 23);
+            this.panel_save_0.TabIndex = 21;
+            this.panel_save_0.Text = "储存设置";
+            this.panel_save_0.UseVisualStyleBackColor = true;
             // 
             // panel_diaoshi_0
             // 
@@ -127,58 +143,53 @@
             // 
             // panel_stop_0
             // 
-            this.panel_stop_0.Location = new System.Drawing.Point(48, 109);
+            this.panel_stop_0.Location = new System.Drawing.Point(41, 111);
             this.panel_stop_0.Name = "panel_stop_0";
             this.panel_stop_0.Size = new System.Drawing.Size(75, 23);
             this.panel_stop_0.TabIndex = 14;
             this.panel_stop_0.TabStop = false;
             this.panel_stop_0.Text = "暂停播放";
             this.panel_stop_0.UseVisualStyleBackColor = true;
-            this.panel_stop_0.Click += new System.EventHandler(this.panel_stop_0_Click);
             // 
             // panel_add_0
             // 
-            this.panel_add_0.Location = new System.Drawing.Point(48, 227);
+            this.panel_add_0.Location = new System.Drawing.Point(617, 141);
             this.panel_add_0.Name = "panel_add_0";
-            this.panel_add_0.Size = new System.Drawing.Size(75, 23);
+            this.panel_add_0.Size = new System.Drawing.Size(105, 23);
             this.panel_add_0.TabIndex = 13;
             this.panel_add_0.TabStop = false;
             this.panel_add_0.Text = "增加声部";
             this.panel_add_0.UseVisualStyleBackColor = true;
-            this.panel_add_0.Click += new System.EventHandler(this.panel_add_0_Click);
             // 
             // panel_start_0
             // 
-            this.panel_start_0.Location = new System.Drawing.Point(48, 53);
+            this.panel_start_0.Location = new System.Drawing.Point(41, 58);
             this.panel_start_0.Name = "panel_start_0";
             this.panel_start_0.Size = new System.Drawing.Size(75, 23);
             this.panel_start_0.TabIndex = 11;
             this.panel_start_0.TabStop = false;
             this.panel_start_0.Text = "开始播放";
             this.panel_start_0.UseVisualStyleBackColor = true;
-            this.panel_start_0.Click += new System.EventHandler(this.panel_start_0_Click);
             // 
             // panel_reset_0
             // 
-            this.panel_reset_0.Location = new System.Drawing.Point(48, 165);
+            this.panel_reset_0.Location = new System.Drawing.Point(41, 164);
             this.panel_reset_0.Name = "panel_reset_0";
             this.panel_reset_0.Size = new System.Drawing.Size(75, 23);
             this.panel_reset_0.TabIndex = 12;
             this.panel_reset_0.TabStop = false;
             this.panel_reset_0.Text = "重置播放进度";
             this.panel_reset_0.UseVisualStyleBackColor = true;
-            this.panel_reset_0.Click += new System.EventHandler(this.panel_reset_0_Click);
             // 
             // panel_delete_0
             // 
-            this.panel_delete_0.Location = new System.Drawing.Point(617, 53);
+            this.panel_delete_0.Location = new System.Drawing.Point(617, 88);
             this.panel_delete_0.Name = "panel_delete_0";
             this.panel_delete_0.Size = new System.Drawing.Size(105, 23);
             this.panel_delete_0.TabIndex = 10;
             this.panel_delete_0.TabStop = false;
             this.panel_delete_0.Text = "删除此声部";
             this.panel_delete_0.UseVisualStyleBackColor = true;
-            this.panel_delete_0.Click += new System.EventHandler(this.panel_delete_0_Click);
             // 
             // panel_basenote_0
             // 
@@ -232,7 +243,6 @@
             this.panel_power_0.TabIndex = 2;
             this.panel_power_0.TabStop = false;
             this.panel_power_0.TickFrequency = 10;
-            this.panel_power_0.Scroll += new System.EventHandler(this.panel_power_0_Scroll);
             // 
             // panel_notecollectionname_0
             // 
@@ -252,7 +262,53 @@
             this.panel_choice_0.TabStop = false;
             this.panel_choice_0.Text = "选择谱子";
             this.panel_choice_0.UseVisualStyleBackColor = true;
-            this.panel_choice_0.Click += new System.EventHandler(this.panel_choice_0_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(22, 32);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "全部播放";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(22, 100);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(114, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "全部暂停";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(22, 168);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(114, 23);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "全部重置播放";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(22, 236);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(114, 23);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "增加声部";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.panel_add);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(22, 304);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(114, 23);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "删除最底声部";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form1
             // 
@@ -261,10 +317,17 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(942, 567);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel_0);
+            this.MinimumSize = new System.Drawing.Size(960, 382);
             this.Name = "Form1";
             this.Text = "World.Voice.execute();";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.panel_0.ResumeLayout(false);
             this.panel_0.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panel_power_0)).EndInit();
@@ -293,6 +356,12 @@
         public System.Windows.Forms.TrackBar panel_power_0;
         public System.Windows.Forms.Label panel_notecollectionname_0;
         public System.Windows.Forms.Button panel_choice_0;
+        public System.Windows.Forms.Button panel_save_0;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
 

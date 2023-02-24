@@ -21,6 +21,7 @@ namespace musical
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             form = new Form1();
+            form.base_controls = form.Controls.Count-1;
             Application.Run(form);
         }
     }
