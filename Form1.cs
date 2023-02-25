@@ -29,6 +29,7 @@ namespace musical
         {
             Panel1 panel1 = new Panel1();
             this.Controls.Add(panel1.panel_0);
+            panel1.index = panel_number;
             panel_number++;
             //Debug.Print(Program.form.Controls.IndexOf(panel1.panel_0).ToString());
             panel1.panel_0.Location = new Point(panel_0.Location.X, panel_0.Location.Y+panel_0.Height*panel_number);
@@ -64,7 +65,8 @@ namespace musical
         public int index;
         public int note_base;
         public int instrument;
-        public int[,] sheet;
+        public string sheet;
+        public int power;
 
         Thread music_play_thread;
         public int control_index;
@@ -192,6 +194,7 @@ namespace musical
             panel_stop_0.TabStop = false;
             panel_stop_0.Text = "暂停播放";
             panel_stop_0.UseVisualStyleBackColor = true;
+            panel_stop_0.Click += new EventHandler(panel_stop);
             // 
             // panel_add_0
             // 
@@ -289,6 +292,7 @@ namespace musical
             panel_power_0.TabIndex = 2;
             panel_power_0.TabStop = false;
             panel_power_0.TickFrequency = 10;
+            panel_power_0.Scroll += new EventHandler(panel_power);
             // 
             // panel_notecollectionname_0
             // 
@@ -311,11 +315,12 @@ namespace musical
             panel_choice_0.Click += new EventHandler(panel_load);
         }
 
-        private void Panel_save_0_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
+        /// <summary>
+        /// 删除该声部
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void panel_delete_Click(object sender, EventArgs e)
         {
             Program.form.panel_number--;
@@ -327,6 +332,12 @@ namespace musical
             }//将底下的全部往上提一个，填补此panel删除后的空格
             this.Dispose();
         }
+
+        /// <summary>
+        /// 开始播放
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void panel_start_Click(object sender, EventArgs e)
         {
             try
@@ -346,19 +357,57 @@ namespace musical
         /// </summary>
         public void Musicplay()
         {
-            Program.form.midi.Music_Play(Program.form.midi, 100, 40, int.Parse(panel_speed_0.Text), 4, int.Parse(panel_basenote_0.Text), sheet); 
+            Program.form.midi.Music_play(Program.form.midi.music[index],index);
         }
+        
+        /// <summary>
+        /// 设定乐谱
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void panel_save_music(object sender, EventArgs e)
         {
+            Program.form.midi.Music_speed(int.Parse(panel_speed_0.Text), index);
+            Program.form.midi.Music_note_base(int.Parse(panel_basenote_0.Text), index);
+            Program.form.midi.Music_power(power, index);
+            Program.form.midi.Music_parse(sheet, index, 4);
+            Program.form.midi.Music_instrument(instrument, index);
             music_play_thread = new Thread(new ThreadStart(Musicplay));
-        }
+        }//调式和乐器还未弄
+
+        /// <summary>
+        /// 加载乐谱
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void panel_load(object sender, EventArgs e)
         {
-            if(Program.form.openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (Program.form.openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                Program.form.midi.Music_parse(File.ReadAllText(Program.form.openFileDialog1.FileName));
+                sheet = File.ReadAllText(Program.form.openFileDialog1.FileName);
                 //Console.WriteLine(Program.form.openFileDialog1.FileName);
             }
         }
+
+        /// <summary>
+        /// 停止执行绪
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void panel_stop(object sender, EventArgs e)
+        {
+            if(music_play_thread.IsAlive)music_play_thread.Suspend();
+        }
+
+        /// <summary>
+        /// 音量
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void panel_power(object sender, EventArgs e)
+        {
+            power = panel_power_0.Value;
+        }
+
     }
 }
