@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel_0 = new System.Windows.Forms.Panel();
             this.panel_save_0 = new System.Windows.Forms.Button();
             this.panel_diaoshi_0 = new System.Windows.Forms.DomainUpDown();
@@ -54,6 +55,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button6 = new System.Windows.Forms.Button();
             this.panel_0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panel_power_0)).BeginInit();
             this.SuspendLayout();
@@ -120,7 +123,7 @@
             // panel_time_right_0
             // 
             this.panel_time_right_0.AutoSize = true;
-            this.panel_time_right_0.Location = new System.Drawing.Point(614, 235);
+            this.panel_time_right_0.Location = new System.Drawing.Point(597, 231);
             this.panel_time_right_0.Name = "panel_time_right_0";
             this.panel_time_right_0.Size = new System.Drawing.Size(46, 15);
             this.panel_time_right_0.TabIndex = 17;
@@ -129,7 +132,7 @@
             // panel_time_left_0
             // 
             this.panel_time_left_0.AutoSize = true;
-            this.panel_time_left_0.Location = new System.Drawing.Point(161, 235);
+            this.panel_time_left_0.Location = new System.Drawing.Point(172, 231);
             this.panel_time_left_0.Name = "panel_time_left_0";
             this.panel_time_left_0.Size = new System.Drawing.Size(46, 15);
             this.panel_time_left_0.TabIndex = 16;
@@ -229,7 +232,7 @@
             // panel_power_show_0
             // 
             this.panel_power_show_0.AutoSize = true;
-            this.panel_power_show_0.Location = new System.Drawing.Point(212, 170);
+            this.panel_power_show_0.Location = new System.Drawing.Point(218, 149);
             this.panel_power_show_0.Name = "panel_power_show_0";
             this.panel_power_show_0.Size = new System.Drawing.Size(37, 15);
             this.panel_power_show_0.TabIndex = 3;
@@ -247,12 +250,16 @@
             // 
             // panel_notecollectionname_0
             // 
-            this.panel_notecollectionname_0.AutoSize = true;
+            this.panel_notecollectionname_0.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_notecollectionname_0.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel_notecollectionname_0.Location = new System.Drawing.Point(207, 79);
             this.panel_notecollectionname_0.Name = "panel_notecollectionname_0";
             this.panel_notecollectionname_0.Size = new System.Drawing.Size(52, 15);
             this.panel_notecollectionname_0.TabIndex = 1;
             this.panel_notecollectionname_0.Text = "谱子名";
+            this.panel_notecollectionname_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel_choice_0
             // 
@@ -272,28 +279,31 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "全部播放";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(22, 100);
+            this.button2.Location = new System.Drawing.Point(22, 91);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(114, 23);
             this.button2.TabIndex = 3;
             this.button2.Text = "全部暂停";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(22, 168);
+            this.button3.Location = new System.Drawing.Point(22, 150);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(114, 23);
             this.button3.TabIndex = 4;
             this.button3.Text = "全部重置播放";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(22, 236);
+            this.button4.Location = new System.Drawing.Point(22, 209);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(114, 23);
             this.button4.TabIndex = 5;
@@ -303,7 +313,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(22, 304);
+            this.button5.Location = new System.Drawing.Point(22, 327);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(114, 23);
             this.button5.TabIndex = 6;
@@ -315,6 +325,20 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(22, 268);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(114, 23);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "全部储存";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -322,6 +346,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(942, 588);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -369,6 +394,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button6;
     }
 }
 

@@ -12,6 +12,7 @@ using sanciyuandehundan_API;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Reflection;
 
 namespace musical
 {
@@ -20,6 +21,7 @@ namespace musical
         public Midi midi = new Midi();
         public int panel_number = 0;
         public int base_controls;
+        public Panel1[] shengbu=new Panel1[16];
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +33,7 @@ namespace musical
             this.Controls.Add(panel1.panel_0);
             panel1.index = panel_number;
             panel_number++;
+            shengbu[panel1.index] = panel1;
             //Debug.Print(Program.form.Controls.IndexOf(panel1.panel_0).ToString());
             panel1.panel_0.Location = new Point(panel_0.Location.X, panel_0.Location.Y+panel_0.Height*panel_number);
         }
@@ -55,8 +58,79 @@ namespace musical
                 Thread.Sleep(100);
                 Controls[Controls.Count - 1].Dispose();
             }
-        }
+        }//删除最底下的声部
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            for(int i = 0; i < panel_number; i++)
+            {
+                if (shengbu[i].music_play_thread != null)
+                {
+                    if (!shengbu[i].music_play_thread.IsAlive)
+                    {
+                        shengbu[i].music_play_thread.Start();
+                        shengbu[i].panel_timer.Start();
+                    }
+                    if (shengbu[i].stop_bool)
+                    {
+                       shengbu[i].music_play_thread.Resume();
+                        shengbu[i]. panel_timer.Start();
+                    }
+                }
+            }
+        }//全部播放
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < panel_number; i++)
+            {
+                if (shengbu[i].music_play_thread.IsAlive)
+                {
+                    shengbu[i].music_play_thread.Suspend();
+                    shengbu[i].panel_timer.Stop();
+                    shengbu[i].stop_bool = true;
+                }
+            }
+        
+        }//全部暂停
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            for(int i = 0; i < panel_number; i++)
+            {
+                if (shengbu[i].stop_bool)
+                { 
+                shengbu[i].music_play_thread = new Thread(new ThreadStart(shengbu[i].Musicplay));
+                shengbu[i].panel_time_0.Value = 0;
+                shengbu[i].panel_time_left_0.Text = "0:00";
+                shengbu[i].stop_bool = false;
+                }
+            }
+        }//全部重置
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            for(int i=0; i < panel_number; i++)
+            {
+                if (shengbu[i].sheet != null & shengbu[i].panel_speed_0.Text != null & shengbu[i].panel_basenote_0.Text != null)
+                {
+                    Program.form.midi.Music_speed(int.Parse(shengbu[i].panel_speed_0.Text), shengbu[i].index);
+                    Program.form.midi.Music_note_base(int.Parse(shengbu[i].panel_basenote_0.Text), shengbu[i].index);
+                    Program.form.midi.Music_power(shengbu[i].power, shengbu[i].index);
+                    Program.form.midi.Music_parse(shengbu[i].sheet, shengbu[i].index, 4);
+                    Program.form.midi.Music_instrument(shengbu[i].instrument, shengbu[i].index);
+                    shengbu[i].music_play_thread = new Thread(new ThreadStart(shengbu[i].Musicplay));
+                    int t = Program.form.midi.time[shengbu[i].index] / 1000;
+                    shengbu[i].panel_time_right_0.Text = (t / 60).ToString() + ":" + (t % 60).ToString();
+                    shengbu[i].panel_time_0.Maximum = t;//250,用25000毫秒跑完，100毫秒跑一次
+                    shengbu[i].panel_time_0.Step = 1;
+                }
+                else
+                {
+                    MessageBox.Show("条件未设置完全");
+                }
+            }
+        }//全部储存
     }
 
     public partial class Panel1:Control
@@ -67,29 +141,31 @@ namespace musical
         public int instrument;
         public string sheet;
         public int power;
+        public bool stop_bool;
 
-        Thread music_play_thread;
+        public Thread music_play_thread;
         public int control_index;
         public Panel panel_0 = new System.Windows.Forms.Panel();
-        DomainUpDown panel_diaoshi_0 = new System.Windows.Forms.DomainUpDown();
-        DomainUpDown panel_instrument_0 = new System.Windows.Forms.DomainUpDown();
-        Label panel_time_right_0 = new System.Windows.Forms.Label();
-        Label panel_time_left_0 = new System.Windows.Forms.Label();
-        ProgressBar panel_time_0 = new System.Windows.Forms.ProgressBar();
-        Button panel_stop_0 = new System.Windows.Forms.Button();
-        Button panel_add_0 = new System.Windows.Forms.Button();
-        Button panel_start_0 = new System.Windows.Forms.Button();
-        Button panel_reset_0 = new System.Windows.Forms.Button();
-        Button panel_delete_0 = new System.Windows.Forms.Button();
-        TextBox panel_basenote_0 = new System.Windows.Forms.TextBox();
-        Label panel_label2_0 = new System.Windows.Forms.Label();
-        TextBox panel_speed_0 = new System.Windows.Forms.TextBox();
-        Label panel_label1_0 = new System.Windows.Forms.Label();
-        Label panel_power_show_0 = new System.Windows.Forms.Label();
-        TrackBar panel_power_0 = new System.Windows.Forms.TrackBar();
-        Label panel_notecollectionname_0 = new System.Windows.Forms.Label();
-        Button panel_choice_0 = new System.Windows.Forms.Button();
-        Button panel_save_0 = new System.Windows.Forms.Button();
+        public DomainUpDown panel_diaoshi_0 = new System.Windows.Forms.DomainUpDown();
+        public DomainUpDown panel_instrument_0 = new System.Windows.Forms.DomainUpDown();
+        public Label panel_time_right_0 = new System.Windows.Forms.Label();
+        public Label panel_time_left_0 = new System.Windows.Forms.Label();
+        public ProgressBar panel_time_0 = new System.Windows.Forms.ProgressBar();
+        public Button panel_stop_0 = new System.Windows.Forms.Button();
+        public Button panel_add_0 = new System.Windows.Forms.Button();
+        public Button panel_start_0 = new System.Windows.Forms.Button();
+        public Button panel_reset_0 = new System.Windows.Forms.Button();
+        public Button panel_delete_0 = new System.Windows.Forms.Button();
+        public TextBox panel_basenote_0 = new System.Windows.Forms.TextBox();
+        public Label panel_label2_0 = new System.Windows.Forms.Label();
+        public TextBox panel_speed_0 = new System.Windows.Forms.TextBox();
+        public Label panel_label1_0 = new System.Windows.Forms.Label();
+        public Label panel_power_show_0 = new System.Windows.Forms.Label();
+        public TrackBar panel_power_0 = new System.Windows.Forms.TrackBar();
+        public Label panel_notecollectionname_0 = new System.Windows.Forms.Label();
+        public Button panel_choice_0 = new System.Windows.Forms.Button();
+        public Button panel_save_0 = new System.Windows.Forms.Button();
+        public System.Windows.Forms.Timer panel_timer = new System.Windows.Forms.Timer();
 
         /// <summary>
         /// 建构函数
@@ -98,6 +174,11 @@ namespace musical
         {
             panel_0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(panel_power_0)).BeginInit();
+            // 
+            // timer1
+            // 
+            panel_timer.Interval = 1000;
+            panel_timer.Tick += new EventHandler(panel_time_start);
             // 
             // panel_save_0
             // 
@@ -184,6 +265,7 @@ namespace musical
             panel_time_0.Name = "panel_time_0";
             panel_time_0.Size = new System.Drawing.Size(((Point)Program.form.panel_time_0.Size));
             panel_time_0.TabIndex = 15;
+            panel_time_0.Step = 1;
             // 
             // panel_stop_0
             // 
@@ -228,6 +310,7 @@ namespace musical
             panel_reset_0.TabStop = false;
             panel_reset_0.Text = "重置播放进度";
             panel_reset_0.UseVisualStyleBackColor = true;
+            panel_reset_0.Click += new EventHandler(panel_reset);
             // 
             // panel_delete_0
             // 
@@ -302,6 +385,7 @@ namespace musical
             panel_notecollectionname_0.Size = new System.Drawing.Size(((Point)Program.form.panel_notecollectionname_0.Size));
             panel_notecollectionname_0.TabIndex = 1;
             panel_notecollectionname_0.Text = "谱子名";
+            panel_notecollectionname_0.BackColor = Program.form.panel_notecollectionname_0.BackColor;
             // 
             // panel_choice_0
             // 
@@ -340,14 +424,21 @@ namespace musical
         /// <param name="e"></param>
         public void panel_start_Click(object sender, EventArgs e)
         {
-            try
+            if (music_play_thread != null)
             {
-                if (!music_play_thread.IsAlive)
+                if (!music_play_thread.IsAlive & stop_bool == false)
+                {
                     music_play_thread.Start();
-            }
-            catch
-            {
-                MessageBox.Show("未储存乐谱设置");
+                    panel_timer.Start();
+                }
+                if (stop_bool)
+                {
+                    music_play_thread.Resume();
+                    panel_timer.Start();
+                }
+
+                Console.WriteLine(panel_time_0.Maximum);
+                //Console.WriteLine(panel_time_0.);
             }
 
         }
@@ -358,8 +449,8 @@ namespace musical
         public void Musicplay()
         {
             Program.form.midi.Music_play(Program.form.midi.music[index],index);
-        }
-        
+        }//力度的随机还没做，为模仿人类
+
         /// <summary>
         /// 设定乐谱
         /// </summary>
@@ -367,12 +458,23 @@ namespace musical
         /// <param name="e"></param>
         public void panel_save_music(object sender, EventArgs e)
         {
-            Program.form.midi.Music_speed(int.Parse(panel_speed_0.Text), index);
-            Program.form.midi.Music_note_base(int.Parse(panel_basenote_0.Text), index);
-            Program.form.midi.Music_power(power, index);
-            Program.form.midi.Music_parse(sheet, index, 4);
-            Program.form.midi.Music_instrument(instrument, index);
-            music_play_thread = new Thread(new ThreadStart(Musicplay));
+            if ( sheet!= null & panel_speed_0.Text != null & panel_basenote_0.Text != null)
+            {
+                Program.form.midi.Music_speed(int.Parse(panel_speed_0.Text), index);
+                Program.form.midi.Music_note_base(int.Parse(panel_basenote_0.Text), index);
+                Program.form.midi.Music_power(power, index);
+                Program.form.midi.Music_parse(sheet, index, 4);
+                Program.form.midi.Music_instrument(instrument, index);
+                music_play_thread = new Thread(new ThreadStart(Musicplay));
+                int t = Program.form.midi.time[index] / 1000;
+                panel_time_right_0.Text = (t / 60).ToString() + ":" + (t % 60).ToString();
+                panel_time_0.Maximum = t;//250,用25000毫秒跑完，100毫秒跑一次
+                panel_time_0.Step = 1;
+            }
+            else
+            {
+                MessageBox.Show("条件未设置完全");
+            }
         }//调式和乐器还未弄
 
         /// <summary>
@@ -385,9 +487,13 @@ namespace musical
             if (Program.form.openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 sheet = File.ReadAllText(Program.form.openFileDialog1.FileName);
-                //Console.WriteLine(Program.form.openFileDialog1.FileName);
+                int x=panel_notecollectionname_0.Location.X;
+                int w = panel_notecollectionname_0.Width;
+                //x = x + w / 2;//中心
+                panel_notecollectionname_0.Text= Path.GetFileName(Program.form.openFileDialog1.FileName);
+                panel_notecollectionname_0.Location = new Point(x+((w-panel_notecollectionname_0.Width)/2),panel_notecollectionname_0.Location.Y);
             }
-        }
+        }//midi档案的读取还没做，简谱和midi档案的互相转换还没做，格式的介绍还没做
 
         /// <summary>
         /// 停止执行绪
@@ -396,7 +502,12 @@ namespace musical
         /// <param name="e"></param>
         public void panel_stop(object sender, EventArgs e)
         {
-            if(music_play_thread.IsAlive)music_play_thread.Suspend();
+            if (music_play_thread.IsAlive)
+            {
+                music_play_thread.Suspend();
+                panel_timer.Stop();
+                stop_bool = true;
+            }
         }
 
         /// <summary>
@@ -409,5 +520,38 @@ namespace musical
             power = panel_power_0.Value;
         }
 
+        /// <summary>
+        /// 进度条
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void panel_time_start(object sender, EventArgs e)
+        {
+            try
+            {
+                panel_time_0.PerformStep();
+                panel_time_left_0.Text = (panel_time_0.Value / 60).ToString() + ":" + (panel_time_0.Value % 60).ToString();
+            }
+            catch
+            {
+                panel_timer.Stop();
+            }
+        }
+
+        /// <summary>
+        /// 重置播放进度
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void panel_reset(object sender, EventArgs e)
+        {
+            if (stop_bool)
+            {
+                music_play_thread = new Thread(new ThreadStart(Musicplay));
+                panel_time_0.Value = 0;
+                panel_time_left_0.Text = "0:00";
+                stop_bool = false;
+            }
+        }
     }
 }
