@@ -112,7 +112,7 @@ namespace musical
         {
             for(int i=0; i < panel_number; i++)
             {
-                if (shengbu[i].sheet != null & shengbu[i].panel_speed_0.Text != null & shengbu[i].panel_basenote_0.Text != null)
+                if (shengbu[i].sheet != null & shengbu[i].panel_speed_0.Text != null & shengbu[i].panel_basenote_0.Text != null & shengbu[i].xiaojie.Text!=null)
                 {
                     Program.form.midi.Music_speed(int.Parse(shengbu[i].panel_speed_0.Text), shengbu[i].index);
                     Program.form.midi.Music_power(shengbu[i].panel_power_0.Value, shengbu[i].sheet, shengbu[i].index);
@@ -122,7 +122,7 @@ namespace musical
                     shengbu[i].music_play_thread = new Thread(new ThreadStart(shengbu[i].Musicplay));
                     int t = Program.form.midi.time[shengbu[i].index] / 1000;
                     shengbu[i].panel_time_right_0.Text = (t / 60).ToString() + ":" + (t % 60).ToString();
-                    shengbu[i].panel_time_0.Maximum = t;//250,用25000毫秒跑完，100毫秒跑一次
+                    shengbu[i].panel_time_0.Maximum = t;
                     shengbu[i].panel_time_0.Step = 1;
                 }
                 else
@@ -478,7 +478,7 @@ namespace musical
         /// <param name="e"></param>
         public void panel_save_music(object sender, EventArgs e)
         {
-            if ( sheet!= null & panel_speed_0.Text != null & panel_basenote_0.Text != null)
+            if ( sheet!= null & panel_speed_0.Text != null & panel_basenote_0.Text != null & xiaojie.Text != null)
             {
 
                 Program.form.midi.Music_speed(int.Parse(panel_speed_0.Text), index);
@@ -514,7 +514,7 @@ namespace musical
                 panel_notecollectionname_0.Text= Path.GetFileName(Program.form.openFileDialog1.FileName);
                 panel_notecollectionname_0.Location = new Point(x+((w-panel_notecollectionname_0.Width)/2),panel_notecollectionname_0.Location.Y);
             }
-        }//midi档案的读取还没做，简谱和midi档案的互相转换还没做，格式的介绍还没做
+        }//midi档案的读取还没做，简谱和midi档案的互相转换还没做，格式的介绍还没做,midioutlongmsg还没研究
 
         /// <summary>
         /// 停止执行绪
