@@ -115,8 +115,8 @@ namespace musical
                 if (shengbu[i].sheet != null & shengbu[i].panel_speed_0.Text != null & shengbu[i].panel_basenote_0.Text != null)
                 {
                     Program.form.midi.Music_speed(int.Parse(shengbu[i].panel_speed_0.Text), shengbu[i].index);
-                    Program.form.midi.Music_note_base(int.Parse(shengbu[i].panel_basenote_0.Text), shengbu[i].index);
-                    Program.form.midi.Music_power(shengbu[i].power, shengbu[i].index);
+                    Program.form.midi.Music_power(shengbu[i].panel_power_0.Value, shengbu[i].sheet, shengbu[i].index);
+                    Program.form.midi.Music_note_base(int.Parse(shengbu[i].panel_basenote_0.Text), int.Parse(shengbu[i].xiaojie.Text), shengbu[i].index);
                     Program.form.midi.Music_parse(shengbu[i].sheet, shengbu[i].index, 4);
                     Program.form.midi.Music_instrument(shengbu[i].instrument, shengbu[i].index);
                     shengbu[i].music_play_thread = new Thread(new ThreadStart(shengbu[i].Musicplay));
@@ -166,6 +166,8 @@ namespace musical
         public Button panel_choice_0 = new System.Windows.Forms.Button();
         public Button panel_save_0 = new System.Windows.Forms.Button();
         public System.Windows.Forms.Timer panel_timer = new System.Windows.Forms.Timer();
+        public System.Windows.Forms.Label label1=new Label();
+        public System.Windows.Forms.TextBox xiaojie=new TextBox();
 
         /// <summary>
         /// 建构函数
@@ -174,6 +176,22 @@ namespace musical
         {
             panel_0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(panel_power_0)).BeginInit();
+            // 
+            // textBox1
+            // 
+            xiaojie.Location = new System.Drawing.Point(((Size)Program.form.textBox1.Location));
+            xiaojie.Name = "xiaojie";
+            xiaojie.Size = new System.Drawing.Size(((Point)Program.form.textBox1.Size));
+            xiaojie.TabIndex = 22;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(((Size)Program.form.label1 .Location));
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(((Point)Program.form.label1.Size));
+            label1.TabIndex = 23;
+            label1.Text = "一小节几拍";
             // 
             // timer1
             // 
@@ -213,6 +231,8 @@ namespace musical
             panel_0.Controls.Add(panel_notecollectionname_0);
             panel_0.Controls.Add(panel_choice_0);
             panel_0.Controls.Add(panel_save_0);
+            panel_0.Controls.Add(xiaojie);
+            panel_0.Controls.Add(label1);
             panel_0.Location = new System.Drawing.Point(Program.form.panel_0.Location.X, Program.form.panel_0.Location.Y);
             panel_0.Name = "panel_0";
             panel_0.Size = new System.Drawing.Size(((Point)Program.form.panel_0.Size));
@@ -460,9 +480,10 @@ namespace musical
         {
             if ( sheet!= null & panel_speed_0.Text != null & panel_basenote_0.Text != null)
             {
+
                 Program.form.midi.Music_speed(int.Parse(panel_speed_0.Text), index);
-                Program.form.midi.Music_note_base(int.Parse(panel_basenote_0.Text), index);
-                Program.form.midi.Music_power(power, index);
+                Program.form.midi.Music_power(power,sheet, index);
+                Program.form.midi.Music_note_base(int.Parse(panel_basenote_0.Text),int.Parse(xiaojie.Text), index);
                 Program.form.midi.Music_parse(sheet, index, 4);
                 Program.form.midi.Music_instrument(instrument, index);
                 music_play_thread = new Thread(new ThreadStart(Musicplay));

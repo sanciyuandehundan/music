@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel_0 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel_save_0 = new System.Windows.Forms.Button();
             this.panel_diaoshi_0 = new System.Windows.Forms.DomainUpDown();
             this.panel_instrument_0 = new System.Windows.Forms.DomainUpDown();
@@ -65,6 +67,8 @@
             // 
             this.panel_0.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel_0.Controls.Add(this.label1);
+            this.panel_0.Controls.Add(this.textBox1);
             this.panel_0.Controls.Add(this.panel_save_0);
             this.panel_0.Controls.Add(this.panel_diaoshi_0);
             this.panel_0.Controls.Add(this.panel_instrument_0);
@@ -88,6 +92,22 @@
             this.panel_0.Name = "panel_0";
             this.panel_0.Size = new System.Drawing.Size(746, 305);
             this.panel_0.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(359, 76);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 15);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "一小节几拍";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(443, 71);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 25);
+            this.textBox1.TabIndex = 22;
             // 
             // panel_save_0
             // 
@@ -197,7 +217,7 @@
             // 
             // panel_basenote_0
             // 
-            this.panel_basenote_0.Location = new System.Drawing.Point(447, 117);
+            this.panel_basenote_0.Location = new System.Drawing.Point(443, 111);
             this.panel_basenote_0.Name = "panel_basenote_0";
             this.panel_basenote_0.Size = new System.Drawing.Size(100, 25);
             this.panel_basenote_0.TabIndex = 7;
@@ -206,7 +226,7 @@
             // panel_label2_0
             // 
             this.panel_label2_0.AutoSize = true;
-            this.panel_label2_0.Location = new System.Drawing.Point(333, 120);
+            this.panel_label2_0.Location = new System.Drawing.Point(329, 116);
             this.panel_label2_0.Name = "panel_label2_0";
             this.panel_label2_0.Size = new System.Drawing.Size(112, 15);
             this.panel_label2_0.TabIndex = 6;
@@ -214,7 +234,7 @@
             // 
             // panel_speed_0
             // 
-            this.panel_speed_0.Location = new System.Drawing.Point(447, 52);
+            this.panel_speed_0.Location = new System.Drawing.Point(443, 31);
             this.panel_speed_0.Name = "panel_speed_0";
             this.panel_speed_0.Size = new System.Drawing.Size(100, 25);
             this.panel_speed_0.TabIndex = 5;
@@ -223,7 +243,7 @@
             // panel_label1_0
             // 
             this.panel_label1_0.AutoSize = true;
-            this.panel_label1_0.Location = new System.Drawing.Point(352, 55);
+            this.panel_label1_0.Location = new System.Drawing.Point(358, 35);
             this.panel_label1_0.Name = "panel_label1_0";
             this.panel_label1_0.Size = new System.Drawing.Size(82, 15);
             this.panel_label1_0.TabIndex = 4;
@@ -396,6 +416,8 @@
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button6;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox textBox1;
     }
 }
 
