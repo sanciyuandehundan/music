@@ -62,7 +62,8 @@ namespace musical
 
         private void button1_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < panel_number; i++)
+            Midi.midiOutShortMsg(midi.midiOut,  0x7D << 8 | 0xB0);
+            for (int i = 0; i < panel_number; i++)
             {
                 if (shengbu[i].music_play_thread != null)
                 {
@@ -77,6 +78,7 @@ namespace musical
                         shengbu[i]. panel_timer.Start();
                     }
                 }
+                
             }
         }//全部播放
 
@@ -395,6 +397,7 @@ namespace musical
             panel_power_0.TabIndex = 2;
             panel_power_0.TabStop = false;
             panel_power_0.TickFrequency = 10;
+            panel_power_0.Value = 50;
             panel_power_0.Scroll += new EventHandler(panel_power);
             // 
             // panel_notecollectionname_0
@@ -484,7 +487,7 @@ namespace musical
                 Program.form.midi.Music_speed(int.Parse(panel_speed_0.Text), index);
                 Program.form.midi.Music_power(power,sheet, index);
                 Program.form.midi.Music_note_base(int.Parse(panel_basenote_0.Text),int.Parse(xiaojie.Text), index);
-                Program.form.midi.Music_parse(sheet, index, 4);
+                Program.form.midi.Music_parse(sheet, index, 1);
                 Program.form.midi.Music_instrument(instrument, index);
                 music_play_thread = new Thread(new ThreadStart(Musicplay));
                 int t = Program.form.midi.time[index] / 1000;
