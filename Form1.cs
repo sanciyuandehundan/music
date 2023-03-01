@@ -119,7 +119,8 @@ namespace musical
                     Program.form.midi.Music_speed(int.Parse(shengbu[i].panel_speed_0.Text), shengbu[i].index);
                     Program.form.midi.Music_power(shengbu[i].panel_power_0.Value, shengbu[i].sheet, shengbu[i].index);
                     Program.form.midi.Music_note_base(int.Parse(shengbu[i].panel_basenote_0.Text), int.Parse(shengbu[i].xiaojie.Text), shengbu[i].index);
-                    Program.form.midi.Music_parse(shengbu[i].sheet, shengbu[i].index, 4);
+                    Program.form.midi.Music_diaoshi(0, shengbu[i].index);
+                    Program.form.midi.Music_parse(shengbu[i].sheet, shengbu[i].index);
                     Program.form.midi.Music_instrument(shengbu[i].instrument, shengbu[i].index);
                     shengbu[i].music_play_thread = new Thread(new ThreadStart(shengbu[i].Musicplay));
                     int t = Program.form.midi.time[shengbu[i].index] / 1000;
@@ -464,7 +465,7 @@ namespace musical
                 //Console.WriteLine(panel_time_0.);
             }
 
-        }
+        }//随API更新再更新
 
         /// <summary>
         /// 用于执行绪，播放音乐
@@ -487,7 +488,8 @@ namespace musical
                 Program.form.midi.Music_speed(int.Parse(panel_speed_0.Text), index);
                 Program.form.midi.Music_power(power,sheet, index);
                 Program.form.midi.Music_note_base(int.Parse(panel_basenote_0.Text),int.Parse(xiaojie.Text), index);
-                Program.form.midi.Music_parse(sheet, index, 1);
+                Program.form.midi.Music_diaoshi(4, index);
+                Program.form.midi.Music_parse(sheet, index);
                 Program.form.midi.Music_instrument(instrument, index);
                 music_play_thread = new Thread(new ThreadStart(Musicplay));
                 int t = Program.form.midi.time[index] / 1000;
