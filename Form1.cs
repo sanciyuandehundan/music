@@ -448,6 +448,7 @@ namespace musical
         /// <param name="e"></param>
         public void panel_start_Click(object sender, EventArgs e)
         {
+            Midi.midiOutShortMsg(Program.form.midi.midiOut,0x7e<<16|60<<8|0x90);
             if (music_play_thread != null)
             {
                 if (!music_play_thread.IsAlive & stop_bool == false)
@@ -461,7 +462,7 @@ namespace musical
                     panel_timer.Start();
                 }
 
-                Console.WriteLine(panel_time_0.Maximum);
+                //Console.WriteLine(panel_time_0.Maximum);
                 //Console.WriteLine(panel_time_0.);
             }
 
@@ -472,7 +473,7 @@ namespace musical
         /// </summary>
         public void Musicplay()
         {
-            Program.form.midi.Music_play(Program.form.midi.music[index],index);
+            Program.form.midi.Music_play(index);
         }//力度的随机还没做，为模仿人类
 
         /// <summary>
@@ -482,6 +483,8 @@ namespace musical
         /// <param name="e"></param>
         public void panel_save_music(object sender, EventArgs e)
         {
+            Console.WriteLine(Program.form.midi.midiOut);
+            //Midi.midiOutShortMsg(Program.form.midi.midiOut, 100 << 16 | 60 << 8 | 0x90);
             if ( sheet!= null & panel_speed_0.Text != null & panel_basenote_0.Text != null & xiaojie.Text != null)
             {
 
