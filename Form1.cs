@@ -134,6 +134,13 @@ namespace musical
                 }
             }
         }//全部储存
+        [DllImport("winmm.dll")]
+        static extern Int32 mciSendString(String command, StringBuilder buffer, Int32 bufferSize, IntPtr hwndCallback);
+        private void button7_Click(object sender, EventArgs e)
+        {
+            mciSendString($"open C:\\mid(13).mid type sequencer alias gg", null, 0, new IntPtr());
+            mciSendString($"play gg", null, 0, new IntPtr());
+        }
     }
 
     public partial class Panel1:Control
@@ -491,7 +498,14 @@ namespace musical
                 Program.form.midi.Music_speed(int.Parse(panel_speed_0.Text), index);
                 Program.form.midi.Music_power(power,sheet, index);
                 Program.form.midi.Music_note_base(int.Parse(panel_basenote_0.Text),int.Parse(xiaojie.Text), index);
-                Program.form.midi.Music_diaoshi(4, index);
+                if (index == 0)
+                {
+                    Program.form.midi.Music_diaoshi(0, index);
+                }
+                else
+                {
+                    Program.form.midi.Music_diaoshi(-7, index);
+                }
                 Program.form.midi.Music_parse(sheet, index);
                 Program.form.midi.Music_instrument(instrument, index);
                 music_play_thread = new Thread(new ThreadStart(Musicplay));
