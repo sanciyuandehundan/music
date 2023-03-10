@@ -134,13 +134,19 @@ namespace musical
                 }
             }
         }//全部储存
-        [DllImport("winmm.dll")]
-        static extern Int32 mciSendString(String command, StringBuilder buffer, Int32 bufferSize, IntPtr hwndCallback);
+        //[DllImport("winmm.dll")]
+        //static extern Int32 mciSendString(String command, StringBuilder buffer, Int32 bufferSize, IntPtr hwndCallback);
         private void button7_Click(object sender, EventArgs e)
         {
-            mciSendString($"open C:\\mid(13).mid type sequencer alias gg", null, 0, new IntPtr());
-            mciSendString($"play gg", null, 0, new IntPtr());
+            int[] x = new int[2];
+            Midi.midi_play(x,midi.midiOut);
+            //Console.WriteLine(Midi.midi_play(x, midi.midiOut));
+            //midi_play(x,0);
+            //mciSendString($"open C:\\mid(13).mid type sequencer alias gg", null, 0, new IntPtr());
+            //mciSendString($"play gg", null, 0, new IntPtr());
         }
+        //[DllImport("sanciyuandehundan_API_Cpp.dll", EntryPoint = "midi_play", CallingConvention = CallingConvention.Cdecl)]
+        //public static extern int midi_play(int[] yuepu, int midiout);
     }
 
     public partial class Panel1:Control
@@ -455,7 +461,7 @@ namespace musical
         /// <param name="e"></param>
         public void panel_start_Click(object sender, EventArgs e)
         {
-            Midi.midiOutShortMsg(Program.form.midi.midiOut,0x7e<<16|60<<8|0x90);
+            Midi.midiOutShortMsg(Program.form.midi.midiOut, 0x7e << 16 | 60 << 8 | 0x90);//
             if (music_play_thread != null)
             {
                 if (!music_play_thread.IsAlive & stop_bool == false)

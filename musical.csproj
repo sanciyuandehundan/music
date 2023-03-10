@@ -62,7 +62,15 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="sanciyuandehundan_API_Cpp">
@@ -70,7 +78,7 @@
     </Reference>
     <Reference Include="sanciyuandehundan_API_NFK4.8, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\sanciyuandehundan_API_NFK4.8\bin\Debug\sanciyuandehundan_API_NFK4.8.dll</HintPath>
+      <HintPath>..\sanciyuandehundan_API_NFK4.8\bin\x86\Debug\sanciyuandehundan_API_NFK4.8.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
