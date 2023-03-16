@@ -120,7 +120,7 @@ namespace musical
                     Program.form.midi.Music_power(shengbu[i].panel_power_0.Value, shengbu[i].sheet, shengbu[i].index);
                     Program.form.midi.Music_note_base(int.Parse(shengbu[i].panel_basenote_0.Text), int.Parse(shengbu[i].xiaojie.Text), shengbu[i].index);
                     Program.form.midi.Music_diaoshi(0, shengbu[i].index);
-                    Program.form.midi.Music_parse(shengbu[i].sheet, shengbu[i].index);
+                    //Program.form.midi.Music_parse(shengbu[i].sheet, shengbu[i].index);
                     Program.form.midi.Music_instrument(shengbu[i].instrument, shengbu[i].index);
                     shengbu[i].music_play_thread = new Thread(new ThreadStart(shengbu[i].Musicplay));
                     int t = Program.form.midi.time[shengbu[i].index] / 1000;
@@ -135,9 +135,10 @@ namespace musical
             }
         }//全部储存
         [DllImport("winmm.dll")]
-        static extern Int32 mciSendStringA(string command, StringBuilder buffer, Int32 bufferSize, int hwndCallback);
+        static extern Int32 mciSendString(string command, StringBuilder buffer, Int32 bufferSize, int hwndCallback);
         private void button7_Click(object sender, EventArgs e)
         {
+            //mciSendString((char)"open C:\\yingui_all.mid", null, 0, null);
             midi.Music_parse_hebin(panel_number);
             /*int i = 480;
             Console.WriteLine((byte)((1 << 7) + (i >> 7)));
@@ -146,9 +147,9 @@ namespace musical
             //System.IO.BinaryWriter writer = new BinaryWriter(new FileStream("C:\\Users\\a0905\\Desktop\\mydata.mid", FileMode.Create));
             //byte[] b = { 0x4d, 0x54, 0x68, 0x64, 0x00, 0x00, 0x00, 0x06, 0x00, 0x01, 0x00, 0x02, 0x01, 0xe0, 0x4d, 0x54, 0x72, 0x6b, 0x00, 0x00, 0x00, 0x19, 0x00, 0xff, 0x59, 0x02, 0x00, 0x00, 0x00, 0xff, 0x58, 0x04, 0x04, 0x02, 0x18, 0x08, 0x00, 0xff, 0x51, 0x03, 0x07, 0xa1, 0x20, 0x00, 0xff, 0x2f, 0x00, 0x4d, 0x54, 0x72, 0x6b, 0x00, 0x00, 0x00, 0x2c, 0x00, 0xc0, 0x00, 0x00, 0x90, 0x40, 0x5f, 0x83, 0x60, 0x80, 0x40, 0x00, 0x00, 0x90, 0x41, 0x5f, 0x83, 0x30, 0x80, 0x41, 0x00, 0x30, 0x90, 0x40, 0x5f, 0x83, 0x30, 0x80, 0x40, 0x00, 0x30, 0x90, 0x40, 0x5f, 0x83, 0x30, 0x80, 0x40, 0x00, 0x83, 0x60, 0xff, 0x2f, 0x00 };
             //writer.Write(b);
-            //writer.Close();
+            //writer.Close();*/
             int[] x = new int[2];
-            Midi.midi_play(x,midi.midiOut);*/
+            Midi.midi_play();
             //Midi.midiOutShortMsg(Program.form.midi.midiOut, 0x7e << 16 | 60 << 8 | 0x90);
             //Console.WriteLine(Midi.midi_play(x, midi.midiOut));
             //Midi.midi_play(x,0);
@@ -524,7 +525,7 @@ namespace musical
                 {
                     Program.form.midi.Music_diaoshi(-7, index);
                 }
-                Program.form.midi.Music_parse(sheet, index);
+                //Program.form.midi.Music_parse(sheet, index);
                 Program.form.midi.Music_instrument(instrument, index);
                 music_play_thread = new Thread(new ThreadStart(Musicplay));
                 int t = Program.form.midi.time[index] / 1000;
