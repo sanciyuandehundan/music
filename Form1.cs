@@ -62,7 +62,7 @@ namespace musical
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Midi.midiOutShortMsg(midi.midiOut,  0x7D << 8 | 0xB0);
+            /*Midi.midiOutShortMsg(midi.midiOut,  0x7D << 8 | 0xB0);
             for (int i = 0; i < panel_number; i++)
             {
                 if (shengbu[i].music_play_thread != null)
@@ -79,12 +79,12 @@ namespace musical
                     }
                 }
                 
-            }
+            }*/
         }//全部播放
 
         private void button2_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < panel_number; i++)
+            /*for (int i = 0; i < panel_number; i++)
             {
                 if (shengbu[i].music_play_thread.IsAlive)
                 {
@@ -92,13 +92,12 @@ namespace musical
                     shengbu[i].panel_timer.Stop();
                     shengbu[i].stop_bool = true;
                 }
-            }
-        
+            }*/
         }//全部暂停
 
         private void button3_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < panel_number; i++)
+            /*for(int i = 0; i < panel_number; i++)
             {
                 if (shengbu[i].stop_bool)
                 { 
@@ -107,7 +106,7 @@ namespace musical
                 shengbu[i].panel_time_left_0.Text = "0:00";
                 shengbu[i].stop_bool = false;
                 }
-            }
+            }*/
         }//全部重置
 
         private void button6_Click(object sender, EventArgs e)
@@ -116,7 +115,8 @@ namespace musical
             {
                 if (shengbu[i].sheet != null & shengbu[i].panel_speed_0.Text != null & shengbu[i].panel_basenote_0.Text != null & shengbu[i].xiaojie.Text!=null)
                 {
-                    Program.form.midi.Music_speed(int.Parse(shengbu[i].panel_speed_0.Text), shengbu[i].index);
+                    Midi.Music_parse_hebin(panel_number, 480);
+                    /*Program.form.midi.Music_speed(int.Parse(shengbu[i].panel_speed_0.Text), shengbu[i].index);
                     Program.form.midi.Music_power(shengbu[i].panel_power_0.Value, shengbu[i].sheet, shengbu[i].index);
                     Program.form.midi.Music_note_base(int.Parse(shengbu[i].panel_basenote_0.Text), int.Parse(shengbu[i].xiaojie.Text), shengbu[i].index);
                     Program.form.midi.Music_diaoshi(0, shengbu[i].index);
@@ -126,7 +126,7 @@ namespace musical
                     int t = Program.form.midi.time[shengbu[i].index] / 1000;
                     shengbu[i].panel_time_right_0.Text = (t / 60).ToString() + ":" + (t % 60).ToString();
                     shengbu[i].panel_time_0.Maximum = t;
-                    shengbu[i].panel_time_0.Step = 1;
+                    shengbu[i].panel_time_0.Step = 1;*/
                 }
                 else
                 {
@@ -138,8 +138,11 @@ namespace musical
         static extern Int32 mciSendString(string command, StringBuilder buffer, Int32 bufferSize, int hwndCallback);
         private void button7_Click(object sender, EventArgs e)
         {
+            Midi.Yingui yingui1 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me1.txt"),0,0,120,4,4,100,0);
+            Midi.Yingui yingui2 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me2.txt"),1,0,120,4,4,100,-20);
+            Midi.Yingui yingui3 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me3.txt"),2,0,120,4,4,100,0);
             //mciSendString((char)"open C:\\yingui_all.mid", null, 0, null);
-            midi.Music_parse_hebin(panel_number);
+            //midi.Music_parse_hebin(panel_number);
             /*int i = 480;
             Console.WriteLine((byte)((1 << 7) + (i >> 7)));
             Console.WriteLine((byte)i);
@@ -148,8 +151,8 @@ namespace musical
             //byte[] b = { 0x4d, 0x54, 0x68, 0x64, 0x00, 0x00, 0x00, 0x06, 0x00, 0x01, 0x00, 0x02, 0x01, 0xe0, 0x4d, 0x54, 0x72, 0x6b, 0x00, 0x00, 0x00, 0x19, 0x00, 0xff, 0x59, 0x02, 0x00, 0x00, 0x00, 0xff, 0x58, 0x04, 0x04, 0x02, 0x18, 0x08, 0x00, 0xff, 0x51, 0x03, 0x07, 0xa1, 0x20, 0x00, 0xff, 0x2f, 0x00, 0x4d, 0x54, 0x72, 0x6b, 0x00, 0x00, 0x00, 0x2c, 0x00, 0xc0, 0x00, 0x00, 0x90, 0x40, 0x5f, 0x83, 0x60, 0x80, 0x40, 0x00, 0x00, 0x90, 0x41, 0x5f, 0x83, 0x30, 0x80, 0x41, 0x00, 0x30, 0x90, 0x40, 0x5f, 0x83, 0x30, 0x80, 0x40, 0x00, 0x30, 0x90, 0x40, 0x5f, 0x83, 0x30, 0x80, 0x40, 0x00, 0x83, 0x60, 0xff, 0x2f, 0x00 };
             //writer.Write(b);
             //writer.Close();*/
-            int[] x = new int[2];
-            Midi.midi_play();
+            //int[] x = new int[2];
+            //Midi.midi_play();
             //Midi.midiOutShortMsg(Program.form.midi.midiOut, 0x7e << 16 | 60 << 8 | 0x90);
             //Console.WriteLine(Midi.midi_play(x, midi.midiOut));
             //Midi.midi_play(x,0);
@@ -157,12 +160,18 @@ namespace musical
             //mciSendStringA("play C:\\Users\\a0905\\Desktop\\mydata.mid", null, 0,0);
             //mciSendStringA("play gg", null, 0, 0);
         }
+
+        private void panel_diaoshi_0_SelectedItemChanged(object sender, EventArgs e)
+        {
+
+        }
         //[DllImport("sanciyuandehundan_API_Cpp.dll", EntryPoint = "midi_play", CallingConvention = CallingConvention.Cdecl)]
         //public static extern int midi_play(int[] yuepu, int midiout);
     }
 
     public partial class Panel1:Control
     {
+        public Midi.Yingui yingui;
         public int tempo_minute;
         public int index;
         public int note_base;
@@ -170,6 +179,7 @@ namespace musical
         public string sheet;
         public int power;
         public bool stop_bool;
+        public int xiaojie_num;
 
         public Thread music_play_thread;
         public int control_index;
@@ -269,8 +279,7 @@ namespace musical
             // 
             // panel_diaoshi_0
             // 
-            panel_diaoshi_0.Items.Add("钢琴");
-            panel_diaoshi_0.Items.Add("吉他");
+            panel_diaoshi_0.Items.InsertRange(0, Program.form.panel_diaoshi_0.Items);
             panel_diaoshi_0.Location = new System.Drawing.Point(((Size)Program.form.panel_diaoshi_0.Location));
             panel_diaoshi_0.Name = "panel_diaoshi_0";
             panel_diaoshi_0.Size = new System.Drawing.Size(((Point)Program.form.panel_diaoshi_0.Size));
@@ -280,8 +289,7 @@ namespace musical
             // 
             // panel_instrument_0
             // 
-            panel_instrument_0.Items.Add("钢琴");
-            panel_instrument_0.Items.Add("吉他");
+            panel_instrument_0.Items.InsertRange(0, Program.form.panel_instrument_0.Items);
             panel_instrument_0.Location = new System.Drawing.Point(((Size)Program.form.panel_instrument_0.Location));
             panel_instrument_0.Name = "panel_instrument_0";
             panel_instrument_0.Size = new System.Drawing.Size(((Point)Program.form.panel_instrument_0.Size));
@@ -449,6 +457,7 @@ namespace musical
         }
 
 
+
         /// <summary>
         /// 删除该声部
         /// </summary>
@@ -509,7 +518,8 @@ namespace musical
         /// <param name="e"></param>
         public void panel_save_music(object sender, EventArgs e)
         {
-            Console.WriteLine(Program.form.midi.midiOut);
+            yingui = new Midi.Yingui(sheet, index, panel_instrument_0.SelectedIndex, int.Parse(panel_speed_0.Text), int.Parse(panel_basenote_0.Text), int.Parse(xiaojie.Text), panel_power_0.Value, (panel_diaoshi_0.SelectedIndex-7)*-1);
+            /*Console.WriteLine(Program.form.midi.midiOut);
             //Midi.midiOutShortMsg(Program.form.midi.midiOut, 100 << 16 | 60 << 8 | 0x90);
             if ( sheet!= null & panel_speed_0.Text != null & panel_basenote_0.Text != null & xiaojie.Text != null)
             {
@@ -536,7 +546,7 @@ namespace musical
             else
             {
                 MessageBox.Show("条件未设置完全");
-            }
+            }*/
         }//调式和乐器还未弄
 
         /// <summary>
@@ -564,12 +574,12 @@ namespace musical
         /// <param name="e"></param>
         public void panel_stop(object sender, EventArgs e)
         {
-            if (music_play_thread.IsAlive)
+            /*if (music_play_thread.IsAlive)
             {
                 music_play_thread.Suspend();
                 panel_timer.Stop();
                 stop_bool = true;
-            }
+            }*/
         }
 
         /// <summary>
@@ -589,7 +599,7 @@ namespace musical
         /// <param name="e"></param>
         public void panel_time_start(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 panel_time_0.PerformStep();
                 panel_time_left_0.Text = (panel_time_0.Value / 60).ToString() + ":" + (panel_time_0.Value % 60).ToString();
@@ -597,7 +607,7 @@ namespace musical
             catch
             {
                 panel_timer.Stop();
-            }
+            }*/
         }
 
         /// <summary>
@@ -607,13 +617,13 @@ namespace musical
         /// <param name="e"></param>
         public void panel_reset(object sender, EventArgs e)
         {
-            if (stop_bool)
+            /*if (stop_bool)
             {
                 music_play_thread = new Thread(new ThreadStart(Musicplay));
                 panel_time_0.Value = 0;
                 panel_time_left_0.Text = "0:00";
                 stop_bool = false;
-            }
+            }*/
         }
     }
 }
