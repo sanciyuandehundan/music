@@ -97,7 +97,7 @@ namespace musical
 
         private void button3_Click(object sender, EventArgs e)
         {
-            /*for(int i = 0; i < panel_number; i++)
+            for(int i = 0; i < panel_number; i++)
             {
                 if (shengbu[i].stop_bool)
                 { 
@@ -106,7 +106,7 @@ namespace musical
                 shengbu[i].panel_time_left_0.Text = "0:00";
                 shengbu[i].stop_bool = false;
                 }
-            }*/
+            }
         }//全部重置
 
         private void button6_Click(object sender, EventArgs e)
@@ -574,12 +574,12 @@ namespace musical
         /// <param name="e"></param>
         public void panel_stop(object sender, EventArgs e)
         {
-            /*if (music_play_thread.IsAlive)
+            if (music_play_thread.IsAlive)
             {
                 music_play_thread.Suspend();
                 panel_timer.Stop();
                 stop_bool = true;
-            }*/
+            }
         }
 
         /// <summary>
@@ -599,7 +599,7 @@ namespace musical
         /// <param name="e"></param>
         public void panel_time_start(object sender, EventArgs e)
         {
-            /*try
+            try
             {
                 panel_time_0.PerformStep();
                 panel_time_left_0.Text = (panel_time_0.Value / 60).ToString() + ":" + (panel_time_0.Value % 60).ToString();
@@ -607,7 +607,7 @@ namespace musical
             catch
             {
                 panel_timer.Stop();
-            }*/
+            }
         }
 
         /// <summary>
@@ -617,13 +617,13 @@ namespace musical
         /// <param name="e"></param>
         public void panel_reset(object sender, EventArgs e)
         {
-            /*if (stop_bool)
+            if (stop_bool)
             {
                 music_play_thread = new Thread(new ThreadStart(Musicplay));
                 panel_time_0.Value = 0;
                 panel_time_left_0.Text = "0:00";
                 stop_bool = false;
-            }*/
+            }
         }
     }
 }
