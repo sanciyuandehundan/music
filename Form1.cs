@@ -138,12 +138,9 @@ namespace musical
         static extern Int32 mciSendString(string command, StringBuilder buffer, Int32 bufferSize, int hwndCallback);
         private void button7_Click(object sender, EventArgs e)
         {
-            Midi.Yingui yingui1 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me1.txt"),0,0,120,4,4,0x5f,0,1);//
-            Midi.Yingui yingui2 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me2.txt"),1,0,120,4,4,0x5f,-20,1);//跟据
-            foreach(byte i in yingui2.diaoshi_)
-            {
-                Console.WriteLine(i);
-            }
+            Midi.Yingui yingui1 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me11.txt"),0,0,120,4,4,0x5f,0,1);//
+            Midi.Yingui yingui2 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me12.txt"),1,0,120,4,4,0x5f,-20,1);//跟据
+            
             //Midi.Yingui yingui3 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me3.txt"),2,0,120,4,4,100,0);
             Midi.Music_parse_hebin(2, 480);
             //mciSendString((char)"open C:\\yingui_all.mid", null, 0, null);
