@@ -136,7 +136,7 @@
             this.panel_diaoshi_0.Items.Add("♭D");
             this.panel_diaoshi_0.Items.Add("♭G");
             this.panel_diaoshi_0.Items.Add("♭C");
-            this.panel_diaoshi_0.Location = new System.Drawing.Point(443, 154);
+            this.panel_diaoshi_0.Location = new System.Drawing.Point(379, 154);
             this.panel_diaoshi_0.Name = "panel_diaoshi_0";
             this.panel_diaoshi_0.Size = new System.Drawing.Size(54, 25);
             this.panel_diaoshi_0.TabIndex = 20;

@@ -138,9 +138,13 @@ namespace musical
         static extern Int32 mciSendString(string command, StringBuilder buffer, Int32 bufferSize, int hwndCallback);
         private void button7_Click(object sender, EventArgs e)
         {
-            Midi.Yingui yingui1 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me11.txt"),0,0,120,4,4,0x5f,0);//
-            Midi.Yingui yingui2 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me12.txt"),1,0,120,4,4,0x5f,-12);//跟据
-            Midi.Yingui yingui3 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me3.txt"),2,0,120,4,4,100,0);
+            Midi.Yingui yingui1 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me1.txt"),0,0,120,4,4,0x5f,0,1);//
+            Midi.Yingui yingui2 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me2.txt"),1,0,120,4,4,0x5f,-20,1);//跟据
+            foreach(byte i in yingui2.diaoshi_)
+            {
+                Console.WriteLine(i);
+            }
+            //Midi.Yingui yingui3 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me3.txt"),2,0,120,4,4,100,0);
             Midi.Music_parse_hebin(2, 480);
             //mciSendString((char)"open C:\\yingui_all.mid", null, 0, null);
             //midi.Music_parse_hebin(panel_number);
@@ -518,7 +522,7 @@ namespace musical
         /// <param name="e"></param>
         public void panel_save_music(object sender, EventArgs e)
         {
-            yingui = new Midi.Yingui(sheet, index, panel_instrument_0.SelectedIndex, int.Parse(panel_speed_0.Text), int.Parse(panel_basenote_0.Text), int.Parse(xiaojie.Text), panel_power_0.Value, (panel_diaoshi_0.SelectedIndex-7)*-1);
+            yingui = new Midi.Yingui(sheet, index, panel_instrument_0.SelectedIndex, int.Parse(panel_speed_0.Text), int.Parse(panel_basenote_0.Text), int.Parse(xiaojie.Text), panel_power_0.Value, (panel_diaoshi_0.SelectedIndex-7)*-1,0);
             /*Console.WriteLine(Program.form.midi.midiOut);
             //Midi.midiOutShortMsg(Program.form.midi.midiOut, 100 << 16 | 60 << 8 | 0x90);
             if ( sheet!= null & panel_speed_0.Text != null & panel_basenote_0.Text != null & xiaojie.Text != null)
