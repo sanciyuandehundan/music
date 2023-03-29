@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel_0 = new System.Windows.Forms.Panel();
+            this.panel_diaoshi_1 = new System.Windows.Forms.DomainUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel_save_0 = new System.Windows.Forms.Button();
@@ -68,6 +69,7 @@
             // 
             this.panel_0.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel_0.Controls.Add(this.panel_diaoshi_1);
             this.panel_0.Controls.Add(this.label1);
             this.panel_0.Controls.Add(this.textBox1);
             this.panel_0.Controls.Add(this.panel_save_0);
@@ -93,6 +95,30 @@
             this.panel_0.Name = "panel_0";
             this.panel_0.Size = new System.Drawing.Size(746, 305);
             this.panel_0.TabIndex = 1;
+            // 
+            // panel_diaoshi_1
+            // 
+            this.panel_diaoshi_1.Items.Add("♭♭♭♭♭♭♭");
+            this.panel_diaoshi_1.Items.Add("♭♭♭♭♭♭");
+            this.panel_diaoshi_1.Items.Add("♭♭♭♭♭");
+            this.panel_diaoshi_1.Items.Add("♭♭♭♭");
+            this.panel_diaoshi_1.Items.Add("♭♭♭");
+            this.panel_diaoshi_1.Items.Add("♭♭");
+            this.panel_diaoshi_1.Items.Add("♭");
+            this.panel_diaoshi_1.Items.Add("无");
+            this.panel_diaoshi_1.Items.Add("♯");
+            this.panel_diaoshi_1.Items.Add("♯♯");
+            this.panel_diaoshi_1.Items.Add("♯♯♯");
+            this.panel_diaoshi_1.Items.Add("♯♯♯♯");
+            this.panel_diaoshi_1.Items.Add("♯♯♯♯♯");
+            this.panel_diaoshi_1.Items.Add("♯♯♯♯♯♯");
+            this.panel_diaoshi_1.Items.Add("♯♯♯♯♯♯♯");
+            this.panel_diaoshi_1.Location = new System.Drawing.Point(462, 154);
+            this.panel_diaoshi_1.Name = "panel_diaoshi_1";
+            this.panel_diaoshi_1.Size = new System.Drawing.Size(95, 25);
+            this.panel_diaoshi_1.TabIndex = 24;
+            this.panel_diaoshi_1.TabStop = false;
+            this.panel_diaoshi_1.Text = "升降";
             // 
             // label1
             // 
@@ -121,28 +147,14 @@
             // 
             // panel_diaoshi_0
             // 
-            this.panel_diaoshi_0.Items.Add("♯C");
-            this.panel_diaoshi_0.Items.Add("♯F");
-            this.panel_diaoshi_0.Items.Add("B");
-            this.panel_diaoshi_0.Items.Add("E");
-            this.panel_diaoshi_0.Items.Add("A");
-            this.panel_diaoshi_0.Items.Add("D");
-            this.panel_diaoshi_0.Items.Add("G");
-            this.panel_diaoshi_0.Items.Add("C");
-            this.panel_diaoshi_0.Items.Add("F");
-            this.panel_diaoshi_0.Items.Add("♭B");
-            this.panel_diaoshi_0.Items.Add("♭E");
-            this.panel_diaoshi_0.Items.Add("♭A");
-            this.panel_diaoshi_0.Items.Add("♭D");
-            this.panel_diaoshi_0.Items.Add("♭G");
-            this.panel_diaoshi_0.Items.Add("♭C");
-            this.panel_diaoshi_0.Location = new System.Drawing.Point(379, 154);
+            this.panel_diaoshi_0.Items.Add("高音谱");
+            this.panel_diaoshi_0.Items.Add("低音谱");
+            this.panel_diaoshi_0.Location = new System.Drawing.Point(361, 154);
             this.panel_diaoshi_0.Name = "panel_diaoshi_0";
-            this.panel_diaoshi_0.Size = new System.Drawing.Size(54, 25);
+            this.panel_diaoshi_0.Size = new System.Drawing.Size(72, 25);
             this.panel_diaoshi_0.TabIndex = 20;
             this.panel_diaoshi_0.TabStop = false;
-            this.panel_diaoshi_0.Text = "调式";
-            this.panel_diaoshi_0.SelectedItemChanged += new System.EventHandler(this.panel_diaoshi_0_SelectedItemChanged);
+            this.panel_diaoshi_0.Text = "什么谱";
             // 
             // panel_instrument_0
             // 
@@ -433,7 +445,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "全部播放";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
@@ -443,7 +455,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "全部暂停";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 
@@ -453,7 +465,7 @@
             this.button3.TabIndex = 4;
             this.button3.Text = "全部重置播放";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button4
             // 
@@ -463,7 +475,7 @@
             this.button4.TabIndex = 5;
             this.button4.Text = "增加声部";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.panel_add);
+            this.button4.Click += new System.EventHandler(this.Panel_add);
             // 
             // button5
             // 
@@ -473,11 +485,12 @@
             this.button5.TabIndex = 6;
             this.button5.Text = "删除最底声部";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.panel_delete_last);
+            this.button5.Click += new System.EventHandler(this.Panel_delete_last);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "乐谱|*.txt|所有文件|*.*\"";
             // 
             // timer1
             // 
@@ -491,7 +504,7 @@
             this.button6.TabIndex = 7;
             this.button6.Text = "全部储存";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // button7
             // 
@@ -564,6 +577,7 @@
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button7;
+        public System.Windows.Forms.DomainUpDown panel_diaoshi_1;
     }
 }
 

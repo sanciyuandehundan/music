@@ -27,7 +27,7 @@ namespace musical
             InitializeComponent();
         }
 
-        public void panel_add(object sender, EventArgs e)
+        public void Panel_add(object sender, EventArgs e)
         {
             Panel1 panel1 = new Panel1();
             this.Controls.Add(panel1.panel_0);
@@ -50,7 +50,7 @@ namespace musical
             Program.form.panel_0.Enabled = false;
         }
 
-        private void panel_delete_last(object sender, EventArgs e)
+        private void Panel_delete_last(object sender, EventArgs e)
         {
             if(panel_number != 0)
             {
@@ -60,7 +60,7 @@ namespace musical
             }
         }//删除最底下的声部
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             /*Midi.midiOutShortMsg(midi.midiOut,  0x7D << 8 | 0xB0);
             for (int i = 0; i < panel_number; i++)
@@ -82,7 +82,7 @@ namespace musical
             }*/
         }//全部播放
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             /*for (int i = 0; i < panel_number; i++)
             {
@@ -95,7 +95,7 @@ namespace musical
             }*/
         }//全部暂停
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             for(int i = 0; i < panel_number; i++)
             {
@@ -109,7 +109,7 @@ namespace musical
             }
         }//全部重置
 
-        private void button6_Click(object sender, EventArgs e)
+        private void Button6_Click(object sender, EventArgs e)
         {
             for(int i=0; i < panel_number; i++)
             {
@@ -134,39 +134,19 @@ namespace musical
                 }
             }
         }//全部储存
-        [DllImport("winmm.dll")]
+
+        /*[DllImport("winmm.dll")]
         static extern Int32 mciSendString(string command, StringBuilder buffer, Int32 bufferSize, int hwndCallback);
+
+        [DllImport("sanciyuandehundan_API_Cpp.dll",EntryPoint = "play", CallingConvention = CallingConvention.Winapi)]
+        static extern uint play(string path);*/
         private void button7_Click(object sender, EventArgs e)
         {
-            Midi.Yingui yingui1 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me11.txt"),0,0,120,4,4,0x5f,0,1);//
-            Midi.Yingui yingui2 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me12.txt"),1,0,120,4,4,0x5f,-20,1);//跟据
-            
-            //Midi.Yingui yingui3 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me3.txt"),2,0,120,4,4,100,0);
+            Midi.Yingui yingui1 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me1.txt"),0,24,120,4,4,0x5f,0,1);//跟据
+            Midi.Yingui yingui2 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me2.txt"),1,24,120,4,4,0x5f,-20,1);//跟据
             Midi.Music_parse_hebin(2, 480);
-            //mciSendString((char)"open C:\\yingui_all.mid", null, 0, null);
-            //midi.Music_parse_hebin(panel_number);
-            /*int i = 480;
-            Console.WriteLine((byte)((1 << 7) + (i >> 7)));
-            Console.WriteLine((byte)i);
-            //Console.WriteLine((byte)(i >> 8));
-            //System.IO.BinaryWriter writer = new BinaryWriter(new FileStream("C:\\Users\\a0905\\Desktop\\mydata.mid", FileMode.Create));
-            //byte[] b = { 0x4d, 0x54, 0x68, 0x64, 0x00, 0x00, 0x00, 0x06, 0x00, 0x01, 0x00, 0x02, 0x01, 0xe0, 0x4d, 0x54, 0x72, 0x6b, 0x00, 0x00, 0x00, 0x19, 0x00, 0xff, 0x59, 0x02, 0x00, 0x00, 0x00, 0xff, 0x58, 0x04, 0x04, 0x02, 0x18, 0x08, 0x00, 0xff, 0x51, 0x03, 0x07, 0xa1, 0x20, 0x00, 0xff, 0x2f, 0x00, 0x4d, 0x54, 0x72, 0x6b, 0x00, 0x00, 0x00, 0x2c, 0x00, 0xc0, 0x00, 0x00, 0x90, 0x40, 0x5f, 0x83, 0x60, 0x80, 0x40, 0x00, 0x00, 0x90, 0x41, 0x5f, 0x83, 0x30, 0x80, 0x41, 0x00, 0x30, 0x90, 0x40, 0x5f, 0x83, 0x30, 0x80, 0x40, 0x00, 0x30, 0x90, 0x40, 0x5f, 0x83, 0x30, 0x80, 0x40, 0x00, 0x83, 0x60, 0xff, 0x2f, 0x00 };
-            //writer.Write(b);
-            //writer.Close();*/
-            //int[] x = new int[2];
-            //Midi.midi_play();
-            //Midi.midiOutShortMsg(Program.form.midi.midiOut, 0x7e << 16 | 60 << 8 | 0x90);
-            //Console.WriteLine(Midi.midi_play(x, midi.midiOut));
-            //Midi.midi_play(x,0);
-            //mciSendStringA("open C:\\Users\\a0905\\Desktop\\mydata.mid sequencer", null, 0,0);
-            //mciSendStringA("play C:\\Users\\a0905\\Desktop\\mydata.mid", null, 0,0);
-            //mciSendStringA("play gg", null, 0, 0);
         }
 
-        private void panel_diaoshi_0_SelectedItemChanged(object sender, EventArgs e)
-        {
-
-        }
         //[DllImport("sanciyuandehundan_API_Cpp.dll", EntryPoint = "midi_play", CallingConvention = CallingConvention.Cdecl)]
         //public static extern int midi_play(int[] yuepu, int midiout);
     }
@@ -208,6 +188,7 @@ namespace musical
         public System.Windows.Forms.Timer panel_timer = new System.Windows.Forms.Timer();
         public System.Windows.Forms.Label label1=new Label();
         public System.Windows.Forms.TextBox xiaojie=new TextBox();
+        public DomainUpDown panel_diaoshi_1=new DomainUpDown();
 
         /// <summary>
         /// 建构函数
@@ -273,6 +254,7 @@ namespace musical
             panel_0.Controls.Add(panel_save_0);
             panel_0.Controls.Add(xiaojie);
             panel_0.Controls.Add(label1);
+            panel_0.Controls.Add(panel_diaoshi_1);
             panel_0.Location = new System.Drawing.Point(Program.form.panel_0.Location.X, Program.form.panel_0.Location.Y);
             panel_0.Name = "panel_0";
             panel_0.Size = new System.Drawing.Size(((Point)Program.form.panel_0.Size));
@@ -287,7 +269,22 @@ namespace musical
             panel_diaoshi_0.Size = new System.Drawing.Size(((Point)Program.form.panel_diaoshi_0.Size));
             panel_diaoshi_0.TabIndex = 20;
             panel_diaoshi_0.TabStop = false;
-            panel_diaoshi_0.Text = "调式";
+            panel_diaoshi_0.Text = Program.form.panel_diaoshi_0.Text;
+            panel_diaoshi_0.Wrap = true;
+            panel_diaoshi_0.ReadOnly = true;
+            // 
+            // panel_diaoshi_1
+            // 
+            panel_diaoshi_1.Items.InsertRange(0, Program.form.panel_diaoshi_1.Items);
+            panel_diaoshi_1.Location = new System.Drawing.Point(((Size)Program.form.panel_diaoshi_1.Location));
+            panel_diaoshi_1.Name = "panel_diaoshi_1";
+            panel_diaoshi_1.Size = new System.Drawing.Size(((Point)Program.form.panel_diaoshi_1.Size));
+            panel_diaoshi_1.TabIndex = 20;
+            panel_diaoshi_1.TabStop = false;
+            panel_diaoshi_1.Text = Program.form.panel_diaoshi_1.Text;
+            panel_diaoshi_1.Wrap = true;
+            panel_diaoshi_1.ReadOnly = true;
+            panel_diaoshi_1.SelectedIndex = 7;
             // 
             // panel_instrument_0
             // 
@@ -298,6 +295,7 @@ namespace musical
             panel_instrument_0.TabIndex = 18;
             panel_instrument_0.TabStop = false;
             panel_instrument_0.Text = "乐器";
+            panel_instrument_0.ReadOnly = true;
             // 
             // panel_time_right_0
             // 
@@ -345,7 +343,7 @@ namespace musical
             panel_add_0.TabStop = false;
             panel_add_0.Text = "增加声部";
             panel_add_0.UseVisualStyleBackColor = true;
-            panel_add_0.Click += new EventHandler(Program.form.panel_add);
+            panel_add_0.Click += new EventHandler(Program.form.Panel_add);
             
             // 
             // panel_start_0
@@ -519,7 +517,9 @@ namespace musical
         /// <param name="e"></param>
         public void panel_save_music(object sender, EventArgs e)
         {
-            yingui = new Midi.Yingui(sheet, index, panel_instrument_0.SelectedIndex, int.Parse(panel_speed_0.Text), int.Parse(panel_basenote_0.Text), int.Parse(xiaojie.Text), panel_power_0.Value, (panel_diaoshi_0.SelectedIndex-7)*-1,0);
+            yingui = new Midi.Yingui(sheet, index, panel_instrument_0.SelectedIndex, int.Parse(panel_speed_0.Text), int.Parse(panel_basenote_0.Text), int.Parse(xiaojie.Text), panel_power_0.Value, 0-panel_diaoshi_0.SelectedIndex *20, panel_diaoshi_1.SelectedIndex - 7);
+            Console.WriteLine("UpDown" + (panel_diaoshi_1.SelectedIndex - 7));
+            Console.WriteLine("diaohsi" + (0 - panel_diaoshi_0.SelectedIndex * 20));
             /*Console.WriteLine(Program.form.midi.midiOut);
             //Midi.midiOutShortMsg(Program.form.midi.midiOut, 100 << 16 | 60 << 8 | 0x90);
             if ( sheet!= null & panel_speed_0.Text != null & panel_basenote_0.Text != null & xiaojie.Text != null)
@@ -566,7 +566,7 @@ namespace musical
                 panel_notecollectionname_0.Text= Path.GetFileName(Program.form.openFileDialog1.FileName);
                 panel_notecollectionname_0.Location = new Point(x+((w-panel_notecollectionname_0.Width)/2),panel_notecollectionname_0.Location.Y);
             }
-        }//midi档案的读取还没做，简谱和midi档案的互相转换还没做，格式的介绍还没做,midioutlongmsg还没研究
+        }//midi档案的读取还没做，简谱和midi档案的互相转换还没做，格式的介绍还没做
 
         /// <summary>
         /// 停止执行绪
