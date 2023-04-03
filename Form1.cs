@@ -16,6 +16,7 @@ using System.Reflection;
 
 namespace musical
 {
+
     public partial class Form1 : Form
     {
         public Midi midi = new Midi();
@@ -97,16 +98,7 @@ namespace musical
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < panel_number; i++)
-            {
-                if (shengbu[i].stop_bool)
-                { 
-                shengbu[i].music_play_thread = new Thread(new ThreadStart(shengbu[i].Musicplay));
-                shengbu[i].panel_time_0.Value = 0;
-                shengbu[i].panel_time_left_0.Text = "0:00";
-                shengbu[i].stop_bool = false;
-                }
-            }
+
         }//全部重置
 
         private void Button6_Click(object sender, EventArgs e)
@@ -143,12 +135,19 @@ namespace musical
         private void button7_Click(object sender, EventArgs e)
         {
             Midi.Yingui yingui1 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\我不曾忘记0.txt"),0,0,80,4,4,0x5f,0,3);//跟据
-            //Midi.Yingui yingui2 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me2.txt"),1,0,120,4,4,0x5f,-20,1);//跟据
-            //Midi.Music_parse_hebin(2, yingui1.xiaojie_note_long);
+            Console.WriteLine("k");
+            yingui1.Yingui_open();
+            yingui1.Yingui_play();
+            Thread.Sleep(1000);
+            yingui1.Yingui_pause();
+            Thread.Sleep(1000);
+            yingui1.Yingui_resume();
+            Thread.Sleep(10000);
+            yingui1.Yingui_close();
+            //yingui1.Yingui_close();
+            Midi.Music_parse_hebin(2, yingui1.xiaojie_note_long);
+            Console.WriteLine("k");
         }
-
-        [DllImport("sanciyuandehundan_API_Cpp.dll", EntryPoint = "play", CallingConvention = CallingConvention.Cdecl)]
-       public static extern int play();
     }
 
     public partial class Panel1:Control
@@ -455,6 +454,10 @@ namespace musical
             panel_choice_0.UseVisualStyleBackColor = true;
             panel_choice_0.Click += new EventHandler(panel_load);
         }
+        ~Panel1()
+        {
+            yingui.Yingui_close();
+        }
 
         /// <summary>
         /// 删除该声部
@@ -480,35 +483,12 @@ namespace musical
         /// <param name="e"></param>
         public void panel_start_Click(object sender, EventArgs e)
         {
-            /*
-            Console.WriteLine("start");
-            Midi.midiOutShortMsg(Program.form.midi.midiOut, 0x7e << 16 | 60 << 8 | 0x90);//
-            if (music_play_thread != null)
+            if (yingui != null)
             {
-                if (!music_play_thread.IsAlive & stop_bool == false)
-                {
-                    music_play_thread.Start();
-                    panel_timer.Start();
-                }
-                if (stop_bool)
-                {
-                    music_play_thread.Resume();
-                    panel_timer.Start();
-                }
-
-                //Console.WriteLine(panel_time_0.Maximum);
-                //Console.WriteLine(panel_time_0.);
+                yingui.Yingui_play();
             }
-            */
-        }//随API更新再更新
 
-        /// <summary>
-        /// 用于执行绪，播放音乐
-        /// </summary>
-        public void Musicplay()
-        {
-            Program.form.midi.Music_play(index);
-        }//力度的随机还没做，为模仿人类
+        }
 
         /// <summary>
         /// 设定乐谱
@@ -517,38 +497,14 @@ namespace musical
         /// <param name="e"></param>
         public void panel_save_music(object sender, EventArgs e)
         {
-            yingui = new Midi.Yingui(sheet, index, panel_instrument_0.SelectedIndex, int.Parse(panel_speed_0.Text), int.Parse(panel_basenote_0.Text), int.Parse(xiaojie.Text), panel_power_0.Value, 0-panel_diaoshi_0.SelectedIndex *20, panel_diaoshi_1.SelectedIndex - 7);
+            if (sheet != "" & panel_speed_0.Text != "" & panel_basenote_0.Text != "" & xiaojie.Text != "")
+            {
+                yingui = new Midi.Yingui(sheet, index, panel_instrument_0.SelectedIndex, int.Parse(panel_speed_0.Text), int.Parse(panel_basenote_0.Text), int.Parse(xiaojie.Text), panel_power_0.Value, 0 - panel_diaoshi_0.SelectedIndex * 20, panel_diaoshi_1.SelectedIndex - 7);
+                yingui.Yingui_open();
+            }
             Console.WriteLine("UpDown" + (panel_diaoshi_1.SelectedIndex - 7));
             Console.WriteLine("diaohsi" + (0 - panel_diaoshi_0.SelectedIndex * 20));
-            /*Console.WriteLine(Program.form.midi.midiOut);
-            //Midi.midiOutShortMsg(Program.form.midi.midiOut, 100 << 16 | 60 << 8 | 0x90);
-            if ( sheet!= null & panel_speed_0.Text != null & panel_basenote_0.Text != null & xiaojie.Text != null)
-            {
-
-                Program.form.midi.Music_speed(int.Parse(panel_speed_0.Text), index);
-                Program.form.midi.Music_power(power,sheet, index);
-                Program.form.midi.Music_note_base(int.Parse(panel_basenote_0.Text),int.Parse(xiaojie.Text), index);
-                if (index == 0)
-                {
-                    Program.form.midi.Music_diaoshi(0, index);
-                }
-                else
-                {
-                    Program.form.midi.Music_diaoshi(-7, index);
-                }
-                //Program.form.midi.Music_parse(sheet, index);
-                Program.form.midi.Music_instrument(instrument, index);
-                music_play_thread = new Thread(new ThreadStart(Musicplay));
-                int t = Program.form.midi.time[index] / 1000;
-                panel_time_right_0.Text = (t / 60).ToString() + ":" + (t % 60).ToString();
-                panel_time_0.Maximum = t;//250,用25000毫秒跑完，100毫秒跑一次
-                panel_time_0.Step = 1;
-            }
-            else
-            {
-                MessageBox.Show("条件未设置完全");
-            }*/
-        }//调式和乐器还未弄
+        }
 
         /// <summary>
         /// 加载乐谱
@@ -566,7 +522,7 @@ namespace musical
                 panel_notecollectionname_0.Text= Path.GetFileName(Program.form.openFileDialog1.FileName);
                 panel_notecollectionname_0.Location = new Point(x+((w-panel_notecollectionname_0.Width)/2),panel_notecollectionname_0.Location.Y);
             }
-        }//midi档案的读取还没做，简谱和midi档案的互相转换还没做，格式的介绍还没做
+        }
 
         /// <summary>
         /// 停止执行绪
@@ -575,13 +531,10 @@ namespace musical
         /// <param name="e"></param>
         public void panel_stop(object sender, EventArgs e)
         {
-            /*
-            if (music_play_thread.IsAlive)
+            if (yingui != null)
             {
-                music_play_thread.Suspend();
-                panel_timer.Stop();
-                stop_bool = true;
-            }*/
+                yingui.Yingui_pause();
+            }
         }
 
         /// <summary>
@@ -619,12 +572,10 @@ namespace musical
         /// <param name="e"></param>
         public void panel_reset(object sender, EventArgs e)
         {
-            if (stop_bool)
+            if (yingui != null)
             {
-                music_play_thread = new Thread(new ThreadStart(Musicplay));
-                panel_time_0.Value = 0;
-                panel_time_left_0.Text = "0:00";
-                stop_bool = false;
+                yingui.Yingui_close();
+                yingui.Yingui_open();
             }
         }
     }
