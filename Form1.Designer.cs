@@ -56,7 +56,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button6 = new System.Windows.Forms.Button();
@@ -113,7 +112,7 @@
             this.panel_diaoshi_1.Items.Add("♯♯♯♯♯");
             this.panel_diaoshi_1.Items.Add("♯♯♯♯♯♯");
             this.panel_diaoshi_1.Items.Add("♯♯♯♯♯♯♯");
-            this.panel_diaoshi_1.Location = new System.Drawing.Point(462, 154);
+            this.panel_diaoshi_1.Location = new System.Drawing.Point(462, 163);
             this.panel_diaoshi_1.Name = "panel_diaoshi_1";
             this.panel_diaoshi_1.Size = new System.Drawing.Size(95, 25);
             this.panel_diaoshi_1.TabIndex = 24;
@@ -123,7 +122,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(359, 76);
+            this.label1.Location = new System.Drawing.Point(359, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 15);
             this.label1.TabIndex = 23;
@@ -131,7 +130,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(443, 71);
+            this.textBox1.Location = new System.Drawing.Point(443, 80);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 25);
             this.textBox1.TabIndex = 22;
@@ -149,7 +148,7 @@
             // 
             this.panel_diaoshi_0.Items.Add("高音谱");
             this.panel_diaoshi_0.Items.Add("低音谱");
-            this.panel_diaoshi_0.Location = new System.Drawing.Point(361, 154);
+            this.panel_diaoshi_0.Location = new System.Drawing.Point(361, 163);
             this.panel_diaoshi_0.Name = "panel_diaoshi_0";
             this.panel_diaoshi_0.Size = new System.Drawing.Size(72, 25);
             this.panel_diaoshi_0.TabIndex = 20;
@@ -279,9 +278,9 @@
             this.panel_instrument_0.Items.Add("118 Synth Drum  合成鼓");
             this.panel_instrument_0.Items.Add("119 Reverse Cymbal 铜钹");
             this.panel_instrument_0.Items.Add("120 Guitar Fret Noise 吉他换把杂音");
-            this.panel_instrument_0.Location = new System.Drawing.Point(275, 193);
+            this.panel_instrument_0.Location = new System.Drawing.Point(182, 219);
             this.panel_instrument_0.Name = "panel_instrument_0";
-            this.panel_instrument_0.Size = new System.Drawing.Size(345, 25);
+            this.panel_instrument_0.Size = new System.Drawing.Size(424, 25);
             this.panel_instrument_0.TabIndex = 18;
             this.panel_instrument_0.TabStop = false;
             this.panel_instrument_0.Text = "乐器";
@@ -289,7 +288,7 @@
             // panel_time_right_0
             // 
             this.panel_time_right_0.AutoSize = true;
-            this.panel_time_right_0.Location = new System.Drawing.Point(597, 231);
+            this.panel_time_right_0.Location = new System.Drawing.Point(597, 279);
             this.panel_time_right_0.Name = "panel_time_right_0";
             this.panel_time_right_0.Size = new System.Drawing.Size(46, 15);
             this.panel_time_right_0.TabIndex = 17;
@@ -298,7 +297,7 @@
             // panel_time_left_0
             // 
             this.panel_time_left_0.AutoSize = true;
-            this.panel_time_left_0.Location = new System.Drawing.Point(172, 231);
+            this.panel_time_left_0.Location = new System.Drawing.Point(172, 279);
             this.panel_time_left_0.Name = "panel_time_left_0";
             this.panel_time_left_0.Size = new System.Drawing.Size(46, 15);
             this.panel_time_left_0.TabIndex = 16;
@@ -306,7 +305,7 @@
             // 
             // panel_time_0
             // 
-            this.panel_time_0.Location = new System.Drawing.Point(221, 227);
+            this.panel_time_0.Location = new System.Drawing.Point(221, 275);
             this.panel_time_0.Name = "panel_time_0";
             this.panel_time_0.Size = new System.Drawing.Size(373, 23);
             this.panel_time_0.TabIndex = 15;
@@ -363,7 +362,7 @@
             // 
             // panel_basenote_0
             // 
-            this.panel_basenote_0.Location = new System.Drawing.Point(443, 111);
+            this.panel_basenote_0.Location = new System.Drawing.Point(443, 120);
             this.panel_basenote_0.Name = "panel_basenote_0";
             this.panel_basenote_0.Size = new System.Drawing.Size(100, 25);
             this.panel_basenote_0.TabIndex = 7;
@@ -372,7 +371,7 @@
             // panel_label2_0
             // 
             this.panel_label2_0.AutoSize = true;
-            this.panel_label2_0.Location = new System.Drawing.Point(329, 116);
+            this.panel_label2_0.Location = new System.Drawing.Point(329, 125);
             this.panel_label2_0.Name = "panel_label2_0";
             this.panel_label2_0.Size = new System.Drawing.Size(112, 15);
             this.panel_label2_0.TabIndex = 6;
@@ -380,7 +379,7 @@
             // 
             // panel_speed_0
             // 
-            this.panel_speed_0.Location = new System.Drawing.Point(443, 31);
+            this.panel_speed_0.Location = new System.Drawing.Point(443, 40);
             this.panel_speed_0.Name = "panel_speed_0";
             this.panel_speed_0.Size = new System.Drawing.Size(100, 25);
             this.panel_speed_0.TabIndex = 5;
@@ -389,7 +388,7 @@
             // panel_label1_0
             // 
             this.panel_label1_0.AutoSize = true;
-            this.panel_label1_0.Location = new System.Drawing.Point(358, 35);
+            this.panel_label1_0.Location = new System.Drawing.Point(358, 44);
             this.panel_label1_0.Name = "panel_label1_0";
             this.panel_label1_0.Size = new System.Drawing.Size(82, 15);
             this.panel_label1_0.TabIndex = 4;
@@ -477,16 +476,6 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Panel_add);
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(22, 327);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(114, 23);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "删除最底声部";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.Panel_delete_last);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -526,7 +515,6 @@
             this.ClientSize = new System.Drawing.Size(942, 588);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -571,7 +559,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button6;
