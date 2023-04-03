@@ -263,6 +263,7 @@ namespace musical
             panel_instrument_0.TabStop = false;
             panel_instrument_0.Text = "乐器";
             panel_instrument_0.ReadOnly = true;
+            panel_instrument_0.Wrap= true;
             // 
             // panel_time_right_0
             // 
