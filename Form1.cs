@@ -142,7 +142,7 @@ namespace musical
         static extern uint play(string path);*/
         private void button7_Click(object sender, EventArgs e)
         {
-            Midi.Yingui yingui1 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\不为谁而作的歌2.txt"),0,0,72,4,4,0x5f,0,2);//跟据
+            Midi.Yingui yingui1 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\我不曾忘记0.txt"),0,0,80,4,4,0x5f,0,3);//跟据
             //Midi.Yingui yingui2 = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\me2.txt"),1,0,120,4,4,0x5f,-20,1);//跟据
             //Midi.Music_parse_hebin(2, yingui1.xiaojie_note_long);
         }
