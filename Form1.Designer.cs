@@ -104,7 +104,7 @@
             this.panel_diaoshi_1.Items.Add("♭♭♭");
             this.panel_diaoshi_1.Items.Add("♭♭");
             this.panel_diaoshi_1.Items.Add("♭");
-            this.panel_diaoshi_1.Items.Add("无");
+            this.panel_diaoshi_1.Items.Add("无升降记号");
             this.panel_diaoshi_1.Items.Add("♯");
             this.panel_diaoshi_1.Items.Add("♯♯");
             this.panel_diaoshi_1.Items.Add("♯♯♯");

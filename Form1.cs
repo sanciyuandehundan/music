@@ -77,6 +77,13 @@ namespace musical
 
         private void Button6_Click(object sender, EventArgs e)
         {
+            for(int i = 0; i < 16; i++)
+            {
+                if (indexs[i] & i != 10)
+                {
+                    panels[i].panel_save_music(sender, e);
+                }
+            }
             Midi.Music_close_all();
             string[] strings=new string[panel_number];
             int index = 0;
@@ -91,6 +98,13 @@ namespace musical
             }
             Midi.Music_parse_hebin(strings, 480);
             Midi.Music_open_all();
+            for (int i = 0; i < 16; i++)
+            {
+                if (indexs[i] & i != 10)
+                {
+                    panels[i].yingui.Yingui_open();
+                }
+            }
         }//全部储存
 
         private void button7_Click(object sender, EventArgs e)
@@ -468,12 +482,11 @@ namespace musical
             {
                 yingui = new Midi.Yingui(sheet, index, panel_instrument_0.SelectedIndex, int.Parse(panel_speed_0.Text), int.Parse(panel_basenote_0.Text), int.Parse(xiaojie.Text), panel_power_0.Value, 0 - panel_diaoshi_0.SelectedIndex * 20, panel_diaoshi_1.SelectedIndex - 7);
                 yingui.Yingui_open();
-                //this.panel_time_0.Maximum = (int)((float)(yingui.time) / (float)(57600.0f / 60000.0f));
-                //this.panel_time_0.Step = 1000;
-                //this.panel_timer.Interval = 1000;
             }
-            //Console.WriteLine("UpDown" + (panel_diaoshi_1.SelectedIndex - 7));
-            //Console.WriteLine("diaohsi" + (0 - panel_diaoshi_0.SelectedIndex * 20));
+            else
+            {
+                MessageBox.Show("参数未设定完全");
+            }
         }
 
         /// <summary>
