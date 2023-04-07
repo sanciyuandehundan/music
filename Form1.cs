@@ -123,6 +123,13 @@ namespace musical
             //Midi.Music_parse_hebin(2, yingui1.xiaojie_note_long);
             Console.WriteLine("k");*/
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Midi.Yingui yingui = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\不为谁而作的歌1.txt"), 0, 24, 73, 4, 4, 0x5f, 0, 0, 2);
+            yingui.Yingui_open();
+            yingui.Yingui_play();
+        }
     }
 
     public partial class Panel1 : Control
@@ -163,12 +170,23 @@ namespace musical
         public System.Windows.Forms.Label label1 = new Label();
         public System.Windows.Forms.TextBox xiaojie = new TextBox();
         public DomainUpDown panel_diaoshi_1 = new DomainUpDown();
+        public DomainUpDown panel_key_0 = new DomainUpDown();
 
         /// <summary>
         /// 建构函数
         /// </summary>
         public Panel1()
         {
+            panel_key_0.Text = Program.form.pamel_key.Text;
+            panel_key_0.Name = Program.form.pamel_key.Name;
+            panel_key_0.Location=Program.form.pamel_key.Location;
+            panel_key_0.Size=Program.form.pamel_key.Size;
+            panel_key_0.Items.AddRange(Program.form.pamel_key.Items);
+            panel_key_0.Wrap=true;
+            panel_key_0.ReadOnly=true;
+            //
+            // panel_key_0
+            //
             panel_time_0.Visible = false;
             panel_time_0.Enabled = false;
             panel_time_left_0.Visible=false;
@@ -236,6 +254,7 @@ namespace musical
             panel_0.Controls.Add(xiaojie);
             panel_0.Controls.Add(label1);
             panel_0.Controls.Add(panel_diaoshi_1);
+            panel_0.Controls.Add(panel_key_0);
             panel_0.Location = new System.Drawing.Point(Program.form.panel_0.Location.X, Program.form.panel_0.Location.Y);
             panel_0.Name = "panel_0";
             panel_0.Size = new System.Drawing.Size(((Point)Program.form.panel_0.Size));
@@ -480,7 +499,17 @@ namespace musical
         {
             if (sheet != "" & panel_speed_0.Text != "" & panel_basenote_0.Text != "" & xiaojie.Text != "")
             {
-                yingui = new Midi.Yingui(sheet, index, panel_instrument_0.SelectedIndex, int.Parse(panel_speed_0.Text), int.Parse(panel_basenote_0.Text), int.Parse(xiaojie.Text), panel_power_0.Value, 0 - panel_diaoshi_0.SelectedIndex * 20, panel_diaoshi_1.SelectedIndex - 7);
+                yingui = new Midi.Yingui(
+                    sheet,
+                    index,
+                    panel_instrument_0.SelectedIndex,
+                    int.Parse(panel_speed_0.Text),
+                    int.Parse(panel_basenote_0.Text),
+                    int.Parse(xiaojie.Text),
+                    panel_power_0.Value,
+                    0 - panel_diaoshi_0.SelectedIndex * 20,
+                    panel_diaoshi_1.SelectedIndex - 7,
+                    panel_key_0.SelectedIndex);
                 yingui.Yingui_open();
             }
             else

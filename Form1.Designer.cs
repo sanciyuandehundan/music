@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel_0 = new System.Windows.Forms.Panel();
+            this.pamel_key = new System.Windows.Forms.DomainUpDown();
             this.panel_diaoshi_1 = new System.Windows.Forms.DomainUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -60,6 +61,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel_0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panel_power_0)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +70,7 @@
             // 
             this.panel_0.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel_0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel_0.Controls.Add(this.pamel_key);
             this.panel_0.Controls.Add(this.panel_diaoshi_1);
             this.panel_0.Controls.Add(this.label1);
             this.panel_0.Controls.Add(this.textBox1);
@@ -95,6 +98,21 @@
             this.panel_0.Size = new System.Drawing.Size(746, 305);
             this.panel_0.TabIndex = 1;
             // 
+            // pamel_key
+            // 
+            this.pamel_key.Items.Add("1");
+            this.pamel_key.Items.Add("2");
+            this.pamel_key.Items.Add("3");
+            this.pamel_key.Items.Add("4");
+            this.pamel_key.Items.Add("5");
+            this.pamel_key.Items.Add("6");
+            this.pamel_key.Items.Add("7");
+            this.pamel_key.Location = new System.Drawing.Point(505, 170);
+            this.pamel_key.Name = "pamel_key";
+            this.pamel_key.Size = new System.Drawing.Size(96, 25);
+            this.pamel_key.TabIndex = 25;
+            this.pamel_key.Text = "key";
+            // 
             // panel_diaoshi_1
             // 
             this.panel_diaoshi_1.Items.Add("♭♭♭♭♭♭♭");
@@ -112,7 +130,7 @@
             this.panel_diaoshi_1.Items.Add("♯♯♯♯♯");
             this.panel_diaoshi_1.Items.Add("♯♯♯♯♯♯");
             this.panel_diaoshi_1.Items.Add("♯♯♯♯♯♯♯");
-            this.panel_diaoshi_1.Location = new System.Drawing.Point(462, 163);
+            this.panel_diaoshi_1.Location = new System.Drawing.Point(391, 171);
             this.panel_diaoshi_1.Name = "panel_diaoshi_1";
             this.panel_diaoshi_1.Size = new System.Drawing.Size(95, 25);
             this.panel_diaoshi_1.TabIndex = 24;
@@ -148,7 +166,7 @@
             // 
             this.panel_diaoshi_0.Items.Add("高音谱");
             this.panel_diaoshi_0.Items.Add("低音谱");
-            this.panel_diaoshi_0.Location = new System.Drawing.Point(361, 163);
+            this.panel_diaoshi_0.Location = new System.Drawing.Point(302, 171);
             this.panel_diaoshi_0.Name = "panel_diaoshi_0";
             this.panel_diaoshi_0.Size = new System.Drawing.Size(72, 25);
             this.panel_diaoshi_0.TabIndex = 20;
@@ -506,6 +524,16 @@
             this.button7.Visible = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(22, 340);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(114, 23);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "写谱";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -513,6 +541,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(942, 588);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button4);
@@ -566,6 +595,8 @@
         public System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button7;
         public System.Windows.Forms.DomainUpDown panel_diaoshi_1;
+        private System.Windows.Forms.Button button5;
+        public System.Windows.Forms.DomainUpDown pamel_key;
     }
 }
 
