@@ -487,7 +487,7 @@ namespace musical
         /// <param name="e"></param>
         public void panel_start_Click(object sender, EventArgs e)
         {
-            yingui.Yingui_play();
+            yingui?.Yingui_play();
         }
 
         /// <summary>
@@ -497,7 +497,7 @@ namespace musical
         /// <param name="e"></param>
         public void panel_save_music(object sender, EventArgs e)
         {
-            if (sheet != "" & panel_speed_0.Text != "" & panel_basenote_0.Text != "" & xiaojie.Text != "")
+            if (sheet != null & panel_speed_0.Text != "" & panel_basenote_0.Text != "" & xiaojie.Text != "")
             {
                 yingui = new Midi.Yingui(
                     sheet,

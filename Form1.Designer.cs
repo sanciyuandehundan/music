@@ -100,13 +100,18 @@
             // 
             // pamel_key
             // 
-            this.pamel_key.Items.Add("1");
-            this.pamel_key.Items.Add("2");
-            this.pamel_key.Items.Add("3");
-            this.pamel_key.Items.Add("4");
-            this.pamel_key.Items.Add("5");
-            this.pamel_key.Items.Add("6");
-            this.pamel_key.Items.Add("7");
+            this.pamel_key.Items.Add("C");
+            this.pamel_key.Items.Add("C♯");
+            this.pamel_key.Items.Add("D");
+            this.pamel_key.Items.Add("D♯");
+            this.pamel_key.Items.Add("E");
+            this.pamel_key.Items.Add("F");
+            this.pamel_key.Items.Add("F♯");
+            this.pamel_key.Items.Add("G");
+            this.pamel_key.Items.Add("G♯");
+            this.pamel_key.Items.Add("A");
+            this.pamel_key.Items.Add("A♯");
+            this.pamel_key.Items.Add("B");
             this.pamel_key.Location = new System.Drawing.Point(505, 170);
             this.pamel_key.Name = "pamel_key";
             this.pamel_key.Size = new System.Drawing.Size(96, 25);
