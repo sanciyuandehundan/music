@@ -23,7 +23,7 @@ namespace musical
         public int panel_number = 0;
         public int base_controls;
         public bool[] indexs = new bool[16];
-        public Panel1[] panels=new Panel1[16];
+        public Yingui_Control[] panels=new Yingui_Control[16];
         public Form1()
         {
             indexs[10] = true;
@@ -34,14 +34,14 @@ namespace musical
         {
             for(int i = 0; i < 16; i++)
             {
-                if (!indexs[i])
+                if (!Program.form.indexs[i])
                 {
-                    panels[i] = new Panel1();
-                    this.Controls.Add(panels[i].panel_0);
-                    panel_number++;
-                    panels[i].panel_0.Location = new Point(Program.form.panel_0.Location.X, Program.form.panel_0.Location.Y + Program.form.panel_0.Height * panel_number);
-                    panels[i].index = i;
-                    indexs[i] = true;
+                    Program.form.panels[i] = new Yingui_Control();
+                    Program.form.Controls.Add(Program.form.panels[i]);
+                    Program.form.panels[i].Location = new Point(154, 12 + panels[i].Height * panel_number);
+                    Program.form.panels[i].index = i;
+                    Program.form.indexs[i] = true;
+                    Program.form.panel_number++;
                     break;
                 }
             }
@@ -81,7 +81,7 @@ namespace musical
             {
                 if (indexs[i] & i != 10)
                 {
-                    panels[i].panel_save_music(sender, e);
+                    Program.form.panels[i].panel_save_0_Click(sender, e);
                 }
             }
             Midi.Music_close_all();
@@ -126,9 +126,35 @@ namespace musical
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Midi.Yingui yingui = new Midi.Yingui(File.ReadAllText("C:\\Users\\a0905\\Desktop\\不为谁而作的歌1.txt"), 0, 24, 73, 4, 4, 0x5f, 0, 0, 2);
-            yingui.Yingui_open();
-            yingui.Yingui_play();
+            /*
+            string[] strings = new string[] { "钢琴", "固定音高敲击乐器", "风琴", "吉他", "贝斯", "弦乐器", "合奏", "铜管乐器", "簧乐器", "吹管乐器", "合成音主旋律", "合成音和弦衬底", "合成音效果", "民族乐器", "打击乐器" };
+            int k = 0;
+            int l = 0;
+            
+            for (int i = 0; i < 121; i++)
+            {
+                Console.WriteLine("System.Windows.Forms.TreeNode treeNode"+i.ToString()+" = new System.Windows.Forms.TreeNode(\"" + Program.form.panel_instrument_0.Items[i].ToString()+"\");");
+                Console.WriteLine("treeNode" + i.ToString() + ".Name=" + i.ToString()+".ToString();");
+                k++;
+                if(k == 8)
+                {
+                    k = 0;
+                    Console.Write("System.Windows.Forms.TreeNode treeNode"+l.ToString()+"range = new System.Windows.Forms.TreeNode(\"" + strings[l] +"\", new System.Windows.Forms.TreeNode[] {");
+                    Console.Write("treeNode" + (l * 8 + 0).ToString() + ",");
+                    Console.Write("treeNode" + (l * 8 + 1).ToString() + ",");
+                    Console.Write("treeNode" + (l * 8 + 2).ToString() + ",");
+                    Console.Write("treeNode" + (l * 8 + 3).ToString() + ",");
+                    Console.Write("treeNode" + (l * 8 + 4).ToString() + ",");
+                    Console.Write("treeNode" + (l * 8 + 5).ToString() + ",");
+                    Console.Write("treeNode" + (l * 8 + 6).ToString() + ",");
+                    Console.Write("treeNode" + (l * 8 + 7).ToString());
+                    Console.WriteLine("});");
+                    Console.WriteLine("this.treeView1.Nodes.Add(treeNode" + l.ToString() + "range);");
+                    l++;
+                }
+            }*///帮我写代码的代码
+            Program.sheetwrite = new Form2();
+            Program.sheetwrite.Show();
         }
     }
 
@@ -537,7 +563,7 @@ namespace musical
         }
 
         /// <summary>
-        /// 停止执行绪
+        /// 停止播放
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

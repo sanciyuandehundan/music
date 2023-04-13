@@ -12,6 +12,7 @@ namespace musical
     internal static class Program
     {
         public static Form1 form;
+        public static Form2 sheetwrite;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
