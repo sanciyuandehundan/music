@@ -17,8 +17,8 @@ namespace musical
         private Regex note_check_number = new Regex("^[0-9]+$");
         //private Regex note_check_point = new Regex("^[.]+$");
         public string note_out;
-        public string note_out_point;
-        public string note_out_number;
+        public int note_out_point;
+        public int note_out_number;
         public Form2()
         {
             InitializeComponent();
@@ -62,6 +62,14 @@ namespace musical
             }
             btn.Tag = i;
             btn.Text = "附点: " + i.ToString();
+        }
+        private void note_out_set()
+        {
+            note_out=note_out_number.ToString();
+            for(int i=0;i<note_out_point;i++)
+            {
+                note_out += ".";
+            }
         }
     }
 }
