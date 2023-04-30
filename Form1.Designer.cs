@@ -531,7 +531,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(22, 340);
+            this.button5.Location = new System.Drawing.Point(22, 317);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(114, 23);
             this.button5.TabIndex = 5;
@@ -545,7 +545,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1003, 381);
+            this.ClientSize = new System.Drawing.Size(982, 381);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);

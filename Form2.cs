@@ -71,5 +71,6 @@ namespace musical
                 note_out += ".";
             }
         }
+
     }
 }
