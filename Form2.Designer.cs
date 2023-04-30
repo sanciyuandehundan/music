@@ -21,7 +21,6 @@
         }
 
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -47,6 +46,15 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // sheet_write1
+            // 
+            this.sheet_write1 = new Sheet_write(4, 4);
+            this.sheet_write1.BackColor = System.Drawing.SystemColors.Control;
+            this.sheet_write1.Location = new System.Drawing.Point(13, 173);
+            this.sheet_write1.Name = "sheet_write1";
+            this.sheet_write1.Size = new System.Drawing.Size(1593, 365);
+            this.sheet_write1.TabIndex = 13;
             // 
             // notifyIcon1
             // 
@@ -155,6 +163,7 @@
             // 
             // note_point
             // 
+            this.note_point.ContextMenuStrip = this.contextMenuStrip1;
             this.note_point.Location = new System.Drawing.Point(622, 21);
             this.note_point.Name = "note_point";
             this.note_point.Size = new System.Drawing.Size(75, 23);
@@ -162,6 +171,7 @@
             this.note_point.Tag = "0";
             this.note_point.Text = "附点：0";
             this.note_point.UseVisualStyleBackColor = true;
+            this.note_point.Click += new System.EventHandler(this.note_point_Click);
             this.note_point.MouseClick += new System.Windows.Forms.MouseEventHandler(this.note_point_MouseClick);
             // 
             // button1
@@ -190,14 +200,6 @@
             this.textBox2.Size = new System.Drawing.Size(115, 25);
             this.textBox2.TabIndex = 12;
             this.textBox2.Text = "一拍是几分音符";
-            // 
-            // sheet_write1
-            // 
-            this.sheet_write1.BackColor = System.Drawing.SystemColors.Control;
-            this.sheet_write1.Location = new System.Drawing.Point(13, 173);
-            this.sheet_write1.Name = "sheet_write1";
-            this.sheet_write1.Size = new System.Drawing.Size(1593, 365);
-            this.sheet_write1.TabIndex = 13;
             // 
             // Form2
             // 

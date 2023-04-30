@@ -41,6 +41,7 @@ namespace musical
 
         private void note_point_MouseClick(object sender, MouseEventArgs e)
         {
+            Console.WriteLine(e.Button.ToString());
             Button btn = (Button)sender;
             int i = int.Parse(btn.Tag.ToString());
             if (e.Button == MouseButtons.Left)//左键增加附点
@@ -48,7 +49,7 @@ namespace musical
                 i++;
                 note_out += ".";
             }
-            else if (e.Button == MouseButtons.Right)//右键减少附点
+            else //if (e.Button == MouseButtons.Right)//右键减少附点
             {
                 i--;
                 if(i > 0)
@@ -81,5 +82,9 @@ namespace musical
 
         }
 
+        private void note_point_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(((MouseEventArgs)e).Button);
+        }
     }
 }

@@ -26,12 +26,12 @@ namespace musical
                 note = note_;
                 xianhave = xianhave_;
             }
-            public label_tag()
+            /*public label_tag()
             {
                 color = Color.White;
                 note = string.Empty;
                 xianhave = false;
-            }
+            }*/
         }
         /*public class Xiaojie
         {
