@@ -6,13 +6,14 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime;
+using musical;
 
 namespace musical
 {
     internal static class Program
     {
         public static Form1 form;
-        public static Form2 sheetwrite;
+        public static Form2 form2;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>

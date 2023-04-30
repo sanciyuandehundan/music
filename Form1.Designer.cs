@@ -93,7 +93,7 @@
             this.panel_0.Controls.Add(this.panel_power_0);
             this.panel_0.Controls.Add(this.panel_notecollectionname_0);
             this.panel_0.Controls.Add(this.panel_choice_0);
-            this.panel_0.Location = new System.Drawing.Point(188, -277);
+            this.panel_0.Location = new System.Drawing.Point(188, -296);
             this.panel_0.Name = "panel_0";
             this.panel_0.Size = new System.Drawing.Size(746, 305);
             this.panel_0.TabIndex = 1;
@@ -545,7 +545,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1003, 381);
+            this.ClientSize = new System.Drawing.Size(982, 381);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);

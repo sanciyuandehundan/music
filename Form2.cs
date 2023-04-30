@@ -13,7 +13,6 @@ namespace musical
 {
     public partial class Form2 : Form
     {
-        private Button btnOK;
         private Regex note_check_number = new Regex("^[0-9]+$");
         //private Regex note_check_point = new Regex("^[.]+$");
         public string note_out;
@@ -21,6 +20,7 @@ namespace musical
         public int note_out_number;
         public Form2()
         {
+            sheet_write1 = new Sheet_write(4,4);
             InitializeComponent();
         }
         public void note_choice(object sender,EventArgs e)
@@ -28,8 +28,9 @@ namespace musical
             Button button = (Button)sender;
             if (note_check_number.IsMatch(button.Tag.ToString()))
             {
-                note_out = button.Tag.ToString();
+                note_out_number = int.Parse(button.Tag.ToString());
             }
+            note_out_set();
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -62,6 +63,8 @@ namespace musical
             }
             btn.Tag = i;
             btn.Text = "附点: " + i.ToString();
+            note_out_point++;
+            note_out_set();
         }
         private void note_out_set()
         {
@@ -70,6 +73,12 @@ namespace musical
             {
                 note_out += ".";
             }
+            label1.Text = note_out;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -153,8 +153,15 @@ namespace musical
                     l++;
                 }
             }*///帮我写代码的代码
-            Program.sheetwrite = new Form2();
-            Program.sheetwrite.Show();
+            /*for(int i = 8;i<25;i++)
+            {
+                if (i == 13) continue;
+                Console.WriteLine("this.label" + i + ".MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);");
+                Console.WriteLine("this.label" + i + ".MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);");
+            }*///同上
+            //MessageBox.Show(Color.Transparent.ToArgb().ToString());
+            Program.form2 = new Form2();
+            Program.form2.Show();
         }
     }
 
