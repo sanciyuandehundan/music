@@ -168,7 +168,7 @@
             this.note_point.Tag = "0";
             this.note_point.Text = "附点：0";
             this.note_point.UseVisualStyleBackColor = true;
-            this.note_point.Click += new System.EventHandler(this.note_point_Click);
+            //this.note_point.Click += new System.EventHandler(this.note_point_Click);
             this.note_point.MouseClick += new System.Windows.Forms.MouseEventHandler(this.note_point_MouseClick);
             // 
             // Sheet_write_add

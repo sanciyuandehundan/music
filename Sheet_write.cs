@@ -31,7 +31,7 @@ namespace musical
                 color = Color.White;
                 note = string.Empty;
                 xianhave = false;
-            }*/
+            }
         }
 
         public class Hexian
