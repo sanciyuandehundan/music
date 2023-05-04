@@ -15,62 +15,34 @@ namespace musical
 {
     public partial class Sheet_write : UserControl
     {
-        public struct label_tag
+        public struct Sheet_tag
         {
             public Color color;
             public string note;
             public bool xianhave;
-            public label_tag(Color color_, string note_, bool xianhave_)
+            public Sheet_tag(Color color_, string note_, bool xianhave_)
             {
                 color = color_;
                 note = note_;
                 xianhave = xianhave_;
             }
-            public label_tag()
+            public Sheet_tag()
             {
                 color = Color.White;
                 note = string.Empty;
                 xianhave = false;
             }
         }
-        /*public class Xiaojie
-        {
-            public int xiaojielong;
-            public System.Windows.Forms.Label back_anchored;
-            public Sheet_write parent;
-            public Xiaojie(int xiaojie_number, int xiaojie_base, Sheet_write sheet)
-            {
-                parent = sheet;
-                back_anchored = new System.Windows.Forms.Label();
-                back_anchored.Size = new Size(386, sheet.Height);
-                back_anchored.Location = new Point(0, 0);
-                back_anchored.BackColor = Color.Transparent;
-                parent.Controls.Add(back_anchored);
-                back_anchored.MouseEnter += new EventHandler(sheet.Xiaojie_MouseEnter);
-                back_anchored.MouseLeave += new EventHandler(sheet.Xiaojie_MouseLeave);
-                back_anchored.Tag = new xiaojie_tag(this);
-                back_anchored.BringToFront();
-                back_anchored.Image = sheet.imageList1.Images[0];
-                back_anchored.Parent = sheet.note_5;
-                xiaojielong = 57600 / 120 * xiaojie_number;
-            }
-            public struct xiaojie_tag
-            {
-                public Xiaojie xiaojie;
-                public xiaojie_tag(Xiaojie xiaojie_)
-                {
-                    xiaojie = xiaojie_;
-                }
-            }
-        }*/
+
         public class Hexian
         {
-            public System.Windows.Forms.Label[] notes = new System.Windows.Forms.Label[8];
+            public System.Windows.Forms.Label[] notes = new System.Windows.Forms.Label[14];
             public System.Windows.Forms.Label back_anchored = new System.Windows.Forms.Label();
             //public PictureBox pictureBox1;
             public int note_long;
             public int note_num = 0;
             public Sheet_write sheet;
+            public string time;
             //public Xiaojie Xiaojie;
 
             /// <summary>
@@ -82,7 +54,7 @@ namespace musical
             /// <param name="control">
             /// 获取谱子控件
             /// </param>
-            public Hexian(int width, Sheet_write sheet_)
+            public Hexian(int width, Sheet_write sheet_, string time_)
             {
                 note_long = width;
                 sheet = sheet_;
@@ -96,26 +68,27 @@ namespace musical
                 sheet.Controls.Add(back_anchored);
                 back_anchored.BringToFront();
                 sheet_.lastX += width;
+                this.time = time_;
             }
             public void Hexian_new_note(System.Windows.Forms.Label xian)
             {
-                if (note_num == 7)
+                if (note_num == 14)
                 {
                     MessageBox.Show("音符太多了哟（︶^︶）");
                     return;
                 }
-                //MessageBox.Show("");
-                notes[note_num] = new System.Windows.Forms.Label();
-                notes[note_num].Size = new Size(note_long, 200);
-                notes[note_num].Location = new Point(back_anchored.Location.X + back_anchored.Width / 2 - notes[note_num].Width/2,xian.Location.Y);
-                notes[note_num].Text = "aa";
-                notes[note_num].AutoSize = true;
-                notes[note_num].BackColor = Color.Transparent;
-                notes[note_num].ForeColor = Color.Red;
-                notes[note_num].Name = "note_" + ((label_tag)xian.Tag).note;
-                notes[note_num].Parent = sheet;
-                sheet.Controls.Add(notes[note_num]);
-                notes[note_num].BringToFront();
+                System.Windows.Forms.Label note = new System.Windows.Forms.Label();
+                notes[note_num] = note;
+                note.Size = new Size(back_anchored.Width / 5, 20);
+                note.Location = new Point(back_anchored.Location.X + back_anchored.Width / 2 - note.Width / 2, xian.Location.Y);
+                note.Text = "aa";
+                note.BackColor = Color.Transparent;
+                note.ForeColor = Color.Red;
+                note.Name = "note_" + ((Sheet_tag)xian.Tag).note;
+                note.Parent = sheet;
+                note.Tag = new Hexian_note_Tag(((Sheet_tag)xian.Tag).note);
+                sheet.Controls.Add(note);
+                note.BringToFront();
                 note_num++;
             }
             public struct Hexian_back_Tag
@@ -126,53 +99,79 @@ namespace musical
                     parent = hexian;
                 }
             }
+            public struct Hexian_note_Tag
+            {
+                public string pinlv;
+                public Hexian_note_Tag(string pinlv_)
+                {
+                    pinlv = pinlv_;
+                }
+            }
         }
 
         public System.Windows.Forms.Label Hexian_anchored;
-        public string note_now="1";
-        public int xiaojie_note_base=4;
-        public int xiaojie_note_long=4;
-        public int lastX=0;
-        public Hexian[] Hexians=new Hexian[1];
-
-        public Sheet_write(int note_base, int note_long)
+        //public string note_now = "1";
+        public int xiaojie_note_base = 4;//基准音符
+        public int xiaojie_note_num = 4;//一小节几个音符
+        public int lastX = 0;
+        public Hexian[] Hexians = new Hexian[256];
+        public int Hexians_num = 0;
+        public Form2 parent;
+        public Sheet_write(int note_base, int note_long, Form2 form)
         {
+            parent = form;
             xiaojie_note_base = note_base;
-            xiaojie_note_long = note_long;
+            xiaojie_note_num = note_long;
             InitializeComponent();
-            note_3.Tag = new label_tag(note_3.ForeColor, "3", true);
-            note_5.Tag = new label_tag(note_5.ForeColor, "5", true);
-            note_7.Tag = new label_tag(note_7.ForeColor, "7", true);
-            note_9.Tag = new label_tag(note_9.ForeColor, "+2", true);
-            note_11.Tag = new label_tag(note_11.ForeColor, "+4", true);
-            note_10.Tag = new label_tag(note_10.BackColor, "+3", false);
-            note_8.Tag = new label_tag(note_8.BackColor, "+1", false);
-            note_6.Tag = new label_tag(note_6.BackColor, "6", false);
-            note_4.Tag = new label_tag(note_4.BackColor, "4", false);
+            note_3.Tag = new Sheet_tag(note_3.ForeColor, "3", true);
+            note_5.Tag = new Sheet_tag(note_5.ForeColor, "5", true);
+            note_7.Tag = new Sheet_tag(note_7.ForeColor, "7", true);
+            note_9.Tag = new Sheet_tag(note_9.ForeColor, "+2", true);
+            note_11.Tag = new Sheet_tag(note_11.ForeColor, "+4", true);
+            note_10.Tag = new Sheet_tag(note_10.BackColor, "+3", false);
+            note_8.Tag = new Sheet_tag(note_8.BackColor, "+1", false);
+            note_6.Tag = new Sheet_tag(note_6.BackColor, "6", false);
+            note_4.Tag = new Sheet_tag(note_4.BackColor, "4", false);
         }
 
         private void Sheet_MouseClick(object sender, MouseEventArgs e)
         {
-            System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
+            System.Windows.Forms.Label sheet = (System.Windows.Forms.Label)sender;
 
-            if (Hexian_anchored == null|e.X>lastX)
+            if (Hexian_anchored == null | e.X > lastX)
             {
-                Hexian hexian = new Hexian(10*Midi.Yingui.Music_stream_time(note_now, (float)(1.0F / xiaojie_note_base), xiaojie_note_long), this);//宽度算法仍有问题
-                Hexians.Append(hexian);
-                hexian.Hexian_new_note(label);
+                Hexian hexian = new Hexian(xiaojiexian_0.Location.X/xiaojie_note_num*256/(int)(Midi.Music_time(parent.note_out)/Midi.Music_time(xiaojie_note_base.ToString())), this, parent.note_out);//宽度算法仍有问题
+                Console.WriteLine(hexian.back_anchored.Width);
+                Hexians[Hexians_num] = hexian;
+                Hexians_num++;
+                hexian.Hexian_new_note(sheet);
                 Hexian_anchored = hexian.back_anchored;
-            }//如果没有音符就创建音符
+            }//如果没有和弦就创建和弦
             else
             {
-                ((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.Hexian_new_note(label);
-                //note.Hexian_new_note(label);
-            }//如果有
+                bool j = false;
+                for (int i = 0; i < ((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.note_num; i++)
+                {
+                    if (((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.notes[i].Name.Equals("note_" + ((Sheet_tag)sheet.Tag).note))
+                    {
+                        j = true;
+                        MessageBox.Show("有了");
+                        break;
+                    }
+                }
+                //Console.WriteLine(((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.notes[i].Name);
+                if (!j)
+                {
+                    Console.WriteLine("note_" + ((Sheet_tag)sheet.Tag).note);
+                    ((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.Hexian_new_note(sheet);
+                }
+            }//如果有和弦
         }//确定音符
 
         private void Sheet_MouseEnter(object sender, EventArgs e)
         {
             System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
-            if (((label_tag)label.Tag).xianhave)
+            if (((Sheet_tag)label.Tag).xianhave)
             {
                 label.ForeColor = Color.Red;
             }
@@ -182,26 +181,27 @@ namespace musical
             }
             //note_now = ((label_tag)label.Tag).note;
         }//鼠标进入，显示对应地方的图标
+
         private void Sheet_MouseMove(object sender, MouseEventArgs e)
         {
-            if(Hexian_anchored!=null)
-            if(e.X<=Hexian_anchored.Location.X||e.X>=Hexian_anchored.Location.X+Hexian_anchored.Width)
-            {
-                Hexian_anchored?.BringToFront();
-                //note_anchored = null;
-            }
+            if (Hexian_anchored != null)
+                if (e.X <= Hexian_anchored.Location.X || e.X >= Hexian_anchored.Location.X + Hexian_anchored.Width)
+                {
+                    Hexian_anchored?.BringToFront();
+                    //note_anchored = null;
+                }
         }
 
         private void Sheet_MouseLeave(object sender, EventArgs e)
         {
             System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
-            if (((label_tag)label.Tag).xianhave)
+            if (((Sheet_tag)label.Tag).xianhave)
             {
-                label.ForeColor = ((label_tag)label.Tag).color;
+                label.ForeColor = ((Sheet_tag)label.Tag).color;
             }
             else
             {
-                label.BackColor = ((label_tag)label.Tag).color;
+                label.BackColor = ((Sheet_tag)label.Tag).color;
             }
             //label.ForeColor = ((label_tag)label.Tag).color;
         }//鼠标离开，取消显示
@@ -211,14 +211,14 @@ namespace musical
             //Xiaojie xiaojie = new Xiaojie(4, 4, this);
         }
 
-        public void Hexian_MouseEnter(object sender,EventArgs e)
+        public void Hexian_MouseEnter(object sender, EventArgs e)
         {
             System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
             Hexian_anchored?.BringToFront();
             label?.SendToBack();
             Hexian_anchored = label;
         }//用在note的back_anchored
-        //public void 
+
         public void Hexian_MouseLeave(object sender, EventArgs e)
         {
             System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
@@ -235,5 +235,26 @@ namespace musical
                     //note_anchored = null;
                 }
         }
+
+        public string Sheet_write_save()
+        {
+
+            foreach (Hexian a in Hexians)
+            {
+                if (a != null)
+                    for (int i = 0; i < a.note_num; i++)
+                    {
+
+                    }
+                /*
+                foreach (System.Windows.Forms.Label note in a?.notes)
+                {
+                    if (note != null)
+                        MessageBox.Show("");
+                }*/
+            }
+            return "";
+        }
+
     }
 }

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -18,9 +20,10 @@ namespace musical
         public string note_out;
         public int note_out_point;
         public int note_out_number;
+        Sheet_write a;
         public Form2()
         {
-            sheet_write1 = new Sheet_write(4,4);
+            //sheet_write1 = new Sheet_write(4,4);
             InitializeComponent();
         }
         public void note_choice(object sender,EventArgs e)
@@ -28,6 +31,9 @@ namespace musical
             Button button = (Button)sender;
             if (note_check_number.IsMatch(button.Tag.ToString()))
             {
+                note_out_point = 0;
+                note_point.Tag = 0;
+                note_point.Text = "附点: 0";
                 note_out_number = int.Parse(button.Tag.ToString());
             }
             note_out_set();
@@ -43,24 +49,8 @@ namespace musical
         {
             Button btn = (Button)sender;
             int i = int.Parse(btn.Tag.ToString());
-            if (e.Button == MouseButtons.Left)//左键增加附点
-            {
-                i++;
-                note_out += ".";
-            }
-            else if (e.Button == MouseButtons.Right)//右键减少附点
-            {
-                i--;
-                if(i > 0)
-                {
-                    i--;
-                    //note_out_point
-                }
-                else
-                {
-                    MessageBox.Show("没有附点了");
-                }
-            }
+            i++;
+            note_out += ".";
             btn.Tag = i;
             btn.Text = "附点: " + i.ToString();
             note_out_point++;
@@ -76,9 +66,32 @@ namespace musical
             label1.Text = note_out;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        int sheet_num = 0;
+        private void Sheet_write_add_Click(object sender, EventArgs e)
         {
+            Sheet_write sheet = new Sheet_write(4, 4, this);
+            sheet.Name = "sheet_";
+            sheet.Location = new System.Drawing.Point(0,30+note_1.Height+note_1.Location.X*2+(10+sheet.Height)*sheet_num);
+            sheet_num++;
+            this.Controls.Add(sheet);
+            a = sheet;
+        }
 
+        private void Sheet_save_Click(object sender, EventArgs e)
+        {
+            foreach(Control sheet in this.Controls)
+            {
+                if (sheet.Name.Equals("sheet_"))
+                {
+                    ((Sheet_write)sheet).Sheet_write_save();
+                }
+            }
+            saveFileDialog1.ShowDialog();
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            File.WriteAllText(saveFileDialog1.FileName,"");
         }
     }
 }

@@ -42,11 +42,17 @@
             this.note_16 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.note_point = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Sheet_write_add = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Sheet_save = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "乐谱|*.txt";
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
             // notifyIcon1
             // 
@@ -164,16 +170,16 @@
             this.note_point.UseVisualStyleBackColor = true;
             this.note_point.MouseClick += new System.Windows.Forms.MouseEventHandler(this.note_point_MouseClick);
             // 
-            // button1
+            // Sheet_write_add
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Location = new System.Drawing.Point(880, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "多加一行谱";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Sheet_write_add.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Sheet_write_add.Location = new System.Drawing.Point(880, 20);
+            this.Sheet_write_add.Name = "Sheet_write_add";
+            this.Sheet_write_add.Size = new System.Drawing.Size(94, 23);
+            this.Sheet_write_add.TabIndex = 10;
+            this.Sheet_write_add.Text = "多加一行谱";
+            this.Sheet_write_add.UseVisualStyleBackColor = true;
+            this.Sheet_write_add.Click += new System.EventHandler(this.Sheet_write_add_Click);
             // 
             // textBox1
             // 
@@ -191,24 +197,27 @@
             this.textBox2.TabIndex = 12;
             this.textBox2.Text = "一拍是几分音符";
             // 
-            // sheet_write1
+            // Sheet_save
             // 
-            this.sheet_write1.BackColor = System.Drawing.SystemColors.Control;
-            this.sheet_write1.Location = new System.Drawing.Point(13, 173);
-            this.sheet_write1.Name = "sheet_write1";
-            this.sheet_write1.Size = new System.Drawing.Size(1593, 365);
-            this.sheet_write1.TabIndex = 13;
+            this.Sheet_save.Location = new System.Drawing.Point(1255, 20);
+            this.Sheet_save.Name = "Sheet_save";
+            this.Sheet_save.Size = new System.Drawing.Size(75, 23);
+            this.Sheet_save.TabIndex = 13;
+            this.Sheet_save.Text = "保存";
+            this.Sheet_save.UseVisualStyleBackColor = true;
+            this.Sheet_save.Click += new System.EventHandler(this.Sheet_save_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1616, 805);
-            this.Controls.Add(this.sheet_write1);
+            this.Controls.Add(this.Sheet_save);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Sheet_write_add);
             this.Controls.Add(this.note_point);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.note_16);
@@ -240,9 +249,9 @@
         private System.Windows.Forms.Button note_16;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button note_point;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Sheet_write_add;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private Sheet_write sheet_write1;
+        private System.Windows.Forms.Button Sheet_save;
     }
 }
