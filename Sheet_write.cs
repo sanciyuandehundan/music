@@ -140,7 +140,7 @@ namespace musical
 
             if (Hexian_anchored == null | e.X > lastX)
             {
-                Hexian hexian = new Hexian(xiaojiexian_0.Location.X/xiaojie_note_num*256/(int)(Midi.Music_time(parent.note_out)/Midi.Music_time(xiaojie_note_base.ToString())), this, parent.note_out);//宽度算法仍有问题
+                Hexian hexian = new Hexian(xiaojiexian_0.Location.X/xiaojie_note_num*256/(int)Midi.Music_time(parent.note_out)/xiaojie_note_base, this, parent.note_out);//宽度算法仍有问题
                 Console.WriteLine(hexian.back_anchored.Width);
                 Hexians[Hexians_num] = hexian;
                 Hexians_num++;
