@@ -47,6 +47,7 @@ namespace musical
 
         private void note_point_MouseClick(object sender, MouseEventArgs e)
         {
+            Console.WriteLine(e.Button.ToString());
             Button btn = (Button)sender;
             int i = int.Parse(btn.Tag.ToString());
             i++;

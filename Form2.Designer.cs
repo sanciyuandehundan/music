@@ -21,7 +21,6 @@
         }
 
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -161,6 +160,7 @@
             // 
             // note_point
             // 
+            this.note_point.ContextMenuStrip = this.contextMenuStrip1;
             this.note_point.Location = new System.Drawing.Point(622, 21);
             this.note_point.Name = "note_point";
             this.note_point.Size = new System.Drawing.Size(75, 23);
@@ -168,6 +168,7 @@
             this.note_point.Tag = "0";
             this.note_point.Text = "附点：0";
             this.note_point.UseVisualStyleBackColor = true;
+            this.note_point.Click += new System.EventHandler(this.note_point_Click);
             this.note_point.MouseClick += new System.Windows.Forms.MouseEventHandler(this.note_point_MouseClick);
             // 
             // Sheet_write_add
