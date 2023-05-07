@@ -69,8 +69,6 @@ namespace musical
                 back_anchored.MouseEnter += new EventHandler(sheet.Hexian_MouseEnter);
                 back_anchored.MouseLeave += new EventHandler(sheet.Hexian_MouseLeave);
                 sheet.Controls.Add(back_anchored);
-                back_anchored.Image = Properties.Resources.屏幕截图_2023_05_08_000323;
-                back_anchored.ImageAlign= System.Drawing.ContentAlignment.TopLeft;
                 back_anchored.BringToFront();
                 sheet_.lastX += width;
                 this.time = time_;
