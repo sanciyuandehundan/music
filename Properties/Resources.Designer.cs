@@ -63,9 +63,9 @@ namespace musical.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 透明 {
+        internal static System.Drawing.Bitmap 屏幕截图_2023_05_08_000323 {
             get {
-                object obj = ResourceManager.GetObject("透明", resourceCulture);
+                object obj = ResourceManager.GetObject("屏幕截图_2023_05_08_000323", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

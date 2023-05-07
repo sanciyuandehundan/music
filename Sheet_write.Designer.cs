@@ -238,7 +238,7 @@
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "touming.png");
+            this.imageList1.Images.SetKeyName(0, "屏幕截图 2023-05-08 000323.png");
             // 
             // Note_front_strip
             // 

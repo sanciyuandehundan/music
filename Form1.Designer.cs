@@ -557,8 +557,9 @@
             this.MaximumSize = new System.Drawing.Size(1000, 30000);
             this.MinimumSize = new System.Drawing.Size(1000, 428);
             this.Name = "Form1";
-            this.Text = "World.Voice.execute();";
+            this.Text = "World.execution(Music);";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.panel_0.ResumeLayout(false);
             this.panel_0.PerformLayout();

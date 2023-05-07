@@ -163,6 +163,11 @@ namespace musical
             Program.form2 = new Form2();
             Program.form2.Show();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public partial class Panel1 : Control

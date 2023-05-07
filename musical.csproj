@@ -181,7 +181,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="透明.png" />
+    <None Include="Resources\屏幕截图 2023-05-08 000323.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

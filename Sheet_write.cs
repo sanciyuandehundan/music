@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -61,12 +62,15 @@ namespace musical
                 sheet = sheet_;
                 back_anchored.Location = new System.Drawing.Point(sheet.lastX, 0);
                 back_anchored.Size = new System.Drawing.Size(note_long, sheet.Height);
+                back_anchored.BackColor = Color.Transparent;
                 back_anchored.BackColor = Color.Black;
                 back_anchored.ContextMenuStrip = sheet_.Note_back_strip;
                 back_anchored.Tag = new Hexian_back_Tag(this);
                 back_anchored.MouseEnter += new EventHandler(sheet.Hexian_MouseEnter);
                 back_anchored.MouseLeave += new EventHandler(sheet.Hexian_MouseLeave);
                 sheet.Controls.Add(back_anchored);
+                back_anchored.Image = Properties.Resources.屏幕截图_2023_05_08_000323;
+                back_anchored.ImageAlign= System.Drawing.ContentAlignment.TopLeft;
                 back_anchored.BringToFront();
                 sheet_.lastX += width;
                 this.time = time_;
@@ -80,9 +84,9 @@ namespace musical
                 }
                 System.Windows.Forms.Label note = new System.Windows.Forms.Label();
                 notes[note_num] = note;
-                note.Size = new Size(back_anchored.Width / 5, 20);
+                note.Size = new Size(back_anchored.Width / 5 + 20, 20);
                 note.Location = new Point(back_anchored.Location.X + back_anchored.Width / 2 - note.Width / 2, xian.Location.Y);
-                note.Text = "aa";
+                note.Text = ((Sheet_tag)xian.Tag).note;
                 note.BackColor = Color.Transparent;
                 note.ForeColor = Color.Red;
                 note.Name = "note_" + ((Sheet_tag)xian.Tag).note;
