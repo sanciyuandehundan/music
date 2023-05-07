@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace musical
 {
-    public partial class Sheet_write : UserControl
+    public unsafe partial class Sheet_write : UserControl
     {
         public struct Sheet_tag
         {
@@ -43,6 +43,7 @@ namespace musical
             public int note_num = 0;
             public Sheet_write sheet;
             public string time;
+            public string lianyinxian = "";
             //public Xiaojie Xiaojie;
 
             /// <summary>
@@ -116,10 +117,12 @@ namespace musical
         public int lastX = 0;
         public Hexian[] Hexians = new Hexian[256];
         public int Hexians_num = 0;
+        public void* note_now;
         public Form2 parent;
-        public Sheet_write(int note_base, int note_long, Form2 form)
+        public unsafe Sheet_write(int note_base, int note_long, Form2 form2, ref void* note)
         {
-            parent = form;
+            parent = form2;
+            //note_now = note;
             xiaojie_note_base = note_base;
             xiaojie_note_num = note_long;
             InitializeComponent();
@@ -136,11 +139,18 @@ namespace musical
 
         private void Sheet_MouseClick(object sender, MouseEventArgs e)
         {
+            if (parent.note_now == null) return;
             System.Windows.Forms.Label sheet = (System.Windows.Forms.Label)sender;
 
             if (Hexian_anchored == null | e.X > lastX)
             {
-                Hexian hexian = new Hexian(xiaojiexian_0.Location.X/xiaojie_note_num*256/(int)Midi.Music_time(parent.note_out)/xiaojie_note_base, this, parent.note_out);//宽度算法仍有问题
+                //xiaojiexian_0.Location.X/xiaojie_note_num 一拍多长
+                //(int)Midi.Music_time(parent.note_out)/256.0f 一分音符的几分之几
+                //xiaojie_note_base
+                Console.WriteLine("一拍多长：" + this.Width / xiaojie_note_num);
+                Console.WriteLine("一分音符的几分之几" + 256 / Midi.Music_time(parent.note_now));
+                Console.WriteLine("一拍几分音符：" + xiaojie_note_base);
+                Hexian hexian = new Hexian((int)((this.Width / 4 / xiaojie_note_num) / (256 / Midi.Music_time(parent.note_now) / xiaojie_note_base)), this, parent.note_now);//宽度算法仍有问题
                 Console.WriteLine(hexian.back_anchored.Width);
                 Hexians[Hexians_num] = hexian;
                 Hexians_num++;
@@ -238,22 +248,23 @@ namespace musical
 
         public string Sheet_write_save()
         {
-
+            string zan="";
             foreach (Hexian a in Hexians)
             {
                 if (a != null)
+                {
                     for (int i = 0; i < a.note_num; i++)
                     {
-
+                        if (a.notes[i] != null)
+                        {
+                            zan+=((Hexian.Hexian_note_Tag)a.notes[i].Tag).pinlv + '/';
+                        }
                     }
-                /*
-                foreach (System.Windows.Forms.Label note in a?.notes)
-                {
-                    if (note != null)
-                        MessageBox.Show("");
-                }*/
+                    zan=zan.TrimEnd('/');
+                    zan += ',' + a.time + '|'+a.lianyinxian;
+                }
             }
-            return "";
+            return zan;
         }
 
     }

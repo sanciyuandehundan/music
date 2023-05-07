@@ -48,14 +48,17 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.Note_front_strip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Note_back_strip.SuspendLayout();
+            this.Note_front_strip.SuspendLayout();
             this.SuspendLayout();
             // 
             // note_3
             // 
             this.note_3.BackColor = System.Drawing.Color.Transparent;
+            this.note_3.ContextMenuStrip = this.Note_front_strip;
             this.note_3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_3.Location = new System.Drawing.Point(3, 257);
+            this.note_3.Location = new System.Drawing.Point(-3, 257);
             this.note_3.Name = "note_3";
             this.note_3.Size = new System.Drawing.Size(1577, 20);
             this.note_3.TabIndex = 0;
@@ -71,7 +74,7 @@
             // 
             this.note_5.BackColor = System.Drawing.Color.Transparent;
             this.note_5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_5.Location = new System.Drawing.Point(3, 217);
+            this.note_5.Location = new System.Drawing.Point(-3, 217);
             this.note_5.Name = "note_5";
             this.note_5.Size = new System.Drawing.Size(1577, 20);
             this.note_5.TabIndex = 1;
@@ -85,7 +88,7 @@
             // note_7
             // 
             this.note_7.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_7.Location = new System.Drawing.Point(3, 177);
+            this.note_7.Location = new System.Drawing.Point(-3, 177);
             this.note_7.Name = "note_7";
             this.note_7.Size = new System.Drawing.Size(1577, 20);
             this.note_7.TabIndex = 2;
@@ -99,7 +102,7 @@
             // note_9
             // 
             this.note_9.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_9.Location = new System.Drawing.Point(3, 137);
+            this.note_9.Location = new System.Drawing.Point(-3, 137);
             this.note_9.Name = "note_9";
             this.note_9.Size = new System.Drawing.Size(1577, 20);
             this.note_9.TabIndex = 3;
@@ -113,7 +116,7 @@
             // note_11
             // 
             this.note_11.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_11.Location = new System.Drawing.Point(3, 97);
+            this.note_11.Location = new System.Drawing.Point(-3, 97);
             this.note_11.Name = "note_11";
             this.note_11.Size = new System.Drawing.Size(1580, 20);
             this.note_11.TabIndex = 4;
@@ -127,7 +130,7 @@
             // xiaojiexian_0
             // 
             this.xiaojiexian_0.Font = new System.Drawing.Font("宋体", 5F);
-            this.xiaojiexian_0.Location = new System.Drawing.Point(386, 106);
+            this.xiaojiexian_0.Location = new System.Drawing.Point(387, 106);
             this.xiaojiexian_0.Name = "xiaojiexian_0";
             this.xiaojiexian_0.Size = new System.Drawing.Size(10, 160);
             this.xiaojiexian_0.TabIndex = 5;
@@ -137,7 +140,7 @@
             // xiaojiexian_1
             // 
             this.xiaojiexian_1.Font = new System.Drawing.Font("宋体", 5F);
-            this.xiaojiexian_1.Location = new System.Drawing.Point(771, 105);
+            this.xiaojiexian_1.Location = new System.Drawing.Point(779, 105);
             this.xiaojiexian_1.Name = "xiaojiexian_1";
             this.xiaojiexian_1.Size = new System.Drawing.Size(10, 160);
             this.xiaojiexian_1.TabIndex = 11;
@@ -146,7 +149,7 @@
             // xiaojiexian_2
             // 
             this.xiaojiexian_2.Font = new System.Drawing.Font("宋体", 5F);
-            this.xiaojiexian_2.Location = new System.Drawing.Point(1156, 106);
+            this.xiaojiexian_2.Location = new System.Drawing.Point(1171, 106);
             this.xiaojiexian_2.Name = "xiaojiexian_2";
             this.xiaojiexian_2.Size = new System.Drawing.Size(10, 160);
             this.xiaojiexian_2.TabIndex = 17;
@@ -155,7 +158,7 @@
             // note_10
             // 
             this.note_10.BackColor = System.Drawing.SystemColors.Control;
-            this.note_10.Location = new System.Drawing.Point(3, 117);
+            this.note_10.Location = new System.Drawing.Point(-3, 117);
             this.note_10.Name = "note_10";
             this.note_10.Size = new System.Drawing.Size(1577, 20);
             this.note_10.TabIndex = 18;
@@ -167,7 +170,7 @@
             // note_6
             // 
             this.note_6.BackColor = System.Drawing.SystemColors.Control;
-            this.note_6.Location = new System.Drawing.Point(3, 197);
+            this.note_6.Location = new System.Drawing.Point(-3, 197);
             this.note_6.Name = "note_6";
             this.note_6.Size = new System.Drawing.Size(1577, 20);
             this.note_6.TabIndex = 19;
@@ -179,7 +182,7 @@
             // note_8
             // 
             this.note_8.BackColor = System.Drawing.SystemColors.Control;
-            this.note_8.Location = new System.Drawing.Point(3, 157);
+            this.note_8.Location = new System.Drawing.Point(-3, 157);
             this.note_8.Name = "note_8";
             this.note_8.Size = new System.Drawing.Size(1577, 20);
             this.note_8.TabIndex = 20;
@@ -191,7 +194,8 @@
             // note_4
             // 
             this.note_4.BackColor = System.Drawing.SystemColors.Control;
-            this.note_4.Location = new System.Drawing.Point(3, 237);
+            this.note_4.ContextMenuStrip = this.Note_front_strip;
+            this.note_4.Location = new System.Drawing.Point(-3, 237);
             this.note_4.Name = "note_4";
             this.note_4.Size = new System.Drawing.Size(1577, 20);
             this.note_4.TabIndex = 21;
@@ -239,8 +243,16 @@
             // Note_front_strip
             // 
             this.Note_front_strip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.Note_front_strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testToolStripMenuItem});
             this.Note_front_strip.Name = "Note_front_strip";
-            this.Note_front_strip.Size = new System.Drawing.Size(61, 4);
+            this.Note_front_strip.Size = new System.Drawing.Size(107, 28);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
+            this.testToolStripMenuItem.Text = "test";
             // 
             // Sheet_write
             // 
@@ -260,10 +272,11 @@
             this.Controls.Add(this.note_6);
             this.Controls.Add(this.note_4);
             this.Name = "Sheet_write";
-            this.Size = new System.Drawing.Size(1593, 365);
+            this.Size = new System.Drawing.Size(1568, 365);
             this.Load += new System.EventHandler(this.Sheet_write_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_write_MouseMove);
             this.Note_back_strip.ResumeLayout(false);
+            this.Note_front_strip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -288,5 +301,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ContextMenuStrip Note_front_strip;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
     }
 }
