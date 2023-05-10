@@ -72,10 +72,16 @@ namespace musical
         }
 
         int sheet_num = 0;
-        private unsafe void Sheet_write_add_Click(object sender, EventArgs e)
+        private void Sheet_write_add_Click(object sender, EventArgs e)
         {
             //if(int.TryParse(textBox1.Text))
-
+            int note_base=0;
+            int note_long=0;
+            if (!(int.TryParse(textBox2.Text, out note_base) & int.TryParse(textBox1.Text, out note_long)))
+            {
+                MessageBox.Show("设定未完全");
+                return;
+            }
             Sheet_write sheet = new Sheet_write(int.Parse(textBox2.Text), int.Parse(textBox1.Text), this, ref note_out);
             sheet.Name = "sheet_";
             Console.WriteLine(sheet.Width);
