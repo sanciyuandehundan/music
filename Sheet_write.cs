@@ -114,7 +114,7 @@ namespace musical
                     pinlv = pinlv_;
                 }
             }
-        }
+        }//加上一个保存方法
 
         public System.Windows.Forms.Label Hexian_anchored;
         //public string note_now = "1";
@@ -206,7 +206,6 @@ namespace musical
                 if (e.X <= Hexian_anchored.Location.X || e.X >= Hexian_anchored.Location.X + Hexian_anchored.Width)
                 {
                     Hexian_anchored?.BringToFront();
-                    //note_anchored = null;
                 }
         }
 
