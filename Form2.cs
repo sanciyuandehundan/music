@@ -82,7 +82,7 @@ namespace musical
                 MessageBox.Show("设定未完全");
                 return;
             }
-            Sheet_write sheet = new Sheet_write(int.Parse(textBox2.Text), int.Parse(textBox1.Text), this, ref note_out);
+            Sheet_write sheet = new Sheet_write(int.Parse(textBox2.Text), int.Parse(textBox1.Text), this/*, ref note_out*/);
             sheet.Name = "sheet_";
             Console.WriteLine(sheet.Width);
             Console.WriteLine(this.Width);

@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sheet_write));
             this.note_3 = new System.Windows.Forms.Label();
+            this.Note_front_strip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.note_5 = new System.Windows.Forms.Label();
             this.note_7 = new System.Windows.Forms.Label();
             this.note_9 = new System.Windows.Forms.Label();
@@ -47,18 +49,32 @@
             this.msToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.Note_front_strip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Note_back_strip.SuspendLayout();
+            this.note_2 = new System.Windows.Forms.Label();
+            this.note_1 = new System.Windows.Forms.Label();
+            this.note__1 = new System.Windows.Forms.Label();
+            this.note__2 = new System.Windows.Forms.Label();
+            this.note__3 = new System.Windows.Forms.Label();
+            this.note__4 = new System.Windows.Forms.Label();
+            this.note__5 = new System.Windows.Forms.Label();
+            this.note__6 = new System.Windows.Forms.Label();
+            this.note_13 = new System.Windows.Forms.Label();
+            this.note_14 = new System.Windows.Forms.Label();
+            this.note_15 = new System.Windows.Forms.Label();
+            this.note_16 = new System.Windows.Forms.Label();
+            this.note_17 = new System.Windows.Forms.Label();
+            this.note_18 = new System.Windows.Forms.Label();
+            this.note_19 = new System.Windows.Forms.Label();
+            this.note_12 = new System.Windows.Forms.Label();
             this.Note_front_strip.SuspendLayout();
+            this.Note_back_strip.SuspendLayout();
             this.SuspendLayout();
             // 
             // note_3
             // 
-            this.note_3.BackColor = System.Drawing.Color.Transparent;
+            this.note_3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.note_3.ContextMenuStrip = this.Note_front_strip;
             this.note_3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_3.Location = new System.Drawing.Point(-3, 257);
+            this.note_3.Location = new System.Drawing.Point(-3, 382);
             this.note_3.Name = "note_3";
             this.note_3.Size = new System.Drawing.Size(1577, 20);
             this.note_3.TabIndex = 0;
@@ -70,11 +86,25 @@
             this.note_3.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
             this.note_3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
             // 
+            // Note_front_strip
+            // 
+            this.Note_front_strip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.Note_front_strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testToolStripMenuItem});
+            this.Note_front_strip.Name = "Note_front_strip";
+            this.Note_front_strip.Size = new System.Drawing.Size(107, 28);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
+            this.testToolStripMenuItem.Text = "test";
+            // 
             // note_5
             // 
-            this.note_5.BackColor = System.Drawing.Color.Transparent;
+            this.note_5.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.note_5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_5.Location = new System.Drawing.Point(-3, 217);
+            this.note_5.Location = new System.Drawing.Point(-3, 347);
             this.note_5.Name = "note_5";
             this.note_5.Size = new System.Drawing.Size(1577, 20);
             this.note_5.TabIndex = 1;
@@ -87,8 +117,9 @@
             // 
             // note_7
             // 
+            this.note_7.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.note_7.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_7.Location = new System.Drawing.Point(-3, 177);
+            this.note_7.Location = new System.Drawing.Point(-3, 312);
             this.note_7.Name = "note_7";
             this.note_7.Size = new System.Drawing.Size(1577, 20);
             this.note_7.TabIndex = 2;
@@ -101,8 +132,9 @@
             // 
             // note_9
             // 
+            this.note_9.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.note_9.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_9.Location = new System.Drawing.Point(-3, 137);
+            this.note_9.Location = new System.Drawing.Point(-3, 277);
             this.note_9.Name = "note_9";
             this.note_9.Size = new System.Drawing.Size(1577, 20);
             this.note_9.TabIndex = 3;
@@ -115,8 +147,9 @@
             // 
             // note_11
             // 
+            this.note_11.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.note_11.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_11.Location = new System.Drawing.Point(-3, 97);
+            this.note_11.Location = new System.Drawing.Point(-3, 242);
             this.note_11.Name = "note_11";
             this.note_11.Size = new System.Drawing.Size(1580, 20);
             this.note_11.TabIndex = 4;
@@ -130,9 +163,9 @@
             // xiaojiexian_0
             // 
             this.xiaojiexian_0.Font = new System.Drawing.Font("宋体", 5F);
-            this.xiaojiexian_0.Location = new System.Drawing.Point(387, 106);
+            this.xiaojiexian_0.Location = new System.Drawing.Point(387, 241);
             this.xiaojiexian_0.Name = "xiaojiexian_0";
-            this.xiaojiexian_0.Size = new System.Drawing.Size(10, 160);
+            this.xiaojiexian_0.Size = new System.Drawing.Size(10, 161);
             this.xiaojiexian_0.TabIndex = 5;
             this.xiaojiexian_0.Text = "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n" +
     "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n";
@@ -140,27 +173,27 @@
             // xiaojiexian_1
             // 
             this.xiaojiexian_1.Font = new System.Drawing.Font("宋体", 5F);
-            this.xiaojiexian_1.Location = new System.Drawing.Point(779, 105);
+            this.xiaojiexian_1.Location = new System.Drawing.Point(779, 242);
             this.xiaojiexian_1.Name = "xiaojiexian_1";
-            this.xiaojiexian_1.Size = new System.Drawing.Size(10, 160);
+            this.xiaojiexian_1.Size = new System.Drawing.Size(10, 161);
             this.xiaojiexian_1.TabIndex = 11;
             this.xiaojiexian_1.Text = "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n";
             // 
             // xiaojiexian_2
             // 
             this.xiaojiexian_2.Font = new System.Drawing.Font("宋体", 5F);
-            this.xiaojiexian_2.Location = new System.Drawing.Point(1171, 106);
+            this.xiaojiexian_2.Location = new System.Drawing.Point(1171, 242);
             this.xiaojiexian_2.Name = "xiaojiexian_2";
-            this.xiaojiexian_2.Size = new System.Drawing.Size(10, 160);
+            this.xiaojiexian_2.Size = new System.Drawing.Size(10, 161);
             this.xiaojiexian_2.TabIndex = 17;
             this.xiaojiexian_2.Text = "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n";
             // 
             // note_10
             // 
-            this.note_10.BackColor = System.Drawing.SystemColors.Control;
-            this.note_10.Location = new System.Drawing.Point(-3, 117);
+            this.note_10.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.note_10.Location = new System.Drawing.Point(-3, 262);
             this.note_10.Name = "note_10";
-            this.note_10.Size = new System.Drawing.Size(1577, 20);
+            this.note_10.Size = new System.Drawing.Size(1577, 15);
             this.note_10.TabIndex = 18;
             this.note_10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
             this.note_10.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
@@ -169,10 +202,10 @@
             // 
             // note_6
             // 
-            this.note_6.BackColor = System.Drawing.SystemColors.Control;
-            this.note_6.Location = new System.Drawing.Point(-3, 197);
+            this.note_6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.note_6.Location = new System.Drawing.Point(-3, 332);
             this.note_6.Name = "note_6";
-            this.note_6.Size = new System.Drawing.Size(1577, 20);
+            this.note_6.Size = new System.Drawing.Size(1577, 15);
             this.note_6.TabIndex = 19;
             this.note_6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
             this.note_6.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
@@ -181,10 +214,10 @@
             // 
             // note_8
             // 
-            this.note_8.BackColor = System.Drawing.SystemColors.Control;
-            this.note_8.Location = new System.Drawing.Point(-3, 157);
+            this.note_8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.note_8.Location = new System.Drawing.Point(-3, 297);
             this.note_8.Name = "note_8";
-            this.note_8.Size = new System.Drawing.Size(1577, 20);
+            this.note_8.Size = new System.Drawing.Size(1577, 15);
             this.note_8.TabIndex = 20;
             this.note_8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
             this.note_8.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
@@ -193,11 +226,11 @@
             // 
             // note_4
             // 
-            this.note_4.BackColor = System.Drawing.SystemColors.Control;
+            this.note_4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.note_4.ContextMenuStrip = this.Note_front_strip;
-            this.note_4.Location = new System.Drawing.Point(-3, 237);
+            this.note_4.Location = new System.Drawing.Point(-3, 367);
             this.note_4.Name = "note_4";
-            this.note_4.Size = new System.Drawing.Size(1577, 20);
+            this.note_4.Size = new System.Drawing.Size(1577, 15);
             this.note_4.TabIndex = 21;
             this.note_4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
             this.note_4.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
@@ -240,28 +273,238 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "屏幕截图 2023-05-08 000323.png");
             // 
-            // Note_front_strip
+            // note_2
             // 
-            this.Note_front_strip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.Note_front_strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.testToolStripMenuItem});
-            this.Note_front_strip.Name = "Note_front_strip";
-            this.Note_front_strip.Size = new System.Drawing.Size(107, 28);
+            this.note_2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.note_2.ContextMenuStrip = this.Note_front_strip;
+            this.note_2.Location = new System.Drawing.Point(-3, 402);
+            this.note_2.Name = "note_2";
+            this.note_2.Size = new System.Drawing.Size(1577, 15);
+            this.note_2.TabIndex = 22;
+            this.note_2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note_2.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note_2.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note_2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
             // 
-            // testToolStripMenuItem
+            // note_1
             // 
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
-            this.testToolStripMenuItem.Text = "test";
+            this.note_1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.note_1.ContextMenuStrip = this.Note_front_strip;
+            this.note_1.Location = new System.Drawing.Point(-3, 417);
+            this.note_1.Name = "note_1";
+            this.note_1.Size = new System.Drawing.Size(1577, 20);
+            this.note_1.TabIndex = 23;
+            this.note_1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note_1.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note_1.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note_1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note__1
+            // 
+            this.note__1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.note__1.ContextMenuStrip = this.Note_front_strip;
+            this.note__1.Location = new System.Drawing.Point(-3, 437);
+            this.note__1.Name = "note__1";
+            this.note__1.Size = new System.Drawing.Size(1577, 15);
+            this.note__1.TabIndex = 24;
+            this.note__1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note__1.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note__1.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note__1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note__2
+            // 
+            this.note__2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.note__2.ContextMenuStrip = this.Note_front_strip;
+            this.note__2.Location = new System.Drawing.Point(-4, 452);
+            this.note__2.Name = "note__2";
+            this.note__2.Size = new System.Drawing.Size(1577, 20);
+            this.note__2.TabIndex = 25;
+            this.note__2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note__2.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note__2.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note__2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note__3
+            // 
+            this.note__3.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.note__3.ContextMenuStrip = this.Note_front_strip;
+            this.note__3.Location = new System.Drawing.Point(-3, 472);
+            this.note__3.Name = "note__3";
+            this.note__3.Size = new System.Drawing.Size(1577, 15);
+            this.note__3.TabIndex = 26;
+            this.note__3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note__3.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note__3.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note__3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note__4
+            // 
+            this.note__4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.note__4.ContextMenuStrip = this.Note_front_strip;
+            this.note__4.Location = new System.Drawing.Point(-3, 487);
+            this.note__4.Name = "note__4";
+            this.note__4.Size = new System.Drawing.Size(1577, 20);
+            this.note__4.TabIndex = 27;
+            this.note__4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note__4.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note__4.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note__4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note__5
+            // 
+            this.note__5.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.note__5.ContextMenuStrip = this.Note_front_strip;
+            this.note__5.Location = new System.Drawing.Point(-3, 507);
+            this.note__5.Name = "note__5";
+            this.note__5.Size = new System.Drawing.Size(1577, 15);
+            this.note__5.TabIndex = 28;
+            this.note__5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note__5.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note__5.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note__5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note__6
+            // 
+            this.note__6.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.note__6.ContextMenuStrip = this.Note_front_strip;
+            this.note__6.Location = new System.Drawing.Point(-3, 522);
+            this.note__6.Name = "note__6";
+            this.note__6.Size = new System.Drawing.Size(1577, 20);
+            this.note__6.TabIndex = 29;
+            this.note__6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note__6.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note__6.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note__6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note_13
+            // 
+            this.note_13.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.note_13.ContextMenuStrip = this.Note_front_strip;
+            this.note_13.Location = new System.Drawing.Point(-3, 207);
+            this.note_13.Name = "note_13";
+            this.note_13.Size = new System.Drawing.Size(1577, 20);
+            this.note_13.TabIndex = 37;
+            this.note_13.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note_13.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note_13.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note_13.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note_14
+            // 
+            this.note_14.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.note_14.ContextMenuStrip = this.Note_front_strip;
+            this.note_14.Location = new System.Drawing.Point(-3, 192);
+            this.note_14.Name = "note_14";
+            this.note_14.Size = new System.Drawing.Size(1577, 15);
+            this.note_14.TabIndex = 36;
+            this.note_14.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note_14.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note_14.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note_14.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note_15
+            // 
+            this.note_15.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.note_15.ContextMenuStrip = this.Note_front_strip;
+            this.note_15.Location = new System.Drawing.Point(-3, 172);
+            this.note_15.Name = "note_15";
+            this.note_15.Size = new System.Drawing.Size(1577, 20);
+            this.note_15.TabIndex = 35;
+            this.note_15.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note_15.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note_15.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note_15.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note_16
+            // 
+            this.note_16.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.note_16.ContextMenuStrip = this.Note_front_strip;
+            this.note_16.Location = new System.Drawing.Point(-3, 157);
+            this.note_16.Name = "note_16";
+            this.note_16.Size = new System.Drawing.Size(1577, 15);
+            this.note_16.TabIndex = 34;
+            this.note_16.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note_16.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note_16.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note_16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note_17
+            // 
+            this.note_17.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.note_17.ContextMenuStrip = this.Note_front_strip;
+            this.note_17.Location = new System.Drawing.Point(-3, 137);
+            this.note_17.Name = "note_17";
+            this.note_17.Size = new System.Drawing.Size(1577, 20);
+            this.note_17.TabIndex = 33;
+            this.note_17.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note_17.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note_17.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note_17.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note_18
+            // 
+            this.note_18.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.note_18.ContextMenuStrip = this.Note_front_strip;
+            this.note_18.Location = new System.Drawing.Point(-3, 122);
+            this.note_18.Name = "note_18";
+            this.note_18.Size = new System.Drawing.Size(1577, 15);
+            this.note_18.TabIndex = 32;
+            this.note_18.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note_18.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note_18.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note_18.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note_19
+            // 
+            this.note_19.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.note_19.ContextMenuStrip = this.Note_front_strip;
+            this.note_19.Location = new System.Drawing.Point(-3, 102);
+            this.note_19.Name = "note_19";
+            this.note_19.Size = new System.Drawing.Size(1577, 20);
+            this.note_19.TabIndex = 31;
+            this.note_19.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note_19.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note_19.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note_19.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
+            // 
+            // note_12
+            // 
+            this.note_12.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.note_12.ContextMenuStrip = this.Note_front_strip;
+            this.note_12.Location = new System.Drawing.Point(-3, 227);
+            this.note_12.Name = "note_12";
+            this.note_12.Size = new System.Drawing.Size(1577, 15);
+            this.note_12.TabIndex = 30;
+            this.note_12.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick);
+            this.note_12.MouseEnter += new System.EventHandler(this.Sheet_MouseEnter);
+            this.note_12.MouseLeave += new System.EventHandler(this.Sheet_MouseLeave);
+            this.note_12.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseMove);
             // 
             // Sheet_write
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.xiaojiexian_0);
+            this.Controls.Add(this.note_13);
+            this.Controls.Add(this.note_14);
+            this.Controls.Add(this.note_15);
+            this.Controls.Add(this.note_16);
+            this.Controls.Add(this.note_17);
+            this.Controls.Add(this.note_18);
+            this.Controls.Add(this.note_19);
+            this.Controls.Add(this.note_12);
+            this.Controls.Add(this.note__6);
+            this.Controls.Add(this.note__5);
+            this.Controls.Add(this.note__4);
+            this.Controls.Add(this.note__3);
+            this.Controls.Add(this.note__2);
+            this.Controls.Add(this.note__1);
+            this.Controls.Add(this.note_1);
+            this.Controls.Add(this.note_2);
             this.Controls.Add(this.xiaojiexian_2);
             this.Controls.Add(this.xiaojiexian_1);
-            this.Controls.Add(this.xiaojiexian_0);
             this.Controls.Add(this.note_11);
             this.Controls.Add(this.note_9);
             this.Controls.Add(this.note_7);
@@ -272,11 +515,11 @@
             this.Controls.Add(this.note_6);
             this.Controls.Add(this.note_4);
             this.Name = "Sheet_write";
-            this.Size = new System.Drawing.Size(1568, 365);
+            this.Size = new System.Drawing.Size(1568, 634);
             this.Load += new System.EventHandler(this.Sheet_write_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_write_MouseMove);
-            this.Note_back_strip.ResumeLayout(false);
             this.Note_front_strip.ResumeLayout(false);
+            this.Note_back_strip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -302,5 +545,21 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ContextMenuStrip Note_front_strip;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.Label note_2;
+        private System.Windows.Forms.Label note_1;
+        private System.Windows.Forms.Label note__1;
+        private System.Windows.Forms.Label note__2;
+        private System.Windows.Forms.Label note__3;
+        private System.Windows.Forms.Label note__4;
+        private System.Windows.Forms.Label note__5;
+        private System.Windows.Forms.Label note__6;
+        private System.Windows.Forms.Label note_13;
+        private System.Windows.Forms.Label note_14;
+        private System.Windows.Forms.Label note_15;
+        private System.Windows.Forms.Label note_16;
+        private System.Windows.Forms.Label note_17;
+        private System.Windows.Forms.Label note_18;
+        private System.Windows.Forms.Label note_19;
+        private System.Windows.Forms.Label note_12;
     }
 }
