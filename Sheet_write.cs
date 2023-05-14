@@ -41,6 +41,7 @@ namespace musical
         {
             public System.Windows.Forms.Label back_anchored = new System.Windows.Forms.Label();
             public System.Windows.Forms.Label last_note = new System.Windows.Forms.Label();
+            public System.Windows.Forms.Label first_note = new System.Windows.Forms.Label();
             //public PictureBox pictureBox1;
             public int note_long;
             public int note_num = 0;
@@ -87,6 +88,7 @@ namespace musical
                     return;
                 }
                 System.Windows.Forms.Label note = new System.Windows.Forms.Label();
+                parent.Controls.Add(note);
                 //notes[note_num] = note;
                 note.Size = new Size(back_anchored.Width / 5 + 20, 20);
                 note.Location = new Point(back_anchored.Location.X + back_anchored.Width / 2 - note.Width / 2, xian.Location.Y);
@@ -95,14 +97,13 @@ namespace musical
                 note.ForeColor = Color.Red;
                 note.Name = "note_" + ((Sheet_tag)xian.Tag).note;
                 note.Tag = new Hexian_note_Tag(((Sheet_tag)xian.Tag).note, last_note, note);
-                parent.Controls.Add(note);
-                if (!last_note.Created)
+                last_note = note;
+                if (!first_note.Created)
                 {
-                    Console.WriteLine("meiy"); 
-                    last_note = note;
+                    first_note = note;
                 }
-                Console.WriteLine(note.Created);
-                Console.WriteLine(note.Created);
+                //Console.WriteLine(note.Created);
+                //Console.WriteLine(note.Created);
                 //xian.Controls.Add(note);
                 note.BringToFront();
                 note_num++;
@@ -125,7 +126,13 @@ namespace musical
                 {
                     this_note = this_note_;
                     last = last_;
-                    if (last.Created) last.Tag = new Hexian_note_Tag(((Hexian_note_Tag)last.Tag).pinlv, ((Hexian_note_Tag)last.Tag).last, ((Hexian_note_Tag)last.Tag).this_note, this_note);
+                    Console.WriteLine(this_note.Text + ".last.Created: " + last.Created);
+                    Console.WriteLine(this_note.Text + ".last" + last.Text);
+                    Console.WriteLine(this_note.Text + ".this" + this_note.Text);
+                    if (last.Created)
+                    {
+                        last.Tag = new Hexian_note_Tag(((Hexian_note_Tag)last.Tag).pinlv, ((Hexian_note_Tag)last.Tag).last, ((Hexian_note_Tag)last.Tag).this_note, this_note);
+                    }
                     pinlv = pinlv_;
                 }
                 private Hexian_note_Tag(string pinlv_, System.Windows.Forms.Label last_, System.Windows.Forms.Label this_note_, System.Windows.Forms.Label next_)
@@ -134,9 +141,13 @@ namespace musical
                     next = next_;
                     last = last_;
                     pinlv = pinlv_;
+                    Console.WriteLine("this: " + this_note.Created);
+                    Console.WriteLine("next: " + next.Created);
+                    Console.WriteLine("last: " + last.Created);
+                    Console.WriteLine("pinlv: " + pinlv);
                 }
             }
-            
+
             public string Hexian_save()
             {
                 string zan = "";
@@ -148,14 +159,15 @@ namespace musical
                         zan += ((Hexian.Hexian_note_Tag)this.notes[i].Tag).pinlv + '/';
                     }
                 }*/
-                Console.WriteLine(last_note.Created);
-                zan = Note_save(last_note);
+                Console.WriteLine(first_note.Created);
+                zan = Note_save(first_note);
                 zan = zan.TrimEnd('/');
                 zan += ',' + this.time + '|' + this.lianyinxian;
                 return zan + next?.Hexian_save();
             }
             public string Note_save(System.Windows.Forms.Label note)
             {
+                if (note != null) if (!note.Created) return "";
                 if (note == null) return "";
                 string zan = "";
                 zan = ((Hexian.Hexian_note_Tag)note.Tag).pinlv + '/';
@@ -189,14 +201,14 @@ namespace musical
             get { return Hexian_anchored_; }
         }//使用get set
 
-        
+
 
         //public string note_now = "1";
         public int xiaojie_note_base = 4;//基准音符
         public int xiaojie_note_num = 4;//一小节几个音符
         public int lastX = 0;
-        public Hexian first_Hexian=null;
-        public Hexian last_Hexian=null;
+        public Hexian first_Hexian = null;
+        public Hexian last_Hexian = null;
         public int Hexians_num = 0;
         public void* note_now;
         public Form2 parent;
@@ -215,7 +227,7 @@ namespace musical
             note_15.ForeColor = note_15.BackColor;
             note_17.ForeColor = note_17.BackColor;
             note_19.ForeColor = note_19.BackColor; ;
-            note_3.Tag = new Sheet_tag(note_3.ForeColor, "3", true,true);
+            note_3.Tag = new Sheet_tag(note_3.ForeColor, "3", true, true);
             note_5.Tag = new Sheet_tag(note_5.ForeColor, "5", true, true);
             note_7.Tag = new Sheet_tag(note_7.ForeColor, "7", true, true);
             note_9.Tag = new Sheet_tag(note_9.ForeColor, "+2", true, true);
@@ -283,7 +295,7 @@ namespace musical
                 Console.WriteLine("一分音符的几分之几" + 256 / Midi.Music_time(parent.note_now));
                 Console.WriteLine("一拍几分音符：" + xiaojie_note_base);
                 Hexian hexian = new Hexian((int)((this.Width / 4 / xiaojie_note_num) / (256 / Midi.Music_time(parent.note_now) / xiaojie_note_base)), this, parent.note_now, last_Hexian);
-                if(first_Hexian==null)first_Hexian = hexian;
+                if (first_Hexian == null) first_Hexian = hexian;
                 last_Hexian = hexian;
                 Console.WriteLine(hexian.back_anchored.Width);
                 Hexians_num++;
@@ -353,7 +365,7 @@ namespace musical
         private void Sheet_MouseLeave(object sender, EventArgs e)
         {
             System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
-            
+
             if (((Sheet_tag)label.Tag).xianat)
             {
                 if (((Sheet_tag)label.Tag).xianhave)
