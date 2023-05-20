@@ -168,6 +168,11 @@ namespace musical
         {
 
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public partial class Panel1 : Control

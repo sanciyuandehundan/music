@@ -34,6 +34,7 @@ namespace musical
 
         private void panel_start_0_Click(object sender, EventArgs e)
         {
+            //Console.WriteLine(2*Math.PI*Math.Sqrt(int.Parse(panel_speed_0.Text)/9.8));物理报告用
             yingui?.Yingui_play();
         }//开始播放
 

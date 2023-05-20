@@ -46,7 +46,6 @@ namespace musical
 
         }
 
-
         private void note_point_MouseClick(object sender, MouseEventArgs e)
         {
             Console.WriteLine(e.Button.ToString());

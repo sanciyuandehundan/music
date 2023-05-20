@@ -116,7 +116,6 @@
             this.pamel_key.Name = "pamel_key";
             this.pamel_key.Size = new System.Drawing.Size(96, 25);
             this.pamel_key.TabIndex = 25;
-            this.pamel_key.Text = "key";
             // 
             // panel_diaoshi_1
             // 
@@ -140,7 +139,6 @@
             this.panel_diaoshi_1.Size = new System.Drawing.Size(95, 25);
             this.panel_diaoshi_1.TabIndex = 24;
             this.panel_diaoshi_1.TabStop = false;
-            this.panel_diaoshi_1.Text = "升降";
             // 
             // label1
             // 
@@ -176,7 +174,6 @@
             this.panel_diaoshi_0.Size = new System.Drawing.Size(72, 25);
             this.panel_diaoshi_0.TabIndex = 20;
             this.panel_diaoshi_0.TabStop = false;
-            this.panel_diaoshi_0.Text = "什么谱";
             // 
             // panel_instrument_0
             // 
@@ -306,7 +303,6 @@
             this.panel_instrument_0.Size = new System.Drawing.Size(424, 25);
             this.panel_instrument_0.TabIndex = 18;
             this.panel_instrument_0.TabStop = false;
-            this.panel_instrument_0.Text = "乐器";
             // 
             // panel_time_right_0
             // 
