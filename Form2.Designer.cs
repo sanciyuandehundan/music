@@ -27,12 +27,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.note_1 = new System.Windows.Forms.Button();
             this.note_2 = new System.Windows.Forms.Button();
             this.note_4 = new System.Windows.Forms.Button();
@@ -47,7 +42,6 @@
             this.Sheet_save = new System.Windows.Forms.Button();
             this.note_64 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,27 +49,6 @@
             // 
             this.saveFileDialog1.Filter = "乐谱|*.txt";
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(109, 28);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(108, 24);
-            this.toolStripMenuItem2.Text = "!!!!!!";
             // 
             // note_1
             // 
@@ -170,7 +143,6 @@
             // 
             // note_point
             // 
-            this.note_point.ContextMenuStrip = this.contextMenuStrip1;
             this.note_point.Location = new System.Drawing.Point(22, 314);
             this.note_point.Name = "note_point";
             this.note_point.Size = new System.Drawing.Size(75, 23);
@@ -256,7 +228,6 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1616, 450);
-            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Sheet_save);
             this.Controls.Add(this.textBox2);
@@ -268,7 +239,6 @@
             this.Load += new System.EventHandler(this.Form2_Load);
             this.Scroll += new System.Windows.Forms.ScrollEventHandler(this.Form2_Scroll);
             this.Resize += new System.EventHandler(this.Form2_Resize);
-            this.contextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -284,9 +254,6 @@
         #endregion
 
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.Button note_1;
         private System.Windows.Forms.Button note_2;
         private System.Windows.Forms.Button note_4;

@@ -78,7 +78,7 @@
             // 
             this.note_3.BackColor = System.Drawing.Color.Black;
             this.note_3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_3.Location = new System.Drawing.Point(-3, 162);
+            this.note_3.Location = new System.Drawing.Point(-3, 150);
             this.note_3.Name = "note_3";
             this.note_3.Size = new System.Drawing.Size(1577, 6);
             this.note_3.TabIndex = 0;
@@ -92,7 +92,7 @@
             // 
             this.note_5.BackColor = System.Drawing.Color.Black;
             this.note_5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_5.Location = new System.Drawing.Point(-3, 146);
+            this.note_5.Location = new System.Drawing.Point(-3, 134);
             this.note_5.Name = "note_5";
             this.note_5.Size = new System.Drawing.Size(1577, 6);
             this.note_5.TabIndex = 1;
@@ -105,7 +105,7 @@
             // 
             this.note_7.BackColor = System.Drawing.Color.Black;
             this.note_7.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_7.Location = new System.Drawing.Point(-3, 130);
+            this.note_7.Location = new System.Drawing.Point(-3, 118);
             this.note_7.Name = "note_7";
             this.note_7.Size = new System.Drawing.Size(1577, 6);
             this.note_7.TabIndex = 2;
@@ -118,7 +118,7 @@
             // 
             this.note_9.BackColor = System.Drawing.Color.Black;
             this.note_9.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_9.Location = new System.Drawing.Point(-3, 114);
+            this.note_9.Location = new System.Drawing.Point(-3, 102);
             this.note_9.Name = "note_9";
             this.note_9.Size = new System.Drawing.Size(1577, 6);
             this.note_9.TabIndex = 3;
@@ -131,7 +131,7 @@
             // 
             this.note_11.BackColor = System.Drawing.Color.Black;
             this.note_11.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.note_11.Location = new System.Drawing.Point(-3, 98);
+            this.note_11.Location = new System.Drawing.Point(-3, 86);
             this.note_11.Name = "note_11";
             this.note_11.Size = new System.Drawing.Size(1577, 6);
             this.note_11.TabIndex = 4;
@@ -144,7 +144,7 @@
             // xiaojiexian_0
             // 
             this.xiaojiexian_0.Font = new System.Drawing.Font("宋体", 5F);
-            this.xiaojiexian_0.Location = new System.Drawing.Point(387, 98);
+            this.xiaojiexian_0.Location = new System.Drawing.Point(387, 86);
             this.xiaojiexian_0.Name = "xiaojiexian_0";
             this.xiaojiexian_0.Size = new System.Drawing.Size(10, 70);
             this.xiaojiexian_0.TabIndex = 5;
@@ -154,7 +154,7 @@
             // xiaojiexian_1
             // 
             this.xiaojiexian_1.Font = new System.Drawing.Font("宋体", 5F);
-            this.xiaojiexian_1.Location = new System.Drawing.Point(779, 98);
+            this.xiaojiexian_1.Location = new System.Drawing.Point(779, 86);
             this.xiaojiexian_1.Name = "xiaojiexian_1";
             this.xiaojiexian_1.Size = new System.Drawing.Size(10, 70);
             this.xiaojiexian_1.TabIndex = 11;
@@ -163,7 +163,7 @@
             // xiaojiexian_2
             // 
             this.xiaojiexian_2.Font = new System.Drawing.Font("宋体", 5F);
-            this.xiaojiexian_2.Location = new System.Drawing.Point(1171, 98);
+            this.xiaojiexian_2.Location = new System.Drawing.Point(1171, 86);
             this.xiaojiexian_2.Name = "xiaojiexian_2";
             this.xiaojiexian_2.Size = new System.Drawing.Size(10, 70);
             this.xiaojiexian_2.TabIndex = 17;
@@ -172,7 +172,7 @@
             // note_10
             // 
             this.note_10.BackColor = System.Drawing.Color.Transparent;
-            this.note_10.Location = new System.Drawing.Point(-3, 106);
+            this.note_10.Location = new System.Drawing.Point(-3, 94);
             this.note_10.Name = "note_10";
             this.note_10.Size = new System.Drawing.Size(1577, 6);
             this.note_10.TabIndex = 18;
@@ -184,7 +184,7 @@
             // note_6
             // 
             this.note_6.BackColor = System.Drawing.Color.Transparent;
-            this.note_6.Location = new System.Drawing.Point(-3, 138);
+            this.note_6.Location = new System.Drawing.Point(-3, 126);
             this.note_6.Name = "note_6";
             this.note_6.Size = new System.Drawing.Size(1577, 6);
             this.note_6.TabIndex = 19;
@@ -196,7 +196,7 @@
             // note_8
             // 
             this.note_8.BackColor = System.Drawing.Color.Transparent;
-            this.note_8.Location = new System.Drawing.Point(-3, 122);
+            this.note_8.Location = new System.Drawing.Point(-3, 110);
             this.note_8.Name = "note_8";
             this.note_8.Size = new System.Drawing.Size(1577, 6);
             this.note_8.TabIndex = 20;
@@ -208,7 +208,7 @@
             // note_4
             // 
             this.note_4.BackColor = System.Drawing.Color.Transparent;
-            this.note_4.Location = new System.Drawing.Point(-3, 154);
+            this.note_4.Location = new System.Drawing.Point(-3, 142);
             this.note_4.Name = "note_4";
             this.note_4.Size = new System.Drawing.Size(1577, 6);
             this.note_4.TabIndex = 21;
@@ -220,7 +220,7 @@
             // note_2
             // 
             this.note_2.BackColor = System.Drawing.Color.Transparent;
-            this.note_2.Location = new System.Drawing.Point(-3, 170);
+            this.note_2.Location = new System.Drawing.Point(-3, 158);
             this.note_2.Name = "note_2";
             this.note_2.Size = new System.Drawing.Size(1577, 6);
             this.note_2.TabIndex = 22;
@@ -232,7 +232,7 @@
             // note_1
             // 
             this.note_1.BackColor = System.Drawing.Color.Transparent;
-            this.note_1.Location = new System.Drawing.Point(-3, 178);
+            this.note_1.Location = new System.Drawing.Point(-3, 166);
             this.note_1.Name = "note_1";
             this.note_1.Size = new System.Drawing.Size(1577, 6);
             this.note_1.TabIndex = 23;
@@ -244,7 +244,7 @@
             // note__1
             // 
             this.note__1.BackColor = System.Drawing.Color.Transparent;
-            this.note__1.Location = new System.Drawing.Point(-3, 186);
+            this.note__1.Location = new System.Drawing.Point(-3, 174);
             this.note__1.Name = "note__1";
             this.note__1.Size = new System.Drawing.Size(1577, 6);
             this.note__1.TabIndex = 24;
@@ -256,7 +256,7 @@
             // note__2
             // 
             this.note__2.BackColor = System.Drawing.Color.Transparent;
-            this.note__2.Location = new System.Drawing.Point(-3, 194);
+            this.note__2.Location = new System.Drawing.Point(-3, 182);
             this.note__2.Name = "note__2";
             this.note__2.Size = new System.Drawing.Size(1577, 6);
             this.note__2.TabIndex = 25;
@@ -268,7 +268,7 @@
             // note__3
             // 
             this.note__3.BackColor = System.Drawing.Color.Transparent;
-            this.note__3.Location = new System.Drawing.Point(-3, 202);
+            this.note__3.Location = new System.Drawing.Point(-3, 190);
             this.note__3.Name = "note__3";
             this.note__3.Size = new System.Drawing.Size(1577, 6);
             this.note__3.TabIndex = 26;
@@ -280,7 +280,7 @@
             // note__4
             // 
             this.note__4.BackColor = System.Drawing.Color.Transparent;
-            this.note__4.Location = new System.Drawing.Point(-3, 210);
+            this.note__4.Location = new System.Drawing.Point(-3, 198);
             this.note__4.Name = "note__4";
             this.note__4.Size = new System.Drawing.Size(1577, 6);
             this.note__4.TabIndex = 27;
@@ -292,7 +292,7 @@
             // note__5
             // 
             this.note__5.BackColor = System.Drawing.Color.Transparent;
-            this.note__5.Location = new System.Drawing.Point(-3, 218);
+            this.note__5.Location = new System.Drawing.Point(-3, 206);
             this.note__5.Name = "note__5";
             this.note__5.Size = new System.Drawing.Size(1577, 6);
             this.note__5.TabIndex = 28;
@@ -304,7 +304,7 @@
             // note__6
             // 
             this.note__6.BackColor = System.Drawing.Color.Transparent;
-            this.note__6.Location = new System.Drawing.Point(-3, 226);
+            this.note__6.Location = new System.Drawing.Point(-3, 214);
             this.note__6.Name = "note__6";
             this.note__6.Size = new System.Drawing.Size(1577, 6);
             this.note__6.TabIndex = 29;
@@ -316,7 +316,7 @@
             // note_13
             // 
             this.note_13.BackColor = System.Drawing.Color.Transparent;
-            this.note_13.Location = new System.Drawing.Point(-3, 82);
+            this.note_13.Location = new System.Drawing.Point(-3, 70);
             this.note_13.Name = "note_13";
             this.note_13.Size = new System.Drawing.Size(1577, 6);
             this.note_13.TabIndex = 37;
@@ -328,7 +328,7 @@
             // note_14
             // 
             this.note_14.BackColor = System.Drawing.Color.Transparent;
-            this.note_14.Location = new System.Drawing.Point(-3, 74);
+            this.note_14.Location = new System.Drawing.Point(-3, 62);
             this.note_14.Name = "note_14";
             this.note_14.Size = new System.Drawing.Size(1577, 6);
             this.note_14.TabIndex = 36;
@@ -340,7 +340,7 @@
             // note_15
             // 
             this.note_15.BackColor = System.Drawing.Color.Transparent;
-            this.note_15.Location = new System.Drawing.Point(-3, 66);
+            this.note_15.Location = new System.Drawing.Point(-3, 54);
             this.note_15.Name = "note_15";
             this.note_15.Size = new System.Drawing.Size(1577, 6);
             this.note_15.TabIndex = 35;
@@ -352,7 +352,7 @@
             // note_16
             // 
             this.note_16.BackColor = System.Drawing.Color.Transparent;
-            this.note_16.Location = new System.Drawing.Point(-3, 58);
+            this.note_16.Location = new System.Drawing.Point(-3, 46);
             this.note_16.Name = "note_16";
             this.note_16.Size = new System.Drawing.Size(1577, 6);
             this.note_16.TabIndex = 34;
@@ -364,7 +364,7 @@
             // note_17
             // 
             this.note_17.BackColor = System.Drawing.Color.Transparent;
-            this.note_17.Location = new System.Drawing.Point(-3, 50);
+            this.note_17.Location = new System.Drawing.Point(-3, 38);
             this.note_17.Name = "note_17";
             this.note_17.Size = new System.Drawing.Size(1577, 6);
             this.note_17.TabIndex = 33;
@@ -376,7 +376,7 @@
             // note_18
             // 
             this.note_18.BackColor = System.Drawing.Color.Transparent;
-            this.note_18.Location = new System.Drawing.Point(-3, 42);
+            this.note_18.Location = new System.Drawing.Point(-3, 30);
             this.note_18.Name = "note_18";
             this.note_18.Size = new System.Drawing.Size(1577, 6);
             this.note_18.TabIndex = 32;
@@ -388,7 +388,7 @@
             // note_19
             // 
             this.note_19.BackColor = System.Drawing.Color.Transparent;
-            this.note_19.Location = new System.Drawing.Point(-3, 34);
+            this.note_19.Location = new System.Drawing.Point(-3, 22);
             this.note_19.Name = "note_19";
             this.note_19.Size = new System.Drawing.Size(1577, 6);
             this.note_19.TabIndex = 31;
@@ -400,7 +400,7 @@
             // note_12
             // 
             this.note_12.BackColor = System.Drawing.Color.Transparent;
-            this.note_12.Location = new System.Drawing.Point(-3, 90);
+            this.note_12.Location = new System.Drawing.Point(-3, 78);
             this.note_12.Name = "note_12";
             this.note_12.Size = new System.Drawing.Size(1577, 6);
             this.note_12.TabIndex = 30;
@@ -418,7 +418,7 @@
             this.lianyin,
             this.休止符ToolStripMenuItem});
             this.sheet.Name = "Strip";
-            this.sheet.Size = new System.Drawing.Size(229, 100);
+            this.sheet.Size = new System.Drawing.Size(229, 128);
             // 
             // delete
             // 
@@ -493,6 +493,7 @@
             this.lianyin.Name = "lianyin";
             this.lianyin.Size = new System.Drawing.Size(228, 24);
             this.lianyin.Text = "连音线";
+            this.lianyin.Click += new System.EventHandler(this.lianyin_Click);
             // 
             // 休止符ToolStripMenuItem
             // 
@@ -507,12 +508,12 @@
             this.note.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deletenote});
             this.note.Name = "note";
-            this.note.Size = new System.Drawing.Size(211, 56);
+            this.note.Size = new System.Drawing.Size(154, 28);
             // 
             // deletenote
             // 
             this.deletenote.Name = "deletenote";
-            this.deletenote.Size = new System.Drawing.Size(210, 24);
+            this.deletenote.Size = new System.Drawing.Size(153, 24);
             this.deletenote.Text = "删除该音符";
             this.deletenote.Click += new System.EventHandler(this.deletenote_Click);
             // 
