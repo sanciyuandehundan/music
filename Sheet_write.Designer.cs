@@ -552,8 +552,8 @@
             this.Controls.Add(this.note_4);
             this.Name = "Sheet_write";
             this.Size = new System.Drawing.Size(1568, 242);
-            this.Load += new System.EventHandler(this.Sheet_write_Load);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_write_MouseMove);
+            //this.Load += new System.EventHandler(this.Sheet_write_Load);
+            //this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_write_MouseMove);
             this.sheet.ResumeLayout(false);
             this.note.ResumeLayout(false);
             this.ResumeLayout(false);
