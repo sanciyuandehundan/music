@@ -97,8 +97,6 @@ namespace musical
                 back_anchored.BackColor = Color.Transparent;
                 back_anchored.BackColor = Color.Black;
                 back_anchored.Tag = new Hexian_back_Tag(this);
-                //back_anchored.MouseEnter += new EventHandler(parent.Hexian_MouseEnter);
-                //back_anchored.MouseLeave += new EventHandler(parent.Hexian_MouseLeave);
                 parent.Controls.Add(back_anchored);
                 back_anchored.SendToBack();
             }//back新建用
@@ -641,7 +639,7 @@ namespace musical
         {
             if (Hexian_anchored == null) return;
             ((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.Hexian_lianyinxian();
-        }
+        }//添加连音线
         
     }
 }
