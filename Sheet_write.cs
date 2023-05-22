@@ -47,7 +47,6 @@ namespace musical
             public Hexian last = null;
             public Hexian next = null;
             public bool created = false;
-            public int lastX = 0;
 
             /// <summary>
             /// 建构函数
@@ -82,19 +81,19 @@ namespace musical
             public void Hexian_back_edit_first(int width, Point location)
             {
                 int zan = back_anchored.Width - width;
-                lastX -= back_anchored.Width;
+                parent.lastX -= back_anchored.Width;
                 note_long = width;
                 back_anchored.Location = location;
                 back_anchored.Size = new System.Drawing.Size(note_long, parent.Height);
-                lastX += back_anchored.Width;
+                parent.lastX += back_anchored.Width;
                 if (first_note != null) Hexian_note_edit(first_note);
                 if (next != null) next.Hexian_back_edit_next(zan);
             }//back修改用，第一个
             public void Hexian_back_new()
             {
-                back_anchored.Location = new System.Drawing.Point(lastX, 0);
+                back_anchored.Location = new System.Drawing.Point(parent.lastX, 0);
                 back_anchored.Size = new System.Drawing.Size(note_long, parent.Height);
-                lastX += back_anchored.Width;
+                parent.lastX += back_anchored.Width;
                 back_anchored.BackColor = Color.Transparent;
                 back_anchored.BackColor = Color.Black;
                 back_anchored.Tag = new Hexian_back_Tag(this);
@@ -118,7 +117,9 @@ namespace musical
                 note.Location = new Point(back_anchored.Location.X + back_anchored.Width / 2 - note.Width / 2, xian.Location.Y);
                 note.Text = ((Sheet_tag)xian.Tag).note;
                 note.BackColor = Color.Transparent;
-                note.ForeColor = Color.Red;
+                note.ForeColor = Color.Black;
+                note.MouseEnter += new EventHandler(Hexian_note_color_own_enter);
+                note.MouseLeave += new EventHandler(Hexian_note_color_own_leave);
                 note.Name = "note_" + ((Sheet_tag)xian.Tag).note;
                 note.Tag = new Hexian_note_Tag(((Sheet_tag)xian.Tag).note, last_note, note, this);
                 note.ContextMenuStrip = parent.note;
@@ -260,6 +261,26 @@ namespace musical
                     Hexian_note_remove_all(((Hexian_note_Tag)note.Tag).next);
                 note.Dispose();
             }//删除全部音符
+            public void Hexian_note_color_all_enter(System.Windows.Forms.Label note)
+            {
+                if (note == null) return;
+                note.ForeColor = Color.Orange;
+                Hexian_note_color_all_enter(((Hexian_note_Tag)note.Tag).next);
+            }
+            public void Hexian_note_color_all_leave(System.Windows.Forms.Label note)
+            {
+                if (note == null) return;
+                note.ForeColor = Color.Black;
+                Hexian_note_color_all_leave(((Hexian_note_Tag)note.Tag).next);
+            }
+            public void Hexian_note_color_own_enter(object sender,EventArgs e)
+            {
+                ((System.Windows.Forms.Label)sender).ForeColor = Color.Red;
+            }//标记选到了哪个音符
+            public void Hexian_note_color_own_leave(object sender, EventArgs e)
+            {
+                ((System.Windows.Forms.Label)sender).ForeColor = Color.Black;
+            }//标记选到了哪个音符
             public void Hexian_power(string power_)
             {
                 power_code = power_ + '|';
@@ -301,12 +322,25 @@ namespace musical
             }*/
         }
 
-        public System.Windows.Forms.Label Hexian_anchored;//使用get set
+        public System.Windows.Forms.Label Hexian_anchored_;//使用get set
+        public System.Windows.Forms.Label Hexian_anchored {
+            get
+            {
+                return Hexian_anchored_;
+            }
+            set
+            {
+                if (Hexian_anchored != null) ((Hexian.Hexian_back_Tag)Hexian_anchored?.Tag).parent.Hexian_note_color_all_leave(((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.first_note);
+                Hexian_anchored_ = value;
+                if (Hexian_anchored != null) ((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.Hexian_note_color_all_enter(((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.first_note);
+            }
+        }//使用get set
         public int xiaojie_note_base = 4;//基准音符
         public int xiaojie_note_num = 4;//一小节几个音符
         public Hexian first_Hexian = null;
         public Hexian last_Hexian = null;
         public int Hexians_num = 0;
+        public int lastX = 0;
         public Form2 parent;
         public Sheet_write(int note_base, int note_long, Form2 form2/*, ref void* note*/)
         {
@@ -406,7 +440,7 @@ namespace musical
             if (parent.note_now == null) return;
             System.Windows.Forms.Label xian = (System.Windows.Forms.Label)sender;
 
-            if (Hexian_anchored == null | e.X > ((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.lastX)
+            if (Hexian_anchored == null | e.X > lastX)
             {
                 /*xiaojiexian_0.Location.X/xiaojie_note_num 一拍多长
                 (int)Midi.Music_time(parent.note_out)/256.0f 一分音符的几分之几
@@ -482,7 +516,8 @@ namespace musical
                 //Console.WriteLine(((Hexian.Hexian_note_Tag)((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.first_note.Tag).pinlv);
                 //Console.WriteLine("next_firsr_note"+((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.next?.first_note.Text);
                 if (((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.first_note != null) Console.WriteLine("this.first" + ((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.first_note.Text);
-
+                if (e.Location.X > lastX) if (Hexian_anchored != null) ((Hexian.Hexian_back_Tag)Hexian_anchored?.Tag).parent.Hexian_note_color_all_leave(((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.first_note);
+                if (e.Location.X < lastX) if (Hexian_anchored != null) ((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.Hexian_note_color_all_enter(((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.first_note);
                 if (e.Location.X > Hexian_anchored.Location.X + Hexian_anchored.Width)
                 {
                     Console.WriteLine("right move");
@@ -523,7 +558,6 @@ namespace musical
         private void Sheet_MouseLeave(object sender, EventArgs e)
         {
             System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
-
             if (((Sheet_tag)label.Tag).xianat)
             {
                 if (((Sheet_tag)label.Tag).xianhave)
@@ -608,5 +642,6 @@ namespace musical
             if (Hexian_anchored == null) return;
             ((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.Hexian_lianyinxian();
         }
+        
     }
 }
