@@ -62,6 +62,8 @@ namespace musical
         private void Button1_Click(object sender, EventArgs e)
         {
             Midi.Music_play_all();
+            /*int a = 10;
+            Console.WriteLine(a-=3);*/
         }//全部播放
 
         private void Button2_Click(object sender, EventArgs e)

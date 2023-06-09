@@ -66,10 +66,10 @@
             this.power_mf = new System.Windows.Forms.ToolStripMenuItem();
             this.power_f = new System.Windows.Forms.ToolStripMenuItem();
             this.power_ff = new System.Windows.Forms.ToolStripMenuItem();
-            this.lianyin = new System.Windows.Forms.ToolStripMenuItem();
             this.休止符ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.note = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deletenote = new System.Windows.Forms.ToolStripMenuItem();
+            this.连音线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sheet.SuspendLayout();
             this.note.SuspendLayout();
             this.SuspendLayout();
@@ -415,10 +415,9 @@
             this.sheet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.delete,
             this.power,
-            this.lianyin,
             this.休止符ToolStripMenuItem});
             this.sheet.Name = "Strip";
-            this.sheet.Size = new System.Drawing.Size(229, 128);
+            this.sheet.Size = new System.Drawing.Size(229, 76);
             // 
             // delete
             // 
@@ -488,13 +487,6 @@
             this.power_ff.Text = "ff";
             this.power_ff.Click += new System.EventHandler(this.Sheet_power);
             // 
-            // lianyin
-            // 
-            this.lianyin.Name = "lianyin";
-            this.lianyin.Size = new System.Drawing.Size(228, 24);
-            this.lianyin.Text = "连音线";
-            this.lianyin.Click += new System.EventHandler(this.lianyin_Click);
-            // 
             // 休止符ToolStripMenuItem
             // 
             this.休止符ToolStripMenuItem.Name = "休止符ToolStripMenuItem";
@@ -506,16 +498,24 @@
             // 
             this.note.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.note.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deletenote});
+            this.deletenote,
+            this.连音线ToolStripMenuItem});
             this.note.Name = "note";
-            this.note.Size = new System.Drawing.Size(154, 28);
+            this.note.Size = new System.Drawing.Size(211, 80);
             // 
             // deletenote
             // 
             this.deletenote.Name = "deletenote";
-            this.deletenote.Size = new System.Drawing.Size(153, 24);
+            this.deletenote.Size = new System.Drawing.Size(210, 24);
             this.deletenote.Text = "删除该音符";
             this.deletenote.Click += new System.EventHandler(this.deletenote_Click);
+            // 
+            // 连音线ToolStripMenuItem
+            // 
+            this.连音线ToolStripMenuItem.Name = "连音线ToolStripMenuItem";
+            this.连音线ToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.连音线ToolStripMenuItem.Text = "连音线";
+            this.连音线ToolStripMenuItem.Click += new System.EventHandler(this.连音线ToolStripMenuItem_Click);
             // 
             // Sheet_write
             // 
@@ -552,8 +552,6 @@
             this.Controls.Add(this.note_4);
             this.Name = "Sheet_write";
             this.Size = new System.Drawing.Size(1568, 242);
-            //this.Load += new System.EventHandler(this.Sheet_write_Load);
-            //this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sheet_write_MouseMove);
             this.sheet.ResumeLayout(false);
             this.note.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -599,9 +597,9 @@
         private System.Windows.Forms.ToolStripMenuItem power_mf;
         private System.Windows.Forms.ToolStripMenuItem power_f;
         private System.Windows.Forms.ToolStripMenuItem power_ff;
-        private System.Windows.Forms.ToolStripMenuItem lianyin;
         private System.Windows.Forms.ToolStripMenuItem 休止符ToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip note;
         private System.Windows.Forms.ToolStripMenuItem deletenote;
+        private System.Windows.Forms.ToolStripMenuItem 连音线ToolStripMenuItem;
     }
 }
