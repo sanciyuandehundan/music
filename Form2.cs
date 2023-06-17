@@ -22,6 +22,8 @@ namespace musical
         public int note_out_point;
         public int note_out_number;
         public string sheet_txt = "";
+        public Sheet_write first_pu;
+        public Sheet_write last_pu;
         //public void* a;
         public Form2()
         {
@@ -71,17 +73,21 @@ namespace musical
         }
 
         int sheet_num = 0;
-        private void Sheet_write_add_Click(object sender, EventArgs e)
+        public void Sheet_write_add_Click(object sender, EventArgs e)
         {
             //if(int.TryParse(textBox1.Text))
-            int note_base=0;
-            int note_long=0;
+            int note_base = 0;
+            int note_long = 0;
             if (!(int.TryParse(textBox2.Text, out note_base) & int.TryParse(textBox1.Text, out note_long)))
             {
                 MessageBox.Show("设定未完全");
                 return;
             }
-            Sheet_write sheet = new Sheet_write(int.Parse(textBox2.Text), int.Parse(textBox1.Text), this/*, ref note_out*/);
+            if (sender!=null)
+            {
+                read.Visible = false;
+            }
+            Sheet_write sheet = new Sheet_write(int.Parse(textBox2.Text), int.Parse(textBox1.Text), this/*, ref note_out*/,last_pu);
             sheet.Name = "sheet_";
             Console.WriteLine(sheet.Width);
             Console.WriteLine(this.Width);
@@ -90,6 +96,8 @@ namespace musical
             Console.WriteLine(sheet.Location.X);
             sheet_num++;
             this.Controls.Add(sheet);
+            if (first_pu == null) first_pu = sheet;
+            last_pu = sheet;
         }
 
         private void Sheet_save_Click(object sender, EventArgs e)
@@ -134,6 +142,26 @@ namespace musical
         private void Form2_Resize(object sender, EventArgs e)
         {
            // panel1.Height = Program.form2;
+        }
+
+        private void read_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            saveFileDialog1.FileName = openFileDialog1.FileName;
+            string a = File.ReadAllText(openFileDialog1.FileName, Encoding.UTF8);
+            string[] b = a.Split('|');
+            foreach (string s in b)
+            {
+                Console.WriteLine("read: "+s);
+            }
+            Sheet_write_add_Click(null, null);
+            first_pu?.Sheet_write_read(b);
+            read.Visible = false;
+            read.Enabled = false;
         }
     }
 }

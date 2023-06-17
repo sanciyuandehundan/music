@@ -42,6 +42,8 @@
             this.Sheet_save = new System.Windows.Forms.Button();
             this.note_64 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.read = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -221,6 +223,21 @@
             this.panel1.Size = new System.Drawing.Size(127, 448);
             this.panel1.TabIndex = 15;
             // 
+            // read
+            // 
+            this.read.Location = new System.Drawing.Point(667, 11);
+            this.read.Name = "read";
+            this.read.Size = new System.Drawing.Size(75, 23);
+            this.read.TabIndex = 16;
+            this.read.Text = "读取";
+            this.read.UseVisualStyleBackColor = true;
+            this.read.Click += new System.EventHandler(this.read_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -228,6 +245,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1616, 450);
+            this.Controls.Add(this.read);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Sheet_save);
             this.Controls.Add(this.textBox2);
@@ -268,5 +286,7 @@
         private System.Windows.Forms.Button Sheet_save;
         private System.Windows.Forms.Button note_64;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button read;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

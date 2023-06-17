@@ -124,12 +124,6 @@
     <Compile Include="Sheet_write.Designer.cs">
       <DependentUpon>Sheet_write.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Yingui_Control.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,9 +149,6 @@
     </Compile>
     <EmbeddedResource Include="Sheet_write.resx">
       <DependentUpon>Sheet_write.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Yingui_Control.resx">
       <DependentUpon>Yingui_Control.cs</DependentUpon>

@@ -81,7 +81,7 @@ namespace musical
                 note_long = width;
                 Hexian_back_new();
                 this.time = time_;
-                
+
             }
             ~Hexian()
             {
@@ -119,6 +119,8 @@ namespace musical
                 back_anchored.Tag = new Hexian_back_Tag(this);
                 parent.Controls.Add(back_anchored);
                 back_anchored.SendToBack();
+                Console.WriteLine("lastX: " + parent.lastX);
+                Console.WriteLine("all: " + parent.Width);
             }//back新建用
             public void Hexian_note_edit(Note note)
             {
@@ -126,7 +128,7 @@ namespace musical
                 note.Location = new Point(back_anchored.Location.X + back_anchored.Width / 2 - note.Width / 2, note.Location.Y);
                 if (note.Tag.next != null) Hexian_note_edit(note.Tag.next);
             }//修改音符
-            public void Hexian_note_new(System.Windows.Forms.Label xian)
+            public Note Hexian_note_new(System.Windows.Forms.Label xian)
             {
                 Note note = new Note();
                 parent.Controls.Add(note);
@@ -147,6 +149,7 @@ namespace musical
                     first_note = note;
                 }
                 note.BringToFront();
+                return note;
             }//新建音符
             public struct Hexian_back_Tag
             {
@@ -204,7 +207,9 @@ namespace musical
                 public void note_xiushi_lianyin(bool k)
                 {
                     Console.WriteLine("添加成功");
-                    lianyinfirst = true;
+                    lianyinfirst = k;
+                    if (k) this_note.Text += '︵';
+                    else this_note.Text = this_note.Text.TrimEnd('︵');
                     Console.WriteLine(lianyinfirst);
                 }
                 public void note_xiushi_lianyin_one()
@@ -268,7 +273,7 @@ namespace musical
                 {
 
                     Console.WriteLine(note.Tag.pinlv + "有连音线");
-                    int num = note.Tag.parent.Hexian_lianyin_check(note.Tag.pinlv)-1;
+                    int num = note.Tag.parent.Hexian_lianyin_check(note.Tag.pinlv) - 1;
                     Console.WriteLine("后面有几个：" + num);
                     if (num == 0)
                     {
@@ -278,11 +283,11 @@ namespace musical
                     {
                         note.Tag.note_xiushi_lianyin_first();
                         Hexian hexian = note.Tag.parent.next;
-                        Note temp=null;
+                        Note temp = null;
                         for (int i = 0; i < num; i++)
                         {
                             //temp = hexian.Hexian_note_find(note.Tag.pinlv, first_note_ptr);
-                            Console.WriteLine("触发回圈: "+num);
+                            Console.WriteLine("触发回圈: " + num);
                             temp = hexian.Hexian_note_find(hexian.first_note, note.Tag.pinlv);
                             if (i < num - 1)
                             {
@@ -338,10 +343,10 @@ namespace musical
             public int Hexian_lianyin_check(string order)
             {
                 Note temp = Hexian_note_find(first_note, order);
-                if (temp!=null)
+                if (temp != null)
                 {
                     Console.WriteLine(first_note.Tag.pinlv + "first为这个的和弦有与order相同的");
-                    if (this.next != null&&temp.Tag.lianyinfirst)
+                    if (this.next != null && temp.Tag.lianyinfirst)
                     {
                         return 1 + next.Hexian_lianyin_check(order);
                     }
@@ -364,7 +369,7 @@ namespace musical
                     next.Hexian_back_move(width);
                 }
             }//和弦标记的移动
-            public Note Hexian_note_find(Note note,string order)
+            public Note Hexian_note_find(Note note, string order)
             {
                 if (note.Tag.pinlv.Equals(order))
                 {
@@ -374,7 +379,7 @@ namespace musical
                 {
                     if (note.Tag.next != null)
                     {
-                        return Hexian_note_find(note.Tag.next,order);
+                        return Hexian_note_find(note.Tag.next, order);
                     }
                     else
                     {
@@ -448,6 +453,7 @@ namespace musical
             public void Hexian_note_color_all_enter(Note note)
             {
                 if (note == null) return;
+                if (!note.Created) return;
                 note.ForeColor = Color.Orange;
                 Hexian_note_color_all_enter(note.Tag.next);
             }
@@ -467,6 +473,8 @@ namespace musical
             }//标记选到了哪个音符
             public void Hexian_power(string power_)
             {
+                back_anchored.Text = power_;
+                Console.WriteLine("power: "+power_);
                 power_code = power_ + '|';
             }//力度修改
             public void Hexian_stop()
@@ -489,6 +497,18 @@ namespace musical
                 }
                 note.BringToFront();
             }//休止符
+
+            public static Hexian Hexian_new(Sheet_write this_, string time)
+            {
+                Hexian hexian = new Hexian((int)((this_.Width / 4 / this_.xiaojie_note_num) / (256 / Midi.Music_time(time) / this_.xiaojie_note_base)), this_, time, this_.last_Hexian);
+                if (this_.first_Hexian == null) this_.first_Hexian = hexian;
+                this_.last_Hexian = hexian;
+                Console.WriteLine(hexian.back_anchored.Width);
+                this_.Hexians_num++;
+                this_.Hexian_anchored = hexian.back_anchored;
+                hexian.created = true;
+                return hexian;
+            }
 
             /*
             public void Dispose()
@@ -527,8 +547,12 @@ namespace musical
         public int Hexians_num = 0;
         public int lastX = 0;
         public Form2 parent;
-        public Sheet_write(int note_base, int note_long, Form2 form2/*, ref void* note*/)
+        public Sheet_write next;
+        public Sheet_write last;
+        public Sheet_write(int note_base, int note_long, Form2 form2, Sheet_write last_)
         {
+            last = last_;
+            if (last != null) last.next = this;
             parent = form2;
             //note_now = note;
             xiaojie_note_base = note_base;
@@ -633,14 +657,7 @@ namespace musical
                 Console.WriteLine("一拍多长：" + this.Width / xiaojie_note_num);
                 Console.WriteLine("一分音符的几分之几" + 256 / Midi.Music_time(parent.note_now));
                 Console.WriteLine("一拍几分音符：" + xiaojie_note_base);
-                Hexian hexian = new Hexian((int)((this.Width / 4 / xiaojie_note_num) / (256 / Midi.Music_time(parent.note_now) / xiaojie_note_base)), this, parent.note_now, last_Hexian);
-                if (first_Hexian == null) first_Hexian = hexian;
-                last_Hexian = hexian;
-                Console.WriteLine(hexian.back_anchored.Width);
-                Hexians_num++;
-                hexian.Hexian_note_new(xian);
-                Hexian_anchored = hexian.back_anchored;
-                hexian.created = true;
+                Hexian.Hexian_new(this, this.parent.note_now).Hexian_note_new(xian);
             }//如果没有和弦就创建和弦
             else
             {
@@ -800,12 +817,12 @@ namespace musical
         *///暂时无用
         public string Sheet_write_save()
         {
-            first_Hexian.Hexian_xiushi_clear();
+            first_Hexian?.Hexian_xiushi_clear();
             return first_Hexian?.Hexian_save();
         }//保存
         public void Sheet_power(object sender, EventArgs e)
         {
-            if (Hexian_anchored != null) return;
+            if (Hexian_anchored == null) return;
             ((Hexian.Hexian_back_Tag)Hexian_anchored.Tag).parent.Hexian_power(((ToolStripMenuItem)sender).Tag.ToString());
         }//力度符号
         public void Sheet_Hexian_clear(object sender, EventArgs e)
@@ -826,7 +843,170 @@ namespace musical
         private void 连音线ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Hexian.Note note = (Hexian.Note)((System.Windows.Forms.ContextMenuStrip)((ToolStripMenuItem)sender).Owner).SourceControl;
-            ((Hexian.Hexian_note_Tag)note.Tag).note_xiushi_lianyin(true);
+            ((Hexian.Hexian_note_Tag)note.Tag).note_xiushi_lianyin(!note.Tag.lianyinfirst);
+        }
+        public void Sheet_write_read(string[] sheet)
+        {
+            int a = 0;
+            bool nextpower=false;
+            string power="";
+            foreach (string s in sheet)
+            {
+                a++;
+                switch (s)
+                {
+                    case "pp":
+                        nextpower = true;
+                        power = s;
+                        continue;
+                        break;
+                    case "p":
+                        nextpower = true;
+                        power = s;
+                        continue;
+                        break;
+                    case "mp":
+                        nextpower = true;
+                        power = s;
+                        continue;
+                        break;
+                    case "mf":
+                        nextpower = true;
+                        power = s;
+                        continue;
+                        break;
+                    case "f":
+                        nextpower = true;
+                        power = s;
+                        continue;
+                        break;
+                    case "ff":
+                        nextpower = true;
+                        power = s;
+                        continue;
+                        break;
+                }
+                string[] b = s.Split(Midi.split);
+                foreach (string b2 in b)
+                {
+                    Console.WriteLine(b2);
+                }
+                Hexian hexian = Hexian.Hexian_new(this, b.Last());
+                if (nextpower)
+                {
+                    nextpower = false;
+                    hexian.Hexian_power(power);
+                }
+                for (int i = 0; i < b.Length - 1; i++)
+                {
+                    System.Windows.Forms.Label xian = null;
+                    switch (b[i].Split('(')[0])
+                    {
+                        case "-7":
+                            xian = this.note__1;
+                            break;
+                        case "-6":
+                            xian = this.note__2;
+                            break;
+                        case "-5":
+                            xian = this.note__3;
+                            break;
+                        case "-4":
+                            xian = this.note__4;
+                            break;
+                        case "-3":
+                            xian = this.note__5;
+                            break;
+                        case "-2":
+                            xian = this.note__6;
+                            break;
+                        case "1":
+                            xian = this.note_1;
+                            break;
+                        case "2":
+                            xian = this.note_2;
+                            break;
+                        case "3":
+                            xian = this.note_3;
+                            break;
+                        case "4":
+                            xian = this.note_4;
+                            break;
+                        case "5":
+                            xian = this.note_5;
+                            break;
+                        case "6":
+                            xian = this.note_6;
+                            break;
+                        case "7":
+                            xian = this.note_7;
+                            break;
+                        case "+1":
+                            xian = this.note_8;
+                            break;
+                        case "+2":
+                            xian = this.note_9;
+                            break;
+                        case "+3":
+                            xian = this.note_10;
+                            break;
+                        case "+4":
+                            xian = this.note_11;
+                            break;
+                        case "+5":
+                            xian = this.note_12;
+                            break;
+                        case "+6":
+                            xian = this.note_13;
+                            break;
+                        case "+7":
+                            xian = this.note_14;
+                            break;
+                        case "++1":
+                            xian = this.note_15;
+                            break;
+                        case "++2":
+                            xian = this.note_16;
+                            break;
+                        case "++3":
+                            xian = this.note_17;
+                            break;
+                        case "++4":
+                            xian = this.note_18;
+                            break;
+                        case "++5":
+                            xian = this.note_19;
+                            break;
+                    }
+                    Hexian.Note note = hexian.Hexian_note_new(xian);
+                    foreach (char k in b[i].Split('(')[1])
+                    {
+                        switch (k)
+                        {
+                            case Midi.Yingui.Lianyin_first:
+                            case Midi.Yingui.Lianyin_ing:
+                            case Midi.Yingui.Lianyin_last:
+                            case Midi.Yingui.Lianyin_ing_noend:
+                            case Midi.Yingui.Lianyin_One:
+                                note.Tag.note_xiushi_lianyin(true);
+                                break;
+                        }
+                    }
+                }
+                if (lastX >= Width) break;
+            }
+            if (sheet.Length <= a) return;
+            else
+            {
+                string[] ret = new string[sheet.Length - a];
+                for (int i = a; i < sheet.Length; i++)
+                {
+                    ret[i - a] = sheet[i];
+                }
+                parent.Sheet_write_add_Click(null, null);
+                next.Sheet_write_read(ret);
+                return;
+            }
         }
     }
 }

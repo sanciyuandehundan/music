@@ -53,6 +53,19 @@ namespace musical
         {
             if (sheet != null & panel_speed_0.Text != "" & panel_basenote_0.Text != "" & xiaojie.Text != ""&panel_instrument_1.SelectedNode.Name!="")
             {
+                Midi.puhao a = Midi.puhao.gao;
+                switch (panel_diaoshi_0.SelectedIndex)
+                {
+                    case 0:
+                        a = Midi.puhao.gao;
+                        break;
+                    case 1:
+                        a = Midi.puhao.zhong;
+                        break;
+                    case 2:
+                        a = Midi.puhao.di;
+                        break;
+                }
                 yingui = new Midi.Yingui(
                     sheet,
                     index,
@@ -61,7 +74,7 @@ namespace musical
                     int.Parse(panel_basenote_0.Text),
                     int.Parse(xiaojie.Text),
                     panel_power_0.Value,
-                    0 - panel_diaoshi_0.SelectedIndex * 20,
+                    a,
                     panel_diaoshi_1.SelectedIndex - 7,
                     panel_key_0.SelectedIndex);
                 yingui.Yingui_open();
